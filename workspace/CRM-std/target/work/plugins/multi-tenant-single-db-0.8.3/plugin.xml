@@ -1,0 +1,39 @@
+<plugin name='multi-tenant-single-db' version='0.8.3' grailsVersion='1.3.5 &gt; *'>
+  <author>Kim A. Betti</author>
+  <authorEmail>kim@developer-b.com</authorEmail>
+  <title>MultiTenant - SingleDB</title>
+  <description>Multi tenant setup focused on single database mode</description>
+  <documentation>https://github.com/multi-tenant/grails-multi-tenant-single-db</documentation>
+  <type>MultiTenantSingleDbGrailsPlugin</type>
+  <resources>
+    <resource>demo.ProductController</resource>
+    <resource>demo.DemoAnimal</resource>
+    <resource>demo.DemoCustomer</resource>
+    <resource>demo.DemoDog</resource>
+    <resource>demo.DemoPetOwner</resource>
+    <resource>demo.DemoProduct</resource>
+    <resource>demo.DemoTenant</resource>
+    <resource>demo.AnotherDemoService</resource>
+    <resource>demo.DemoService</resource>
+    <resource>grails.plugin.multitenant.core.MultiTenantService</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+  </repositories>
+  <dependencies />
+  <plugins>
+    <compile>
+      <plugin group='org.grails.plugins' name='hibernate-hijacker' version='0.8.1' />
+      <plugin group='org.grails.plugins' name='hawk-eventing' version='0.5.1' />
+    </compile>
+    <provided>
+      <plugin group='org.grails.plugins' name='webxml' version='1.4.1' />
+    </provided>
+  </plugins>
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

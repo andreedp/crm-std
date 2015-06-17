@@ -1,0 +1,23 @@
+define(['controllers/controllers'],
+		function(controllers) {
+	controllers.controller('CurrentUserController', ['$scope', 'User',
+	                                          function($scope, User) {
+		
+		User.current(function(data){
+    		$scope.currentUser = data;
+    		
+		});
+	}]);
+});
+
+
+/*'use strict';
+ 
+
+var dashboardControllers = angular.module('dashboardControllers', []);
+
+dashboardControllers.controller('dashboardController', ['$scope',
+  function($scope) {
+    
+  }]);
+*/

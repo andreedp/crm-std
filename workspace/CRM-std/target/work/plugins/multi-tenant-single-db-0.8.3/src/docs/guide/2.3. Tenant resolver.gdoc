@@ -1,0 +1,50 @@
+The *tenant resolver* is point on your application that will detect witch tenant will deal the current request that is made on your application.
+Most multi-tenant applications would define tenant based on the URL used to reach your application, but you can check for some user's session attribute, 
+or any other thing that you want. 
+
+When implementing your own tenant resolver, you'll have to implement the @grails.plugin.multitenant.core.resolve.TenantResolver@ 
+interface and override the @public Integer resolve(HttpServletRequest request)@ method.
+
+For example, imagine you have the '*.greatapp.com' hosting your application.
+
+* Requests coming from 'john.greatapp.com' would resolve the tenant for user john, so tenant 1
+* Requests coming from 'mary.greatapp.com' would resolve the tenant for user mary, so tenant 2
+* Requests coming from 'paul.greatapp.com' would resolve the tenant for user paul, so tenant 3
+
+The code below shows how a simple Tenant Resolver implementation should be.
+
+{code:java}
+import grails.plugin.multitenant.core.resolve.TenantResolver
+
+class TenantDomainResolver implements TenantResolver {
+
+    @Override
+    public Integer resolve(HttpServletRequest request) {
+
+        String host = request.getServerName()
+        switch (host) {
+            case "john.greatapp.com":
+                return 1
+            
+            case "mary.greatapp.com":
+                return 2
+
+            case "paul.greatapp.com":
+                return 3
+                
+            default:
+                return null
+        }
+    }
+    
+}
+{code}
+
+Of course, your application will probably look this information up from a database.
+Host names rarely change so if you resolve tenants based on the host http header you might want
+to implement a host => tenant-id cache here. 
+
+{warning}
+In the example above, if the tenant has not been found, it would return null. *Be careful with this approach*, 
+returning null, query restrictions will not be applied, so, data of all tenants will be returned when queried.
+{warning}

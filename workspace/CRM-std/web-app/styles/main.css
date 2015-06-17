@@ -1,0 +1,548 @@
+.nav, .pagination, .carousel a { cursor: pointer; }
+
+.di-box
+{
+	position:relative;
+	border: 1px solid #DDD;
+	padding: 10px 0px 10px 10px;
+	margin: 0px 20px 20px 0px;
+}
+
+.di-main-menu{
+	/* margin: 20px; */
+}
+
+.di-main-view{
+	/* width: 1024px; */
+	position:relative;
+	border: 1px solid #DDD;
+	padding: 7px 0px 7px 7px;
+	margin: 7px 7px 7px 7px;
+	font-size: small;
+}
+
+.di-main-fill-view{
+	position:relative;
+	border: 1px solid #DDD;
+	padding: 7px 0px 7px 7px;
+	margin: 7px 7px 7px 7px;
+	font-size: small;
+}
+
+.diClinicSelected{
+	background-color: #D1E0E0;
+}
+
+.diLanguageSelected{
+	background-color: #D1E0E0;
+}
+
+.di-crud-buttons{
+	float: right;
+	margin: -3px 3px;
+}
+
+.di-view-title-bar{
+	/* margin-top: 20px; */
+	padding: 10px 20px 10px;
+	margin-bottom: 15px;
+	background-color: #eeeeee;
+}
+.di-view-title{
+	font-size: large;
+}
+
+/* FORM VALIDATION START */
+input.ng-invalid {
+  border: 1px solid red;
+}
+input.ng-valid {
+  border: 1px solid green;
+}
+textarea.ng-invalid {
+  border: 1px solid red;
+}
+textarea.ng-valid {
+  border: 1px solid green;
+}
+
+.di-app-title{
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.error {
+	color: #c60f13;
+}
+/* FORM VALIDATION END */
+
+/* LOGIN FORM START*/
+.login-body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: 100%;
+}
+
+/* LOGIN FORM END*/
+
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px; 
+    height: 300px
+}
+
+
+/* SORT COLUMN START */
+.sort-column-asc {
+    display:block;
+    color: #333333;
+    text-decoration:none;
+}
+
+.sort-column-asc span {
+	margin-left: 15px;
+}
+
+.sort-column-asc:hover {
+    color:#333333;
+    text-decoration:none;
+}
+
+.sort-column-asc:after {
+    clear:both;
+    display:block;
+    position:relative;
+    top:-15px;
+    content: "";
+    height:0;
+    width:0;
+    padding:0;
+    margin:-8px;
+    border:8px solid transparent;
+    border-bottom-color:#333333;
+}
+
+.sort-column-desc {
+    display:block;
+    color: #333333;
+    text-decoration:none;
+}
+
+.sort-column-desc span {
+	margin-left: 15px;
+}
+
+.sort-column-desc:hover {
+    color:#333333;
+    text-decoration:none;
+}
+
+.sort-column-desc:after {
+    clear:both;
+    display:block;
+    position:relative;
+    top:-6px;
+    content: "";
+    height:0;
+    width:0;
+    padding:0;
+    margin:-8px;
+    border:8px solid transparent;
+    border-top-color: #333333;
+}
+
+.sort-column-inactive {
+    display:block;
+    color: #0088cc;
+    text-decoration:none;
+}
+
+.sort-column-inactive:hover {
+    color:#0088cc;
+    text-decoration:none;
+}
+
+.sort-column-inactive:after {
+    clear:both;
+    display:block;
+    position:relative;
+    top:-15px;
+    content: "";
+    height:0;
+    width:0;
+    padding:0;
+    margin:-8px;
+}
+
+/* SORT COLUMN END */
+
+.delete-cell{
+	width: 50px;
+	height: 10px;
+}
+
+.delete-cell input{
+	margin-left: 10px;
+}
+
+/* CHECK BOX */
+.form-group input[type="checkbox"] {
+	margin-top: 7px;
+}
+
+.checkbox-label {
+	margin-left: 10px;
+}
+
+.filter-box{
+	margin-bottom: 20px;
+	padding: 10px 10px 40px 10px;
+	background-color: #dddddd;
+}
+
+.form-horizontal .form-group {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.date-picker-button {
+	height: 28px;
+	padding: 6px 12px;
+}
+
+.list-picker-button {
+	height: 28px;
+	padding: 6px 12px;
+}
+
+.tab-form {
+margin-top: 20px;
+}
+
+.coupon-schedule {
+	width: 100%;
+	height: 700px;
+}
+
+.list-table tbody tr{
+	line-height: 10px;
+}
+
+.list-table tbody tr td{
+	line-height: 10px;
+}
+
+.coupon-table thead tr{
+	font-weight: bold;
+}
+
+.coupon-table tbody tr{
+	line-height: 10px;
+}
+
+.coupon-table tbody tr td{
+	line-height: 10px;
+}
+
+.view-table tbody tr{
+	line-height: 10px;
+}
+
+.view-table tbody tr td{
+	line-height: 10px;
+}
+
+.view-table td:nth-child(odd)
+{
+	font-weight: bold;
+}
+.view-table td:nth-child(even)
+{
+	font-style: italic;
+}
+.view-table td:nth-child(3n+3)
+{
+	border-left: 5px solid #dddddd;
+	border-spacing: 10px;
+    border-collapse: separate;
+    padding-left: 20px;
+}
+
+.form-table {
+	width: 100%;
+	height: 100%;
+}
+
+.form-table td {
+	width: 50%;
+}
+
+.searchFormTo{
+	text-align: center; 
+	margin-top: 7px;
+}
+
+.form-group {
+	margin-bottom: 5px;
+}
+
+.di-search-form-buttons{
+	float: right;
+	margin: 3px 3px;
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	height: 28px;
+	padding: 3px 6px;
+	font-size: 12px;
+	line-height: 1.428571429;
+	color: #555555;
+	vertical-align: middle;
+	background-color: #ffffff;
+	background-image: none;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-horizontal  .control-label {
+	margin-top: 3px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+
+.alert {
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.pagination {
+	margin: 20px 0 10px;
+}
+
+.selection-list {
+	width: 100%;
+	height: 300px;
+}
+
+.selection-pop-up-header {
+	font-size: 16px;
+	min-height: 16.428571429px;
+	padding: 7px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.selection-pop-up-body {
+	position: relative;
+	padding: 7px;
+	width: 600px;
+}
+
+.selection-pop-up-footer {
+	padding: 7px 20px 7px;
+	margin-top: 7px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+}
+
+.sub-detail-group-cell {
+	border: 1px solid #ddd;
+}
+
+.sub-detail-group {
+	border: 1px solid #000;
+	margin: -7px 10px 5px 10px;
+	height: 100%;
+	padding-bottom: 10px;
+}
+
+.di-content-align-right {
+	text-align: right;
+	margin-right: 7px;
+}
+
+.di-settings {
+	margin: 7px;
+}
+
+.no-left-padding {
+	padding-left: 0px;
+}
+
+.between-label{
+	margin-top: 3px;
+	margin-left: -5px;
+}
+
+.master-grid {
+	width: 100%;
+	height: 100px;
+	margin-bottom: 10px;
+}
+
+.master-grid-l {
+	width: 100%;
+	height: 200px;
+	margin-bottom: 10px;
+}
+
+.investment-objective{
+	min-height: 20px;
+}
+
+.income-source{
+	min-height: 20px;
+}
+
+.grid-delete-button{
+	margin: 5px;
+}
+
+.crud-button-container{
+	margin: 10px 10px 10px 10px;
+}
+
+.back-color-master-form{
+	background-color: #C2D3DB;
+}
+
+.back-color-trade-form{
+	background-color: #FCFC49;
+}
+
+.navbar-default {
+	background-color: #eeeeee;
+	border-color: #e1e1e1;
+}
+
+input:focus { 
+	background-color: #CCEBFF; 
+}
+
+.address-copy-button{
+	margin-bottom: 10px;
+}
+
+.nav-tabs{
+	background-color: rgb(211, 235, 235);
+}
+
+.form-horizontal  .label-value {
+	margin-top: 3px;
+	padding-top: 3px;
+	padding-bottom: 4px;
+}
+
+.user-role{
+	margin: 2px 0px 5px 0px;
+}
+
+.language-select{
+	text-align: right;
+	width: 60%;
+}
+
+.language-select-input{
+	width: 100%;
+}
+
+.requestmap-checkbox {
+	width: 10%;	
+}
+
+.requestmap-label {
+	margin-top: 5px;
+}
+
+.requestmap-access-view{
+	min-height: 30px;
+}
+
+.trade-details-list {
+    border: 1px solid rgb(212,212,212);
+    width: 100%; 
+    height: 150px
+}
+
+.trade-details-table tbody tr{
+	line-height: 10px;
+}
+
+.trade-details-table tbody tr td{
+	line-height: 10px;
+}
+.trade-details-table td:nth-child(odd)
+{
+	font-weight: normal;
+}
+.trade-details-table td:nth-child(even)
+{
+	font-weight: normal;
+}
+.trade-details-table td:nth-child(3n+3)
+{
+	border-left: 0px;
+}
+
+.data-detail-table > tbody > tr > td{
+	padding: 5px;
+}
+
+.data-list-table > tbody > tr > td{
+	padding: 3px;
+}
+
+.root-group-left{
+	border: solid 1px #DDD;
+	margin: 15px -7px;
+}
+
+.root-group-right{
+	border: solid 1px #DDD;
+	margin: 15px;
+}

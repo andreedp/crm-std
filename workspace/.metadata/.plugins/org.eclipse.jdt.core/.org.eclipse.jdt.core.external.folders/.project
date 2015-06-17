@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link0</name>
+			<type>2</type>
+			<location>/Users/andreedwiprasetyo/Documents/grails-2.3.10/scripts</location>
+		</link>
+		<link>
+			<name>.link10</name>
+			<type>2</type>
+			<location>/Applications/eclipse/plugins/org.codehaus.groovy_2.3.10.xx-201502281941-e44/plugin_dsld_support</location>
+		</link>
+		<link>
+			<name>.link12</name>
+			<type>2</type>
+			<location>/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugin-classes</location>
+		</link>
+		<link>
+			<name>.link13</name>
+			<type>2</type>
+			<location>/Applications/eclipse/plugins/org.grails.ide.eclipse.resources_3.6.4.201503050947-RELEASE/dsl-support</location>
+		</link>
+		<link>
+			<name>.link9</name>
+			<type>2</type>
+			<location>/Users/andreedwiprasetyo/.groovy/greclipse/global_dsld_support</location>
+		</link>
+	</linkedResources>
+</projectDescription>

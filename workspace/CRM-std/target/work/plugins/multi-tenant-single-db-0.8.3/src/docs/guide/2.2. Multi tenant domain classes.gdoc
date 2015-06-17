@@ -1,0 +1,40 @@
+h3. The \@MultiTenant annotation
+
+The @\@MultiTenant@ annotation is a central part of this plugin. This annotation causes two things to happen.
+
+The annotation is part of a AST transformation hooking into the compilation process adding a @Integer tenantId@ field to all annotated domain classes.
+The transformation also adds the @MultiTenantDomainClass@ interface if the domain class isn't already implementing it. 
+
+The application will look for Hibernate domain classes annotated with \@MultiTenant during application startup. 
+Hibernate operations against these domain classes will be filtered to only affect data belonging to the current tenant.
+
+{code:java}
+import grails.plugin.multitenant.core.annotation.MultiTenant
+
+@MultiTenant
+class Animal {
+    
+    String name
+    
+}
+{code}
+
+h3. The unique constraint
+
+You must take some extra care with the unique constraint as all tenants will share the same database. 
+In the future we might add this automatically during application startup. 
+
+{code:java}
+import grails.plugin.multitenant.core.annotation.MultiTenant
+
+@MultiTenant
+class Animal {
+    
+    String name
+    
+    static constraints = {
+        name unique: 'tenantId'
+    }
+    
+}
+{code}

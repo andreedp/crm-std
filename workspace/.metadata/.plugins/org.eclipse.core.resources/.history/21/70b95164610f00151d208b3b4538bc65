@@ -1,0 +1,130 @@
+require.config({
+	waitSeconds: 20,
+	paths: {
+		'jquery': 'vendor/jquery-1.9.1',
+		'angular': 'vendor/angular/angular',
+		'angularRoute': 'vendor/angular/angular-route',
+		'angularResource': 'vendor/angular/angular-resource',	
+		'moment': 'vendor/moment',
+		'domReady': 'vendor/requirejs/domReady',
+		'menuBootstrap':'vendor/bootstrap.min',		
+		'morrisData':'vendor/morris/morris-data',
+		'morris':'vendor/morris/morris',
+		'raphael':'vendor/raphael.min',
+		'angularGrid': 'vendor/smart-table',
+		'dateRangePicker': 'vendor/daterangepicker',
+		'angularDateRangePicker': 'vendor/angular/angular-daterangepicker',
+		
+},
+shim: {	
+		'jquery': {
+			  exports: 'jquery'
+		  },
+		'angular': {
+			deps: [ 'jquery'],
+			exports: 'angular'
+		},
+		'angularRoute': {
+			  deps: ['angular'],
+			  exports: 'angularRoute',
+		  },
+		'angularResource': { 
+			deps: ['angular'],
+			exports: 'angularResource' 
+		},
+		'menuBootstrap': {
+			deps: ['jquery']
+		},
+		'angularGrid': {
+	    	deps: ['angular']
+		},
+		'morris': {
+			deps: ['jquery']
+		},
+		'morrisData': {
+			deps: ['jquery']
+		},
+		'raphael': {
+			deps: ['jquery']
+		},	
+		'dateRangePicker': { 
+			deps: ['jquery'], 
+		},
+		'angularDateRangePicker': { 
+			deps: ['angular'], 
+		},		
+	},
+config: {
+    moment: {
+        noGlobal: true
+    }
+}
+});
+
+require([
+	'angular',
+	'angularRoute',
+	'angularResource',
+	'angularGrid',
+	'moment',
+	'dateRangePicker',
+	'angularDateRangePicker',
+	'domReady',
+	'app',
+	'jquery',
+	'menuBootstrap',
+	'morris',
+	'morrisData',
+	'raphael',
+	// Note this is not Twitter Bootstrap
+	// but our AngularJS bootstrap
+	'bootstrap',
+	'routes',
+	'controllers/dashboardController',
+	'controllers/contact/contactController',
+	'services/contactService',
+	'directives/ngbkFocus',
+	'directives/stDateRange',
+	'directives/stNumberRange',
+	'filters/customFilter',
+	// Any individual controller, service, directive or filter file
+	// that you add will need to be pulled in here.
+	// This will have to be maintained by hand.
+	],
+	function () {	
+		console.log("Loaded :)");    
+		return {};
+		
+	}
+
+//function (angular, app) {
+//'use strict';
+
+/*app.config(['$routeProvider',
+     function($routeProvider) {
+	// Define your Routes here
+	$routeProvider.
+      when('/contact', {
+        templateUrl: 'app/view/contact/contact.html',
+        controller: 'contactController'
+      }).
+      when('/contact/list', {
+        templateUrl: 'app/view/contact/list.html',
+        controller: 'contactListController'
+      }).
+      when('/leads/list', {
+          templateUrl: 'app/view/leads/list.html',
+          controller: 'contactListController'
+        }).
+      when('/', {
+          templateUrl: 'app/view/dashboard.html',
+          controller: 'dashboardController'
+        }).
+      otherwise({
+        redirectTo: '/'
+      });			
+	}
+]);
+}*/
+
+);

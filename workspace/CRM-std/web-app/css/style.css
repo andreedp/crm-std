@@ -1,0 +1,82 @@
+/* CSS Document */
+
+body{margin-left: 0px; margin-right: 0px; margin-top: 0px;}
+.tabel{ height:429px; background-image:url(../images/tabel1.gif); background-repeat:repeat-x}
+
+.tSearch{ font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#0465b7;text-decoration:none; text-align:left}
+.lineBlack{ background-image:url(../images/line_Black.gif); background-position:center; background-repeat:repeat-x}
+
+/* Form*/
+.textBox{ width:200px;font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#333;text-decoration:none;}
+.tHeader{ font-family:Arial, tahoma, verdana; font-size:12px; font-weight: bold; color:#0874c4;text-decoration:none; padding:5px 5px 5px 5px; text-align:left}
+.tbutton{ width:100px;font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#333;text-decoration:none; padding:5px 5px 5px 5p}
+.textLabel{font-family:Arial, tahoma, verdana; font-size:11px; font-weight: bold; color:#333;text-decoration:none; padding:5px 5px 5px 5px; text-align:left}
+
+
+/* Login */
+.login{ width:21px; height:183px;}
+.loginBack{ width:278px; height:183px; background-image:url(../images/Login.gif); background-repeat:repeat-x}
+.tWhite{ font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#fff;text-decoration:none; padding:5px 5px 5px 5px}
+.tfooter{ font-family:Arial, tahoma, verdana; font-size:10px; font-weight: normal; color:#696969;text-decoration:none;}
+.footerI{ background-image:url(../images/dot.gif); background-repeat:repeat-x}
+.footer{width:714px; background-image:url(../images/t.gif); background-repeat:repeat-x}
+.tform{width:175px;font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#333;text-decoration:none;}
+.tlink{font-family:Arial, tahoma, verdana; font-size:10px; font-weight:normal; color:#696969;text-decoration:underline;}
+
+.tBlack{ font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#333;text-decoration:none; padding:5px 5px 5px 5px}
+.tBlue{ font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#0874c4;text-decoration:none; padding:5px 5px 5px 5px}
+
+/*tabel Blue*/
+.tab2{ background-image:url(../images/tab_02.gif); background-repeat:repeat-x}
+.tab8{ background-image:url(../images/tab_08.gif); background-repeat:repeat-x}
+.tab6{ background-image:url(../images/tab_06.gif); background-repeat:repeat-y}
+.tab4{ background-image:url(../images/tab_04.gif); background-repeat:repeat-y}
+
+/*tabel List*/
+.ta{ background-color:#0052b6; }
+.tk{ background-color:#c6e1f1; font-family: arial,tahoma; font-size:11px; }
+.tk td { background-color:#c6e1f1; };
+.ta td { background-color:#0052b6; };
+.tk td{ align:center; background-color:#c6e1f1; font-family: arial,tahoma;color: #003451;font-size: 11px;text-decoration: none;font-weight: normal;}
+.text_white{font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#fff;text-decoration:none;}
+.text_white td{font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#fff;text-decoration:none;}
+.t_green{font-family: arial,tahoma;color: #003451;font-size: 11px;text-decoration: none;font-weight: normal;}
+.t_green1{font-family: arial,tahoma;color: #003451;font-size: 11px;text-decoration: none;font-weight: bold;}
+.tk1{ background-color: #CCCCCC; }
+
+.over-tbl
+{
+/*margin-left:60px;
+margin-right:60px;
+height:350px;
+width:850px;*/
+overflow:scroll;
+height:250px;
+width:700px;
+}
+.over-tbl1
+{
+overflow:scroll;
+width:700px;
+height:250px;
+}
+#tform{width:175px;font-family:Arial, tahoma, verdana; font-size:11px; font-weight: normal; color:#333;text-decoration:none;}
+
+.xls td{
+  background-color:#c6e1f1;
+  align:center;
+  font-family: arial,tahoma;
+  color: #003451;
+  font-size: 11px;
+  text-decoration: none;
+  font-weight: normal;
+}
+.xlstitle td{
+  background-color:#CCCCCC;
+  align:left;
+  font-family: arial,tahoma;
+  color: #003451;
+  font-size: 11px;
+  text-decoration: none;
+  font-weight: bold;
+}

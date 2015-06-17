@@ -1,0 +1,107 @@
+define(['controllers/controllers'],
+		function(controllers) {
+	controllers.controller('contactController', ['$scope', 'Contact',
+	                                          function($scope, Contact) {
+			
+			$scope.header = 'Contact Management';
+			$scope.title = 'Contact';
+			$scope.contact = Contact.query();
+		    $scope.orderProp = 'name';
+			
+	}]);
+	
+	controllers.controller('contactListController', ['$scope', '$routeParams', '$window', 'Contact', 'ContactService',
+		                                          function($scope,  $routeParams, $window, Contact, ContactService) {
+				
+				$scope.header = 'Contact Management';
+				$scope.title = 'Contact';
+				$scope.date = {startDate: null, endDate: null};
+				$scope.today = function() {
+				    $scope.dt = new Date();
+				  };
+				$scope.today();
+				$scope.dateOptions = {
+					    formatYear: 'yy',
+					    startingDay: 1
+				};
+
+				$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+				$scope.format = $scope.formats[0];
+				
+				$scope.predicates = ['name', 'email', 'lastUpdated'];
+			    $scope.selectedPredicate = $scope.predicates[0];
+					  
+				$scope.contacts = Contact.query(function(data) {
+				    // success handler
+					console.log("Contact count ",  $scope.contacts.length);  
+				}, function(error) {
+				    // error handler
+					console.log("Error");  
+				});
+			    $scope.orderProp = 'name';
+			    
+			    $scope.OpenCourse = function(courseId) {
+			        $window.alert("Called " + courseId);
+			    }
+
+	}]);
+
+	controllers.controller('contactCreateController', ['$scope', '$routeParams', '$window', 'Contact', 'ContactService',
+			                                          function($scope,  $routeParams, $window, Contact, ContactService) {
+					
+					$scope.header = 'Contact Management';
+					$scope.title = 'Contact';
+					$scope.date = {startDate: null, endDate: null};
+					$scope.today = function() {
+					    $scope.dt = new Date();
+					  };
+					$scope.today();
+					$scope.dateOptions = {
+						    formatYear: 'yy',
+						    startingDay: 1
+						  };
+
+					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+					$scope.format = $scope.formats[0];
+					
+					$scope.predicates = ['name', 'email', 'lastUpdated'];
+				    $scope.selectedPredicate = $scope.predicates[0];
+						  
+					$scope.contacts = Contact.query(function(data) {
+					    // success handler
+						console.log("Contact count ",  $scope.contacts.length);  
+					}, function(error) {
+					    // error handler
+						console.log("Error");  
+					});
+				    $scope.orderProp = 'name';
+				    
+				    $scope.OpenCourse = function(courseId) {
+				        $window.alert("Called " + courseId);
+				    }
+
+		}]);
+});
+
+/*contactControllers.controller('contactController', ['$scope', 'Contact',
+  function($scope, Contact) {
+    $scope.contact = Contact.query();
+    $scope.orderProp = 'name';    
+  }]);
+
+var contactListControllers = angular.module('contactListControllers', []);
+
+contactListControllers.controller('contactListController', ['$scope', '$routeParams', '$window', 'Contact',
+  function($scope, $routeParams, $window, Contact) {
+	$scope.contacts =   Contact.query();
+    $scope.orderProp = 'name';
+    
+    var entries = Contact.query(function() {
+        console.log(entries);
+      });
+
+    $scope.OpenCourse = function(courseId) {
+        $window.alert("Called " + courseId);
+    }
+    
+  }]);*/

@@ -1,0 +1,23 @@
+<plugin name='hibernate-hijacker' version='0.8.1' grailsVersion='1.3.5 &gt; *'>
+  <author>Kim A. Betti</author>
+  <authorEmail>kim.betti@gmail.com</authorEmail>
+  <title>Hibernate Hijacker</title>
+  <description>\
+This plugins are a part of the re-engineering efforts going into the Multi-Tenant plugin.
+It is very difficult to intercept new Hibernate sessions in a non-intrusive way.
+Multiple plugins trying to archive this are likely to step on each others feet.
+This plugin publishes intercepted Session instances to a lightweight event broker. 
+</description>
+  <documentation>http://grails.org/plugin/hibernate-hijacker</documentation>
+  <resources>
+    <resource>BuildConfig</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>grails.plugin.hibernatehijacker.demo.BookController</resource>
+    <resource>grails.plugin.hibernatehijacker.demo.Book</resource>
+    <resource>grails.plugin.hibernatehijacker.demo.Person</resource>
+  </resources>
+  <dependencies />
+  <behavior />
+</plugin>

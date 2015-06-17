@@ -1,0 +1,20 @@
+New Hibernate sessions will be published as events. There are various ways of subscribing to the events. 
+
+h3. From other plugins
+
+One way is to add an doWithEvents closure to the plugin description file (...GrailsPlugin.groovy). 
+See Hawk Eventing's documentation for other ways of subscribing to events. 
+
+{code:java}
+def doWithEvents = { ApplicationContext ctx ->
+
+    hibernate.sessionCreated { Event event -> 
+        // Do something with the session (event.payload)
+    }
+    
+}
+{code}
+
+h3. Other options
+
+Have a look at the Hawk Eventing documentation for more information on how to subscribe to events. 

@@ -1,0 +1,26 @@
+define(['controllers/controllers'],
+		function(controllers) {
+	controllers.controller('currentUserController', ['$scope', 'User',
+	                                          function($scope, User) {
+		
+		$scope.header = 'CRM Dashboard';
+		$scope.title = 'Dashboard';
+		
+		User.current().$promise.then(function(data){
+    		$scope.currentUser = data;
+    		
+		});
+	}]);
+});
+
+
+/*'use strict';
+ 
+
+var dashboardControllers = angular.module('dashboardControllers', []);
+
+dashboardControllers.controller('dashboardController', ['$scope',
+  function($scope) {
+    
+  }]);
+*/

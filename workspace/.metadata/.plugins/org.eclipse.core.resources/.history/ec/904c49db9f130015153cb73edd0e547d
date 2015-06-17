@@ -1,0 +1,46 @@
+define(['controllers/controllers'],
+		function(controllers) {
+	controllers.controller('dashboardController', ['$scope', 'User',
+	                                          function($scope, User) {
+		
+		$scope.header = 'CRM Dashboard';
+		$scope.title = 'Dashboard';
+		
+		User.current().$promise.then(function(data){
+    		CurrentUser.currentUser = data;
+    		$scope.currentUser = data;
+    		CurrentUser.defaultLanguage = CurrentUser.languages.find(function(n){
+	    		return (n.code == data.language);
+	    	});
+    		
+    		User.currentLanguage().$promise.then(function(data){
+    	    	CurrentUser.currentLanguage = CurrentUser.languages.find(function(n){
+    	    		return (n.code == data.language);
+    	    	});
+    	    	$translate.uses(CurrentUser.currentLanguage.code);
+    	    	
+    	    	$scope.paginationConfig.firstText = $filter('translate')('BUTTON_FIRST');
+        		$scope.paginationConfig.lastText = $filter('translate')('BUTTON_LAST');
+        		$scope.paginationConfig.nextText = $filter('translate')('BUTTON_NEXT');
+        		$scope.paginationConfig.previousText = $filter('translate')('BUTTON_PREVIOUS');
+    		});	    	
+    		
+	    	Clinic.listByUser().$promise.then(function(clinics){
+	    		$scope.clinics = clinics;
+	    		CurrentUser.clinics = clinics;
+	    	});
+		});
+	}]);
+});
+
+
+/*'use strict';
+ 
+
+var dashboardControllers = angular.module('dashboardControllers', []);
+
+dashboardControllers.controller('dashboardController', ['$scope',
+  function($scope) {
+    
+  }]);
+*/
