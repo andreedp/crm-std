@@ -11,7 +11,6 @@ encoding//.link_to_grails_plugins/spring-security-core-2.0-RC2/grails-app/i18n/s
 encoding//.link_to_grails_plugins/spring-security-core-2.0-RC2/grails-app/i18n/spring-security-core_ru.properties=UTF-8
 encoding//.link_to_grails_plugins/spring-security-core-2.0-RC2/grails-app/i18n/spring-security-core_sv.properties=UTF-8
 encoding//grails-app/i18n=UTF-8
-encoding//grails-app/i18n/.DS_Store=UTF-8
 encoding//grails-app/i18n/messages.properties=UTF-8
 encoding//grails-app/i18n/messages_cs_CZ.properties=UTF-8
 encoding//grails-app/i18n/messages_da.properties=UTF-8

@@ -5,7 +5,81 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-06-17T00:40:00Z</updated>
+  <updated>2015-06-19T19:39:17Z</updated>
+  <entry>
+    <title>Spring Integration Kafka 1.2 is available, with 0.8.2 support and performance enhancements</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/06/19/spring-integration-kafka-1-2-is-available-with-0-8-2-support-and-performance-enhancements" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2015-06-19:2169</id>
+    <updated>2015-06-19T19:39:17Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce the release of Spring Integration Kafka 1.2.&lt;/p&gt;&lt;p&gt;This new release provides a couple of major improvements and upgrades over the previous versions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for Apache Kafka 0.8.2 and using the new Producer API;&lt;/li&gt;
+  &lt;li&gt;Overhaul of the internal concurrent dispatching with a non-blocking ring buffer implementation based on &lt;a href="https://github.com/reactor/reactor"&gt;Project Reactor&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;For each of the changes, the goal was to improve the performance of the producer and, respectively, consumer components of Spring Integration Kafka. While we do not have any isolated benchmarks for Spring Integration Kafka proper, the enhancements of the release have contributed to the &lt;a href="https://spring.io/blog/2015/06/17/spring-xd-benchmarks-part-1"&gt;performance metrics&lt;/a&gt; reported in the newly released &lt;a href="https://spring.io/blog/2015/06/17/spring-xd-1-2-ga-spring-xd-1-1-3-and-flo-for-spring-xd-beta-released"&gt;Spring XD 1.2&lt;/a&gt;. &lt;/p&gt;&lt;p&gt;By upgrading to Kafka 0.8.2, some of the options available in the old producer API (for example, sending messages synchronously) aren&amp;rsquo;t supported anymore, and some configuration options are semantically different (batch size, which previously referred to the message count, is now referring to the byte count). In the interest of clarity and reducing surprises, we&amp;rsquo;ve preferred to break backwards compatibility in the XML configuration, by removing unavailable options and renaming existing ones to make sure that they are fully understood. Consult the &lt;a href="https://github.com/spring-projects/spring-integration-kafka"&gt;project&lt;/a&gt; for details.&lt;/p&gt;&lt;p&gt;Happy coding!&lt;/p&gt;&lt;p&gt;Some of the upcoming features will include:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Improving the documentation by creating a dedicated wiki;&lt;/li&gt;
+  &lt;li&gt;Making it easy to send messages outside of a Spring Integration Kafka outbound channel adapter by providing template support;&lt;/li&gt;
+  &lt;li&gt;Exploring the options for Reactive Streams integration.&lt;/li&gt;
+&lt;/ul&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. Early Bird Price expires August 14th! It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback.&lt;/p&gt;&lt;h1&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
+  &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
+  &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Guides Move to Java 8</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/06/17/spring-guides-move-to-java-8" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Greg Turnquist</name>
+    </author>
+    <id>tag:spring.io,2015-06-12:2161</id>
+    <updated>2015-06-17T16:07:00Z</updated>
+    <content type="html">&lt;p&gt;Perhaps you&amp;rsquo;ve noticed some recent articles lately? &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2015/06/10/feedback-welcome-spring-5-system-requirements"&gt;Spring 5 moving up to Java 8+&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Massive adoption of &lt;a href="https://spring.io/blog/2015/06/02/spring-4-and-java-8-adoption"&gt;Spring 4 and Java 8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://start.spring.io/"&gt;http://start.spring.io/&lt;/a&gt; defaulting to Java 8 as the version of choice&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://docs.spring.io/spring-boot/docs/1.3.0.M1/reference/htmlsingle/#getting-started-system-requirements"&gt;Spring Boot&amp;rsquo;s 1.3.0.M1 reference docs&lt;/a&gt; recommending new apps start at Java 8.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Okay, those last two aren&amp;rsquo;t articles, but were instead driven by the the rapid adoption of Java 8. Java 8 has been picked up by the development community FAST. Here on the Spring team, we believe strongly in adopting Java 8 for new applications. To support that and improve your own ability to move as well, we just updated all of the &lt;a href="https://spring.io/guides"&gt;Spring Getting Started Guides&lt;/a&gt; to Java 8.&lt;/p&gt;&lt;h2&gt;&lt;a href="#jam-packed-list-of-advantages" class="anchor" name="jam-packed-list-of-advantages"&gt;&lt;/a&gt;Jam-packed list of advantages&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Latest and greatest stable version of Java SE. (Features, performance, and more.)&lt;/li&gt;
+  &lt;li&gt;Content of the guides are easy to port backwards if needed. Even lambdas map nicely back to single method interfaces.&lt;/li&gt;
+  &lt;li&gt;Picking up a guide as your beginner project will get you started with a solid, modern setup.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;In this day and age, with the end of public updates to Java 7, it seems highly unlikely that a developer can&amp;rsquo;t easily his or her hands on a Java 8 SDK and give our code a spin.&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. Early Bird Price expires August 14th! It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback.&lt;/p&gt;&lt;h1&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
+  &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
+  &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Happy coding!&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>DevTools in Spring Boot 1.3</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/06/17/devtools-in-spring-boot-1-3" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Phil Webb</name>
+    </author>
+    <id>tag:spring.io,2015-06-17:2168</id>
+    <updated>2015-06-17T07:54:38Z</updated>
+    <content type="html">&lt;p&gt;Spring Boot 1.3 will ship with a brand new module called &lt;code&gt;spring-boot-devtools&lt;/code&gt;. The aim of this module is to try and improve the development-time experience when working on Spring Boot applications.&lt;/p&gt;&lt;p&gt;To use the module you simply need to add it as a dependency in your Maven POM:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;&amp;lt;dependencies&amp;gt;&#xD;
+    &amp;lt;dependency&amp;gt;&#xD;
+        &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;&#xD;
+        &amp;lt;artifactId&amp;gt;spring-boot-devtools&amp;lt;/artifactId&amp;gt;&#xD;
+    &amp;lt;/dependency&amp;gt;&#xD;
+&amp;lt;/dependencies&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or your Gradle build file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;dependencies {&#xD;
+    compile(&amp;quot;org.springframework.boot:spring-boot-devtools&amp;quot;)&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Once included, the &lt;code&gt;spring-boot-devtools&lt;/code&gt; module provides a number of nice features that we cover below (If you can&amp;rsquo;t be bother to read the text, skip to the end of the post for a short video).&lt;/p&gt;&lt;h2&gt;&lt;a href="#property-defaults" class="anchor" name="property-defaults"&gt;&lt;/a&gt;Property Defaults&lt;/h2&gt;&lt;p&gt;If you&amp;rsquo;ve used templating technologies such as Thymeleaf with Spring Boot 1.2, you might be familiar with properties such as &lt;code&gt;spring.thymeleaf.cache&lt;/code&gt;. These properties are used to disable caching and allow you to update pages without needing to restart your application. Having support for these properties is pretty handy, but remembering to set them during development has always been a bit of a pain.&lt;/p&gt;&lt;p&gt;Now, when you use the &lt;code&gt;spring-boot-devtools&lt;/code&gt; module, you no longer need to remember to set the properties. During development caching for Thymeleaf, Freemarker, Groovy Templates, Velocity and Mustache are all automatically disabled.&lt;/p&gt;&lt;h2&gt;&lt;a href="#automatic-restart" class="anchor" name="automatic-restart"&gt;&lt;/a&gt;Automatic Restart&lt;/h2&gt;&lt;p&gt;You may have used tools such as &lt;a href="http://zeroturnaround.com/software/jrebel/"&gt;JRebel&lt;/a&gt; or &lt;a href="https://github.com/spring-projects/spring-loaded"&gt;Spring Loaded&lt;/a&gt; in the past to provide instant reload for your Java applications. These tools are great, but they do often require additional configuration or IDE plugins to work (and some of them even cost money!)&lt;/p&gt;&lt;p&gt;With Spring Boot 1.3 we&amp;rsquo;ve been working on something that&amp;rsquo;s a little slower than these &amp;ldquo;instant reload&amp;rdquo; techniques, and instead works by restarting your application. When you have the &lt;code&gt;spring-boot-devtools&lt;/code&gt; module included, any classpath file changes will automatically trigger an application restart. We do some tricks to try and keep restarts fast, so for many microservice style applications this technique might be good enough.&lt;/p&gt;&lt;h2&gt;&lt;a href="#livereload" class="anchor" name="livereload"&gt;&lt;/a&gt;LiveReload&lt;/h2&gt;&lt;p&gt;With sensible &amp;ldquo;cache properties&amp;rdquo; and &amp;ldquo;automatic restarts&amp;rdquo; working, needing to manually click the browser refresh button each time something changes starts to become a little tedious. So to help save your mouse buttons, Spring Boot 1.3 DevTools includes an embedded LiveReload server. LiveReload is a simple protocol that allows your application to automatically trigger a browser refresh whenever things change. Browser extensions are freely available for Chrome, Firefox and Safari from &lt;a href="http://livereload.com/extensions/"&gt;livereload.com&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#remote-debug-tunneling" class="anchor" name="remote-debug-tunneling"&gt;&lt;/a&gt;Remote Debug Tunneling&lt;/h2&gt;&lt;p&gt;If you&amp;rsquo;ve ever tried to host a Java application using &lt;a href="http://docker.io"&gt;Docker&lt;/a&gt;, or if you&amp;rsquo;ve tried a micro PaaS such as &lt;a href="http://lattice.cf/"&gt;Lattice&lt;/a&gt;, you may have been frustrated about how difficult it can be to debug your code. You need configure Java to start with &lt;code&gt;-Xdebug&lt;/code&gt; and somehow forward the appropriate port so that you can attach the remote debugger.&lt;/p&gt;&lt;p&gt;To help with this, Spring Boot 1.3 can tunnel JDWP (the Java Debug Wire Protocol) over HTTP directly to your application. This can even work with applications deployed to Internet Cloud providers that only expose port &lt;code&gt;80&lt;/code&gt; and &lt;code&gt;443&lt;/code&gt; (although since JDWP is quite a chatty protocol this can be quite slow).&lt;/p&gt;&lt;h2&gt;&lt;a href="#remote-update-and-restart" class="anchor" name="remote-update-and-restart"&gt;&lt;/a&gt;Remote Update and Restart&lt;/h2&gt;&lt;p&gt;The final trick that DevTools offers is support for remote application updates and restarts. This works by monitoring your local classpath for file changes and pushing them to a remote server which is then restarted. As with local restarts, you can also use this feature in combination with LiveReload.&lt;/p&gt;&lt;h2&gt;&lt;a href="#video-preview" class="anchor" name="video-preview"&gt;&lt;/a&gt;Video Preview&lt;/h2&gt;&lt;p&gt;All the features discussed in this post are already available in &lt;a href="https://spring.io/blog/2015/06/12/spring-boot-1-3-0-m1-available-now"&gt;Spring Boot 1.3.0.M1&lt;/a&gt; and detailed documentation is available in the &lt;a href="http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#using-boot-devtools"&gt;reference guide&lt;/a&gt;. If you&amp;rsquo;re not ready to install the bits yourself yet, here&amp;rsquo;s a short video that shows how they work:&lt;/p&gt;&lt;p&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/A70NMxV13TI" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring XD 1.2 GA, Spring XD 1.1.3 and Flo for Spring XD Beta released.</title>
     <link rel="alternate" href="https://spring.io/blog/2015/06/17/spring-xd-1-2-ga-spring-xd-1-1-3-and-flo-for-spring-xd-beta-released" />
@@ -438,7 +512,7 @@ EvernoteOAuthToken accessToken = (EvernoteOAuthToken)oAuth1Operations.exchangeFo
       <name>Sébastien Deleuze</name>
     </author>
     <id>tag:spring.io,2015-05-27:2140</id>
-    <updated>2015-06-08T11:45:24Z</updated>
+    <updated>2015-06-08T11:45:00Z</updated>
     <content type="html">&lt;p&gt;For security reasons, browsers prohibit AJAX calls to resources residing outside the current origin. For example, as you&amp;rsquo;re checking your bank account in one tab, you could have the evil.com website in another tab. The scripts from evil.com shouldn’t be able to make AJAX requests to your bank API (withdrawing money from your account!) using your credentials.&lt;/p&gt;&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing"&gt;Cross-origin resource sharing&lt;/a&gt; (CORS) is a &lt;a href="http://www.w3.org/TR/cors/"&gt;W3C specification&lt;/a&gt; implemented by &lt;a href="http://caniuse.com/#feat=cors"&gt;most browsers&lt;/a&gt; that allows you to specify in a flexible way what kind of cross domain requests are authorized, instead of using some less secured and less powerful hacks like IFrame or JSONP.&lt;/p&gt;&lt;p&gt;The recently released &lt;a href="https://spring.io/blog/2015/05/26/spring-framework-4-2-goes-rc1"&gt;Spring Framework 4.2 RC1&lt;/a&gt; provides &lt;a href="https://jira.spring.io/browse/SPR-9278"&gt;first class support for CORS&lt;/a&gt; out-of-the-box, giving you an easier and more powerful way to configure it than typical &lt;a href="http://software.dzhuvinov.com/cors-filter.html"&gt;filter based&lt;/a&gt; solutions.&lt;/p&gt;&lt;p&gt;Spring MVC provides high-level configuration facilities, described bellow.&lt;/p&gt;&lt;h2&gt;&lt;a href="#controller-method-cors-configuration" class="anchor" name="controller-method-cors-configuration"&gt;&lt;/a&gt;Controller method CORS configuration&lt;/h2&gt;&lt;p&gt;You can add to your &lt;code&gt;@RequestMapping&lt;/code&gt; annotated handler method a &lt;a href="http://docs.spring.io/spring-framework/docs/4.2.x/javadoc-api/org/springframework/web/bind/annotation/CrossOrigin.html"&gt;&lt;code&gt;@CrossOrigin&lt;/code&gt;&lt;/a&gt; annotation in order to enable CORS on it (by default &lt;code&gt;@CrossOrigin&lt;/code&gt; allows all origins and the HTTP methods specified in the &lt;code&gt;@RequestMapping&lt;/code&gt; annotation):&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;@RestController&#xD;
 @RequestMapping(&amp;quot;/account&amp;quot;)&#xD;
@@ -456,7 +530,7 @@ public class AccountController {&#xD;
 	}&#xD;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It is also possible to enable CORS for the whole controller:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;@CrossOrigin(origin = &amp;quot;http://domain2.com&amp;quot;, maxAge = 3600)&#xD;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@CrossOrigin(origins = &amp;quot;http://domain2.com&amp;quot;, maxAge = 3600)&#xD;
 @RestController&#xD;
 @RequestMapping(&amp;quot;/account&amp;quot;)&#xD;
 public class AccountController {&#xD;
@@ -477,7 +551,7 @@ public class AccountController {&#xD;
 @RequestMapping(&amp;quot;/account&amp;quot;)&#xD;
 public class AccountController {&#xD;
 &#xD;
-	@CrossOrigin(origin = &amp;quot;http://domain2.com&amp;quot;)&#xD;
+	@CrossOrigin(origins = &amp;quot;http://domain2.com&amp;quot;)&#xD;
 	@RequestMapping(&amp;quot;/{id}&amp;quot;)&#xD;
 	public Account retrieve(@PathVariable Long id) {&#xD;
 		// ...&#xD;
@@ -536,7 +610,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {&#xD;
   &lt;li&gt;&lt;a href="http://docs.spring.io/spring/docs/4.2.x/javadoc-api/org/springframework/web/servlet/handler/AbstractHandlerMapping.html#setCorsConfiguration-java.util.Map-"&gt;&lt;code&gt;AbstractHandlerMapping#setCorsConfiguration()&lt;/code&gt;&lt;/a&gt; allows to specify a &lt;code&gt;Map&lt;/code&gt; with several &lt;a href="http://docs.spring.io/spring/docs/4.2.x/javadoc-api/org/springframework/web/cors/CorsConfiguration.html"&gt;CorsConfiguration&lt;/a&gt; mapped on path patterns like &lt;code&gt;/api/**&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Subclasses can provide their own &lt;code&gt;CorsConfiguration&lt;/code&gt; by overriding &lt;code&gt;AbstractHandlerMapping#getCorsConfiguration(Object, HttpServletRequest)&lt;/code&gt; method&lt;/li&gt;
   &lt;li&gt;Handlers can implement &lt;a href="http://docs.spring.io/spring/docs/4.2.x/javadoc-api/org/springframework/web/cors/CorsConfigurationSource.html"&gt;&lt;code&gt;CorsConfigurationSource&lt;/code&gt;&lt;/a&gt; interface (like &lt;a href="https://github.com/spring-projects/spring-framework/blob/master/spring-webmvc/src/main/java/org/springframework/web/servlet/resource/ResourceHttpRequestHandler.java"&gt;&lt;code&gt;ResourceHttpRequestHandler&lt;/code&gt;&lt;/a&gt; now does) in order to provide a &lt;a href="http://docs.spring.io/spring/docs/4.2.x/javadoc-api/org/springframework/web/cors/CorsConfiguration.html"&gt;CorsConfiguration&lt;/a&gt; for each request.&lt;/li&gt;
-&lt;/ul&gt;&lt;h2&gt;&lt;a href="#spring-boot-integration" class="anchor" name="spring-boot-integration"&gt;&lt;/a&gt;Spring Boot integration&lt;/h2&gt;&lt;p&gt;CORS support will be available in the upcoming Spring Boot 1.3 release, and is already available in the 1.3.0.BUILD-SNAPSHOT builds.&lt;/p&gt;&lt;p&gt;If fine grained CORS configuration is already a perfect fit for Spring Boot applications, a more &amp;ldquo;Bootiful&amp;rdquo; way to configure global CORS configuration (based on &lt;a href="http://docs.spring.io/spring/docs/4.2.x/javadoc-api/org/springframework/web/cors/CorsConfiguration.html"&gt;CorsConfiguration&lt;/a&gt; bean declaration and dedicated Spring Boot properties) is likely to be provided with Spring Boot 1.3. See &lt;a href="https://github.com/spring-projects/spring-boot/issues/3052#issuecomment-106235392"&gt;this issue&lt;/a&gt; for more details.&lt;/p&gt;&lt;p&gt;As usual, feedbacks are welcome!&lt;/p&gt;</content>
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#spring-boot-integration" class="anchor" name="spring-boot-integration"&gt;&lt;/a&gt;Spring Boot integration&lt;/h2&gt;&lt;p&gt;CORS support will be available in the upcoming Spring Boot 1.3 release, and is already available in the 1.3.0.BUILD-SNAPSHOT builds.&lt;/p&gt;&lt;p&gt;If fine grained CORS configuration is already a perfect fit for Spring Boot applications, a more &amp;ldquo;Bootiful&amp;rdquo; way to configure global CORS configuration (based on &lt;a href="http://docs.spring.io/spring/docs/4.2.x/javadoc-api/org/springframework/web/cors/CorsConfiguration.html"&gt;CorsConfiguration&lt;/a&gt; or &lt;a href="http://docs.spring.io/spring-framework/docs/4.2.0.BUILD-SNAPSHOT/javadoc-api/org/springframework/web/servlet/config/annotation/CorsRegistry.html"&gt;CorsRegistry&lt;/a&gt; bean declaration) is likely to be provided with Spring Boot 1.3. See &lt;a href="https://github.com/spring-projects/spring-boot/issues/3052#issuecomment-106235392"&gt;this issue&lt;/a&gt; for more details.&lt;/p&gt;&lt;p&gt;As usual, feedbacks are welcome!&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Happy second birthday, Java EE 7! How is it going in production?</title>
@@ -666,101 +740,5 @@ drwxrwxrwx   - spring-xd hdfs          0 2015-06-01 07:29 /xd/hdfstest&#xD;
     <id>tag:spring.io,2015-06-02:2151</id>
     <updated>2015-06-02T21:25:30Z</updated>
     <content type="html">&lt;p&gt;As Josh mentioned in &amp;ldquo;This Week in Spring&amp;rdquo; already, Eugen Paraschiv recently did a noteworthy survey on the adoption of Spring 4 and Java 8 as well as Spring Boot:&lt;br/&gt;&lt;a href="http://www.baeldung.com/java-8-spring-4-and-spring-boot-adoption"&gt;http://www.baeldung.com/java-8-spring-4-and-spring-boot-adoption&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Those are interesting numbers for us. Within the Spring universe, Java 8 adoption seems to be approaching 40%! And in terms of Spring Framework versions, Spring 4 is at 65% already, which I&amp;rsquo;m really happy to see. Even taking into account that a large part of the corporate use of Spring might not be represented in those numbers, that&amp;rsquo;s a great trend. And Pivotal&amp;rsquo;s early production support for Spring 4 on JDK 8 certainly helped in the corporate world as well.&lt;/p&gt;&lt;p&gt;It&amp;rsquo;s equally great to see that a third of the responders are using Spring Boot in the meantime. In other words, half of the Spring 4 userbase is also using Spring Boot, which is impressive for such a young project. Spring Boot&amp;rsquo;s immediate inclusion in our Spring I/O Platform with full production support last year might have boosted its adoption quite a bit. But even more importantly, it simply seems to be a fit for today&amp;rsquo;s application development challenges&amp;hellip;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring  - June 2, 2015</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/02/this-week-in-spring-june-2-2015" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2015-06-02:2148</id>
-    <updated>2015-06-02T17:33:22Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I&amp;rsquo;m in New York City in advance of QCon NYC next week talking to customers and working with the local Pivotal Labs team. If you&amp;rsquo;re around &lt;a href="mailto:jlong@pivotal.io"&gt;be sure to say hi&lt;/a&gt; and let&amp;rsquo;s talk code. &lt;/p&gt;&lt;p&gt;So, as usual, we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it. &lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Our pal Nicolas Frankel&amp;rsquo;s put together an awesome post on &lt;a href="http://blog.frankel.ch/spring-configuration-modularization-for-integration-testing"&gt;modularizing configuration for integration testing with Spring&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Cloud co-lead Spencer Gibb just announced &lt;a href="https://spring.io/blog/2015/05/27/spring-cloud-consul-1-0-0-m1-available-now"&gt;that Spring Cloud Consul 1.0.0.M1 is now available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Don&amp;rsquo;t miss Jamie O’Meara&amp;rsquo;s upcoming webinar on &lt;a href="https://spring.io/blog/2015/05/28/webinar-ci-on-the-cloud-with-jenkins-spring-and-cloud-foundry"&gt;continuous integration with Jenkins, Spring and Cloud Foundry&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Check out Phil Dutson&amp;rsquo;s &lt;a href="https://spring.io/blog/2015/05/28/webinar-jstl-to-thymeleaf-transitioning-your-template"&gt;upcoming webinar on moving &lt;code&gt;.jsp&lt;/code&gt; and JSTL pages to Thymeleaf&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Integration lead Gary Russell &lt;a href="https://spring.io/blog/2015/05/28/spring-integration-4-2-milestone-1-is-available"&gt;just announced Spring Integration 4.2M1 is now available&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;check out the replay of Marten Deinum&amp;rsquo;s &lt;em&gt;awesome&lt;/em&gt; talk that looks &lt;a href="https://spring.io/blog/2015/05/28/webinar-replay-improving-your-legacy-application-with-spring"&gt;at how to modernize legacy applications with Spring &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Janne Valkealahti just announced that &lt;a href="https://spring.io/blog/2015/06/02/spring-statemachine-1-0-0-m2-released"&gt;Spring Statemachine 1.0.0.M2 has been released&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;our pal Eugen Paraschiv did an interesting &lt;a href="http://www.baeldung.com/java-8-spring-4-and-spring-boot-adoption"&gt;survey on Spring and Java 8&amp;rsquo;s latest adoption numbers &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;our pal Rafal Borowiec did a great post on &lt;a href="http://www.javacodegeeks.com/2015/05/groovier-spring-boot-integration-testing.html"&gt;using the amazing Groovy language to simplify Integration testing&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Yoichi Kikuchi put together a Japanese-language look at &lt;a href="http://yo1000.hateblo.jp/entry/2015/05/27/120647"&gt;using Spring Boot and MyBatis &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Kazuhira put together a Japanese-language post on using &lt;a href="http://d.hatena.ne.jp/Kazuhira/20150530/1432996038"&gt;Hibernate, the Spring Cache abstraction, and RedHat&amp;rsquo;s Infinispan&lt;/a&gt; distributed data grid together&lt;/li&gt;
-  &lt;li&gt;The JavaTechPoint blog has a &lt;em&gt;super&lt;/em&gt; simple &lt;a href="http://www.javatechpoint.com/spring-mvc/hello-world-spring-mvc-4-with-spring-boot-framework/"&gt;look at using Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Christoph Deppisch put together a nice post on &lt;a href="https://www.voxxed.com/blog/2015/05/apache-camel-integration-testing-part-2/"&gt;testing Apache Camel solutions with Spring&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Arvind Rai put together a nice look &lt;a href="http://www.concretepage.com/spring-4/spring-4-quartz-2-scheduler-integration-annotation-example-using-javaconfig"&gt;at using Spring Quartz 2 support with Java configuration&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>First Milestone of Spring Data Release Train Gosling Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/02/first-milestone-of-spring-data-release-train-gosling-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Christoph Strobl</name>
-    </author>
-    <id>tag:spring.io,2015-06-02:2147</id>
-    <updated>2015-06-02T16:11:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the Spring Data team, I am happy to announce the first milestone of the Spring Data release train &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Gosling"&gt;Gosling&lt;/a&gt;. The release ships with &lt;a href="https://jira.spring.io/issues/?filter=14962"&gt;164 tickets&lt;/a&gt; fixed as well as &lt;a href="https://github.com/spring-projects/spring-data-keyvalue"&gt;Spring Data KeyValue&lt;/a&gt; joining the Spring Data release train with an initial milestone. The highlights of the release include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring 4.1 as a new minimum baseline.&lt;/li&gt;
-  &lt;li&gt;Simplified support for adding custom methods to all repositories throughout the individual modules (see this &lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/jpa/example/src/main/java/example/springdata/jpa/customall"&gt;example&lt;/a&gt;).&lt;/li&gt;
-  &lt;li&gt;Declarative ad-hoc JPA 2.1 fetch graph declarations via &lt;code&gt;@EntityGraph&lt;/code&gt; on repository methods.&lt;/li&gt;
-  &lt;li&gt;Gemfire 8.1 support including multi-index definition operations.&lt;/li&gt;
-  &lt;li&gt;SpEL expressions in &lt;code&gt;@Query&lt;/code&gt; as well as support for &lt;code&gt;$geoIntersects&lt;/code&gt; for MongoDB.&lt;/li&gt;
-  &lt;li&gt;Enhanced &lt;code&gt;ZSET&lt;/code&gt; support for Spring Data Redis including &lt;code&gt;ZRANGEBYLEX&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;A Spring Data REST module shipping the HAL browser as well as support for conditional GETs.&lt;/li&gt;
-  &lt;li&gt;Map-backed repositories (see this &lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/map"&gt;example&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;Support for Neo4J 2.2.&lt;/li&gt;
-  &lt;li&gt;Support for derived &lt;code&gt;deleteBy...&lt;/code&gt; queries and bulk updates in Spring Data Elasticsearch.&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Here are the participating modules:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Data Commons 1.11 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-commons/1.11.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.11.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.11.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/commons/docs/1.11.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data JPA 1.9 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-jpa/1.9.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.9.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.9.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/jpa/docs/1.9.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data MongoDB 1.8 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-mongodb/1.8.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.8.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.8.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/mongodb/docs/1.8.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Neo4j 3.4 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-neo4j/3.4.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/3.4.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/3.4.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/neo4j/docs/3.4.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Solr 1.5 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-solr/1.5.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/1.5.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/1.5.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/solr/docs/1.5.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Couchbase 1.4 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-couchbase/1.4.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/1.4.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/1.4.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/couchbase/docs/1.4.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Cassandra 1.3 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-cassandra/1.3.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.3.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.3.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/cassandra/docs/1.3.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Elasticsearch 1.3 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-elasticsearch/1.3.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/1.3.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/1.3.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/elasticsearch/docs/1.3.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Gemfire 1.7 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-gemfire/1.7.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.7.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.7.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/gemfire/docs/1.7.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data Redis 1.6 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-redis/1.6.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.6.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.6.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/redis/docs/1.6.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data REST 2.4 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-rest-webmvc/2.4.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Spring Data KeyValue 1.0 M1 - &lt;a href="https://repo.spring.io/libs-milestone/org/springframework/data/spring-data-keyvalue/1.0.0.M1"&gt;Artifacts&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.0.0.M1/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.0.0.M1/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.0.0.M1/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Be sure to check out the &lt;a href="https://github.com/spring-projects/spring-data-examples"&gt;already updated examples&lt;/a&gt;. Get in touch via &lt;a href="https://twitter.com/springdata"&gt;Twitter&lt;/a&gt;, &lt;a href="http://stackoverflow.com/questions/tagged/spring-data"&gt;StackOverflow&lt;/a&gt; or &lt;a href="https://jira.spring.io/"&gt;JIRA&lt;/a&gt;. We&amp;rsquo;re looking forward to your feedback!&lt;/p&gt;
-&lt;hr/&gt;&lt;h2&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h2&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. Super Early Bird Price expires June 12th! It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. &lt;/p&gt;&lt;h2&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;The Super Early Bird price tier ($300 discount) expires June 12th. The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
-  &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
-  &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Statemachine 1.0.0.M2 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/06/02/spring-statemachine-1-0-0-m2-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Janne Valkealahti</name>
-    </author>
-    <id>tag:spring.io,2015-06-02:2145</id>
-    <updated>2015-06-02T08:28:00Z</updated>
-    <content type="html">&lt;p&gt;We’re pleased to announce a second milestone release of &lt;a href="http://projects.spring.io/spring-statemachine/"&gt;Spring Statemachine&lt;/a&gt; 1.0.0.M2.&lt;/p&gt;&lt;p&gt;With this milestone we focused on features in regions and pseudostates. Regions provide more sophisticated functionality for a parallel execution of a states machines and pseudostates will bring more functionality for working with initial, terminate, history, choice, fork and join states.&lt;/p&gt;&lt;p&gt;One might ask what is a region and how it works with a state machine. A state machine is a specialization of a region where orthogonal regions are composed of a multiple independent state machines. This is a difficult concept to understand so we did a sample to demonstrate this feature.&lt;/p&gt;&lt;p&gt;&lt;img src="http://docs.spring.io/spring-statemachine/docs/1.0.0.M2/reference/htmlsingle/images/statechart5.png" alt="Tasks Statechart" /&gt;&lt;/p&gt;&lt;p&gt;Above statechart is showing a usual concept of how a group of tasks are executed during a workflow. Executing a multiple tasks means that if one of these tasks will fail, executing of tasks again cannot continue unless a failure reason is fixed. These failures can be either fixed automatically or state machine is put into a manual state where user level intervention is required. Only after that a state machine can go back to its main state where all tasks can be executed again.&lt;/p&gt;&lt;p&gt;One useful concept in a state machine is a history state. This pseudostate is recording last active state of a statemachine and returning into that state will restore active state configuration. Concept of this is shown below(we know that washer is able to continue from its last state when power is restored) and more detailed description can be found from a reference documentation.&lt;/p&gt;&lt;p&gt;&lt;img src="http://docs.spring.io/spring-statemachine/docs/1.0.0.M2/reference/htmlsingle/images/statechart6.png" alt="Washer Statechart" /&gt;&lt;/p&gt;&lt;p&gt;Where do we go from here? With a next milestone we&amp;rsquo;re going to tackle features like:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Better stability and speed&lt;/li&gt;
-  &lt;li&gt;Relax requirement of using enums for states and events.&lt;/li&gt;
-  &lt;li&gt;Adding error handling for state machine execution.&lt;/li&gt;
-  &lt;li&gt;Better support for Spring SpEL for actions and guards.&lt;/li&gt;
-  &lt;li&gt;Better programmatic instantiation of a state machine.&lt;/li&gt;
-  &lt;li&gt;New concept of using a recipes for easy state machine usage. Tasks example above is a good example where we can provide recipes for usual state machine use cases.&lt;/li&gt;
-&lt;/ul&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. Super Early Bird Price expires June 12th! It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback.&lt;/p&gt;&lt;h1&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;The Super Early Bird price tier ($300 discount) expires June 12th. The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
-  &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
-  &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
-&lt;/ul&gt;</content>
   </entry>
 </feed>

@@ -1,6 +1,6 @@
 #dependencies
 126
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/lib/svnkit-1.3.5.jar
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/lib/svnkit-1.3.5.jar
 /Users/andreedwiprasetyo/Documents/grails-2.3.10/lib/xalan/serializer/jars/serializer-2.7.1.jar
 /Users/andreedwiprasetyo/Documents/grails-2.3.10/dist/grails-bootstrap-2.3.10.jar
 /Users/andreedwiprasetyo/Documents/grails-2.3.10/lib/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.5.jar
@@ -127,78 +127,80 @@
 /Users/andreedwiprasetyo/.m2/repository/org/springframework/security/spring-security-core/3.2.0.RC1/spring-security-core-3.2.0.RC1.jar
 /Users/andreedwiprasetyo/.m2/repository/org/springframework/security/spring-security-web/3.2.0.RC1/spring-security-web-3.2.0.RC1.jar
 #sources
-51
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/grails-app/services
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/grails-app/taglib
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/grails-app/controllers
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/grails-app/views
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/grails-app/i18n
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-3.6.10.16/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-3.6.10.16/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/grails-app/i18n
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/assets
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/services
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/taglib
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/grails-app/services
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/i18n
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/resourceMappers
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/taglib
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/scaffolding-2.0.3/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/scaffolding-2.0.3/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/controllers
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/i18n
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/services
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/taglib
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/views
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/tomcat-7.0.53/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/tomcat-7.0.53/src/java
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/grails-app/conf
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/src/groovy
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/src/java
+53
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/grails-app/services
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/grails-app/taglib
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/grails-app/controllers
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/grails-app/views
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/grails-app/i18n
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-3.6.10.16/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-3.6.10.16/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/grails-app/i18n
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/assets
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/services
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/grails-app/taglib
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/grails-app/services
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/.DS_Store
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/i18n
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/resourceMappers
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/grails-app/taglib
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/scaffolding-2.0.3/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/scaffolding-2.0.3/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/.DS_Store
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/controllers
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/i18n
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/services
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/taglib
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/grails-app/views
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/tomcat-7.0.53/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/tomcat-7.0.53/src/java
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/grails-app/conf
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/src/groovy
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/src/java
 #workDir
 /Users/andreedwiprasetyo/.grails/2.3.10
 #plugin descriptors
 13
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/tomcat-7.0.53/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/scaffolding-2.0.3/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hibernate-3.6.10.16/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/plugin.xml
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/webxml-1.4.1/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/tomcat-7.0.53/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/svn-1.0.0.M1/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/spring-security-core-2.0-RC2/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/scaffolding-2.0.3/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/resources-1.2.7/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/multi-tenant-single-db-0.8.3/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/jquery-1.11.1/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-hijacker-0.8.1/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hibernate-3.6.10.16/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/hawk-eventing-0.5.1/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/database-migration-1.4.0/plugin.xml
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins/cache-1.1.2/plugin.xml
 #plugins directory
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugins
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugins
 #plugin classes dir
-/Users/andreedwiprasetyo/Phintraco/CRM Marketing/CRM/workspace/CRM-std/target/work/plugin-classes
+/Users/andreedwiprasetyo/Phintraco/CRM/workspace/CRM-std/target/work/plugin-classes
 #port
 8080
