@@ -15,6 +15,7 @@ class SecAppTenant implements Tenant {
 	boolean 		accountLocked = false
 
     static constraints = {
+		id			name:'id',generator:'uuid'
         name blank: false, unique: true
     }
 

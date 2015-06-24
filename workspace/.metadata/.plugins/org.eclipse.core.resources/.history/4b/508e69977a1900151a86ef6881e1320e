@@ -1,0 +1,35 @@
+package crm.std.core
+
+class Lead {
+
+	String name
+	String contact
+	String company
+	String department
+	BigDecimal opportunityAmount
+	Date closeDate
+	String salesStage
+	String type
+	BigDecimal probability
+	String leadSource
+	String nextStep
+	String description
+	String assignTo
+	String campaign
+	
+    static constraints = {
+		id							maxSize:32
+		name						maxSize:128
+		opportunityAmount			nullable:true
+		closeDate					nullable:true
+		currency					maxSize:64, nullable:true, blank: true
+		salesStage					maxSize:64, nullable:true, blank: true
+		type						maxSize:64, nullable:true, blank: true
+		probability					nullable:true
+		leadSource					maxSize:64, nullable:true, blank: true
+		nextStep					maxSize:64, nullable:true, blank: true
+		description					maxSize:64, nullable:true, blank: true
+		assignTo					maxSize:64, nullable:true, blank: true
+		campaign					maxSize:64, nullable:true, blank: true
+	}
+}

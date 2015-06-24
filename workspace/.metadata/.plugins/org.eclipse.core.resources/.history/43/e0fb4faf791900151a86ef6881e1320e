@@ -1,0 +1,6 @@
+package crm.std.core
+
+class LeadController {
+
+    def index() { }
+}

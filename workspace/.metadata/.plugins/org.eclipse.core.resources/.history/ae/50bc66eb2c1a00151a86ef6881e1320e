@@ -1,0 +1,35 @@
+package crm.std.core
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+class Task {
+
+    String name
+	Account relatedTo
+	Contact contact
+	BigDecimal opportunityAmount
+	Date startDate
+	Date dueDate
+	String priority
+	String status
+	String description
+	String assignTo
+	
+    static constraints = {
+		id							maxSize:32
+		name						maxSize:128
+		startDate					nullable:true
+		dueDate						nullable:true
+		currency					maxSize:64, nullable:true, blank: true
+		salesStage					maxSize:64, nullable:true, blank: true
+		type						maxSize:64, nullable:true, blank: true
+		probability					nullable:true
+		leadSource					maxSize:64, nullable:true, blank: true
+		nextStep					maxSize:64, nullable:true, blank: true
+		description					maxSize:64, nullable:true, blank: true
+		assignTo					maxSize:64, nullable:true, blank: true
+		campaign					maxSize:64, nullable:true, blank: true
+		
+    }
+}

@@ -6,20 +6,22 @@ class Account {
 
 	String	id
 	String name
+	String parent
 	String website
 	String officePhone
 	String Fax
-	String billingAddress
-	String shippingAddress
+	String address
+	String city
+	String state
+	String postalCode
+	String country
 	String email
 	String type
 	BigDecimal annualRevenue
 	String industry
-	String employees
 	String description
-	String assignTo
-	String memberOf
-	String campaign
+	SecAppUser assignTo
+	Campaign campaign
 	SecAppUser	createdBy
 	SecAppUser	lastModifiedBy
 	Date	dateCreated
@@ -28,8 +30,11 @@ class Account {
     static constraints = {
 		id				maxSize:32
 		name			maxSize:128
-		billingAddress	maxSize:512, nullable:true, blank: true
-		shippingAddress	maxSize:512, nullable:true, blank: true
+		address			maxSize:512, nullable:true, blank: true
+		city			maxSize:128, nullable:true, blank: true
+		state			maxSize:128, nullable:true, blank: true
+		postalCode		maxSize:128, nullable:true, blank: true
+		country			maxSize:128, nullable:true, blank: true
 		email			maxSize:128, nullable:true, blank: true
 		description		maxSize:512, nullable:true, blank: true
 		officePhone		maxSize:128, nullable:true, blank: true
@@ -38,11 +43,7 @@ class Account {
 		type			maxSize:128, nullable:true, blank: true
 		annualRevenue	nullable:true, blank: true
 		industry		maxSize:128, nullable:true, blank: true
-		employees		maxSize:128, nullable:true, blank: true
 		description		maxSize:128, nullable:true, blank: true
-		assignTo		maxSize:128, nullable:true, blank: true
-		memberOf		maxSize:128, nullable:true, blank: true
-		campaign		maxSize:128, nullable:true, blank: true
 		
 		createdBy		nullable:true
 		lastModifiedBy	nullable:true
@@ -51,7 +52,7 @@ class Account {
 	
 	static mapping = {
 		id			name:'id',generator:'uuid'
-		name 		index:'patient_name_idx'
+		name 		index:'account_name_idx'
 		
 		sort 		name:'asc'
 	}

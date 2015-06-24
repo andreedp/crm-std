@@ -1,0 +1,52 @@
+package crm.std.core
+
+import java.util.Date;
+
+class Lead {
+
+	String firstName	
+	String lastName
+	String title
+	String sex
+	String address	
+	String city	
+	String state
+	String postalCode
+	String country
+	String email
+	String socialMedia
+	String company
+	String department
+	BigDecimal budget
+	String status
+	String source
+	String notes
+	String leadSource
+	String nextStep
+	String description
+	String assignTo
+	String campaign
+	
+    static constraints = {
+		id							maxSize:32
+		firstName					maxSize:128
+		lastName					maxSize:128
+		sex							inList:['M','F','N']
+		title						nullable: true, blank: true, inList:['Mr.','Ms.','Mrs.']
+		address						maxSize:512, nullable:true, blank: true
+		city						maxSize:128, nullable:true, blank: true
+		state						maxSize:128, nullable:true, blank: true
+		postalCode					maxSize:128, nullable:true, blank: true
+		country						maxSize:128, nullable:true, blank: true
+		email						maxSize:128, nullable:true, blank: true
+		socialMedia					maxSize:128, nullable:true, blank: true
+		status						maxSize:64, nullable:true, blank: true
+		source						maxSize:64, nullable:true, blank: true
+		probability					nullable:true
+		leadSource					maxSize:64, nullable:true, blank: true
+		nextStep					maxSize:64, nullable:true, blank: true
+		description					maxSize:64, nullable:true, blank: true
+		assignTo					maxSize:64, nullable:true, blank: true
+		campaign					maxSize:64, nullable:true, blank: true
+	}
+}

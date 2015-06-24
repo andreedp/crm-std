@@ -1,0 +1,66 @@
+package crm.std.core
+import grails.rest.*
+
+class Contact {
+
+	String	id
+	String firstName	
+	String lastName
+	String title
+	String sex
+	String address	
+	String city	
+	String state
+	String postalCode
+	String country
+	Date dob
+	String email
+	String socialMedia
+	Account account
+	String department
+	String position
+	String telephone
+	String telephone2
+	String description
+	SecAppUSer assignTo
+	String leadSource
+	String reportsTo
+	String campaign
+	SecAppUser	createdBy
+	SecAppUser	lastModifiedBy
+	Date	dateCreated
+	Date	lastUpdated
+	
+    static constraints = {
+		id				maxSize:32
+		name			maxSize:128
+		sex				inList:['M','F','N']
+		title			nullable: true, blank: true, inList:['Mr.','Ms.','Mrs.']
+		address			maxSize:512, nullable:true, blank: true
+		city			maxSize:128, nullable:true, blank: true
+		state			maxSize:128, nullable:true, blank: true
+		postalCode		maxSize:16, nullable:true, blank: true
+		country			maxSize:128, nullable:true, blank: true
+		email			maxSize:128, nullable:true, blank: true
+		description		maxSize:512, nullable:true, blank: true
+		telephone		maxSize:128, nullable:true, blank: true
+		telephone2		maxSize:128, nullable:true, blank: true
+		dob				nullable:true
+		department		maxSize:128, nullable:true, blank: true
+		position		maxSize:128, nullable:true, blank: true
+		assignTo		maxSize:128, nullable:true, blank: true		
+		leadSource		maxSize:128, nullable:true, blank: true
+		reportsTo		maxSize:128, nullable:true, blank: true		
+		campaign		maxSize:128, nullable:true, blank: true
+		
+		createdBy		nullable:true
+		lastModifiedBy	nullable:true
+    }
+	
+	static mapping = {
+		id			name:'id',generator:'uuid'
+		name 		index:'patient_name_idx'
+		
+		sort 		name:'asc'
+	}
+}

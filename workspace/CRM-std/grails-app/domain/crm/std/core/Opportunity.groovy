@@ -13,8 +13,8 @@ class Opportunity {
 	String leadSource
 	String nextStep
 	String description
-	String assignTo
-	String campaign
+	SecAppUser assignTo
+	Campaign campaign
 	
     static constraints = {
 		id							maxSize:32
@@ -28,14 +28,12 @@ class Opportunity {
 		leadSource					maxSize:64, nullable:true, blank: true
 		nextStep					maxSize:64, nullable:true, blank: true
 		description					maxSize:64, nullable:true, blank: true
-		assignTo					maxSize:64, nullable:true, blank: true
-		campaign					maxSize:64, nullable:true, blank: true
 		
     }
 	
 	static mapping = {
 		id			name:'id',generator:'uuid'
-		name 		index:'patient_name_idx'
+		name 		index:'opportunity_name_idx'
 		
 		sort 		name:'asc'
 	}

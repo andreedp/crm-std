@@ -62,8 +62,8 @@ define(['controllers/controllers'],
 						    startingDay: 1
 						  };
 
-					$scope.patientTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.patientSex = ['M', 'F', 'N'];
+					$scope.contactTitle = ['Mr.', 'Ms.', 'Mrs.'];
+					$scope.contactSex = ['M', 'F', 'N'];
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -85,10 +85,10 @@ define(['controllers/controllers'],
 				    
 				    $scope.save = function() {
 						$scope.contact.$save(function(contact, headers) {
-							$log.info('[PatientCreateController::save]Patient Save success: ' + angular.toJson(contact));										
+							$log.info('[ContactCreateController::save]Contact Save success: ' + angular.toJson(contact));										
 							$location.path('contact/list/');
 						}, function(response) {
-							$log.info('[PatientCreateController::save]Patient Save failed: ' + angular.toJson(response));
+							$log.info('[ContactCreateController::save]Contact Save failed: ' + angular.toJson(response));
 							if(response.data.errors)
 							{
 								$log.info('domain errors: ' + angular.toJson(response.data.errors));

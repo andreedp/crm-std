@@ -1,0 +1,44 @@
+package crm.std.core
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+class Campaign {
+
+    String name
+	Account account
+	String currency
+	BigDecimal budget
+	BigDecimal actualCost
+	BigDecimal expectedCost
+	BigDecimal expectedRevenue
+	String objective
+	Date startDate	
+	Date endDate
+	String status
+	String type
+	BigDecimal probability
+	String description
+	String assignTo
+	
+    static constraints = {
+		id							maxSize:32
+		name						maxSize:128
+		budget						nullable:true
+		actualCost					nullable:true
+		expectedCost				nullable:true
+		expectedRevenue				nullable:true
+		startDate					nullable:true
+		endDate						nullable:true
+		currency					maxSize:64, nullable:true, blank: true
+		salesStage					maxSize:64, nullable:true, blank: true
+		type						maxSize:64, nullable:true, blank: true
+		probability					nullable:true
+		leadSource					maxSize:64, nullable:true, blank: true
+		nextStep					maxSize:64, nullable:true, blank: true
+		description					maxSize:64, nullable:true, blank: true
+		assignTo					maxSize:64, nullable:true, blank: true
+		campaign					maxSize:64, nullable:true, blank: true
+		
+    }
+}

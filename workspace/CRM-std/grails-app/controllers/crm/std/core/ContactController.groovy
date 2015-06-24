@@ -53,9 +53,9 @@ class ContactController extends RestfulController{
 
 		contactInstance.clearErrors()
 		contactInstance.validate()
-		
+				
 		if (contactInstance.hasErrors()) {
-			respond patientInstance.errors, view:'create'
+			respond contactInstance.errors, view:'create'
 			return
 		}
 		
@@ -110,7 +110,7 @@ class ContactController extends RestfulController{
 	protected void notFound() {
 		request.withFormat {
 			form {
-				flash.message = message(code: 'default.not.found.message', args: [message(code: 'patientInstance.label', default: 'Patient'), params.id])
+				flash.message = message(code: 'default.not.found.message', args: [message(code: 'contactInstance.label', default: 'Contact'), params.id])
 				redirect action: "index", method: "GET"
 			}
 			'*'{ render status: NOT_FOUND }

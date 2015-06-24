@@ -1,0 +1,7 @@
+package crm.std.core
+
+class Lead {
+
+    static constraints = {
+    }
+}
