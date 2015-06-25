@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;dashboardController.js&apos; to &apos;dashboardController.js&apos;&#x0A;- Original project: &apos;CRM-std&apos;&#x0A;- Destination element: &apos;dashboardController.js&apos;&#x0A;- Original element: &apos;dashboardController.js&apos;" description="Copy file" element1="web-app/app/controllers/dashboardController.js" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1434400249867" target="/CRM-std/web-app/app/controllers/dashboardController.js" units="0" version="1.0"/>
-</session>

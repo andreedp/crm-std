@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;crm.std.core.RequestMap&apos; to &apos;Requestmap&apos;&#x0D;&#x0A;- Original project: &apos;CRM-std&apos;&#x0D;&#x0A;- Original element: &apos;crm.std.core.RequestMap&apos;&#x0D;&#x0A;- Renamed element: &apos;crm.std.core.Requestmap&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;RequestMap&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/grails-app\/domain&lt;crm.std.core{RequestMap.groovy[RequestMap" matchStrategy="1" name="Requestmap" qualified="false" references="true" similarDeclarations="false" stamp="1425878165662" textual="false" version="1.0"/>
-</session>

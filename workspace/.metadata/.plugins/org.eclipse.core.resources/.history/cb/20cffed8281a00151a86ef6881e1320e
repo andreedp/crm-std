@@ -1,7 +1,0 @@
-package crm.std.core
-
-class Task {
-
-    static constraints = {
-    }
-}
