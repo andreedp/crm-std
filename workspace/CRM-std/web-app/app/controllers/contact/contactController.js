@@ -10,8 +10,8 @@ define(['controllers/controllers'],
 			
 	}]);
 	
-	controllers.controller('contactListController', ['$scope', '$routeParams', '$window', 'Contact', 'ContactService',
-		                                          function($scope,  $routeParams, $window, Contact, ContactService) {
+	controllers.controller('contactListController', ['$scope', '$routeParams', '$window', 'Contact', 'ContactService', 'AlertService',
+		                                          function($scope,  $routeParams, $window, Contact, ContactService, AlertService) {
 				
 				$scope.header = 'Contact Management';
 				$scope.title = 'Contact';
@@ -33,10 +33,12 @@ define(['controllers/controllers'],
 					  
 				$scope.contacts = Contact.query(function(data) {
 				    // success handler
-					console.log("Contact count ",  $scope.contacts.length);  
+					console.log("Contact count ",  $scope.contacts.length); 
+					AlertService.add('success', 'Query Success');
 				}, function(error) {
-				    // error handler
+				    // error handler     
 					console.log("Error");  
+					AlertService.add('warning', 'Query Failed');
 				});
 			    $scope.orderProp = 'name';
 			    

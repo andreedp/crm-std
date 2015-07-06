@@ -23,10 +23,10 @@
                     </div>
                 </div>
                 <!-- /.row -->
-				<div class="alert alert-success" role="alert" id="global-message" ng-show="{{message != null}}">
-				    <strong class="message">{{message}}</strong>
+				<div class="alert alert-success" role="alert" id="global-message" ng-controller="AlertController">
+				    <alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()">{{ alert.msg }}</alert>				    
 				</div>
-				
+								
 				<header class="panel-heading">
 					<div class="input-group">
 						<span class="input-group-btn text-right">
