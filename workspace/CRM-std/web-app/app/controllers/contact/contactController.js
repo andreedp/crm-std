@@ -34,10 +34,12 @@ define(['controllers/controllers'],
 				$scope.contacts = Contact.query(function(data) {
 				    // success handler
 					console.log("Contact count ",  $scope.contacts.length); 
+					AlertService.clear();
 					AlertService.add('success', 'Query Success');
 				}, function(error) {
 				    // error handler     
 					console.log("Error");  
+					AlertService.clear();
 					AlertService.add('warning', 'Query Failed');
 				});
 			    $scope.orderProp = 'name';

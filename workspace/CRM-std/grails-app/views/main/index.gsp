@@ -158,41 +158,41 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li>
                         <a ng-href="#/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a ng-href="#/contact/list"><i class="fa fa-fw fa-bar-chart-o"></i> Contact</a>
+                        <a ng-href="#/contact/list"><i class="fa fa-fw fa-male"></i> Contact</a>
                     </li>
                     <li>
-                        <a ng-href="#/leads/list"><i class="fa fa-fw fa-table"></i> Leads</a>
+                        <a ng-href="#/leads/list"><i class="fa fa-fw fa-bullseye"></i> Leads</a>
                     </li>
                     <li>
-                        <a ng-href="#/opportunities/list"><i class="fa fa-fw fa-edit"></i> Opportunity</a>
+                        <a ng-href="#/opportunities/list"><i class="fa fa-fw fa-sign-in"></i> Opportunity</a>
                     </li>
                     <li>
                         <a ng-href="#/product/list"><i class="fa fa-fw fa-desktop"></i> Product</a>
                     </li>
                     <li>
-                        <a ng-href="#/system"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                        <a ng-href="#/system"><i class="fa fa-fw fa-wrench"></i> System Management</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file"></i> Report <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Leads Report</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#">Opportunity Report</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    <!--<li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Report</a>
                     </li>
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
