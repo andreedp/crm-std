@@ -1,5 +1,5 @@
 
-				<!-- Page Heading -->
+				<!-- Module Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -7,35 +7,36 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> {{title}}
+                                <i class="fa fa-male"></i> {{title}}
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
-				<div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable" ng-controller="AlertController">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true" ng-repeat="alert in alerts" type="alert.type" close="alert.close()">&times;</button>
-                            <i class="fa fa-info-circle"></i>{{ alert.msg }}
-                        </div>
+				<div class="row" ng-controller="AlertController">
+                    <div class="col-lg-12">                       
+                        <alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()" data-dismiss="alert">{{alert.msg}}</alert>                       
                     </div>
                 </div>
 
-                <!--<div class="row">
+                <!-- Alert Code
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i>  <strong>Like Phintraco ?</strong> Try out <a href="http://www.phintraco.com" class="alert-link">CRM</a> for additional features!
                         </div>
                     </div>
-                </div> -->
-                
-                <!-- /.row -->
-				<!--<div class="alert alert-success" role="alert" id="global-message" ng-controller="AlertController">
+                </div>                
+              
+                <header class="panel-heading" ng-controller="AlertController">
+					<alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()" data-dismiss="alert">{{alert.msg}}</alert>
+				</header>
+
+				<div class="alert alert-success" role="alert" id="global-message" ng-controller="AlertController">
 				    <alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()">{{ alert.msg }}</alert>				    
-				</div>-->
+				</div> -->
 								
 				<header class="panel-heading">
 					<div class="input-group">
@@ -50,7 +51,7 @@
 				
 				<div class="panel-body">
 					<div class="form-group">
-						<label for="predicate">Selected Predicate:</label>
+						<label for="predicate">Selected Filter:</label>
 						<select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>		
 					</div>
 					<div class="row">
@@ -80,7 +81,7 @@
 								</thead>
 								<tbody>
 								<tr st-select-row="contact" ng-repeat="contact in displayedCollection">
-									<td>{{contact.name}}</td>
+									<td><b>{{contact.name}}</b></td>
 									<td><a ng-href="mailto:{{contact.email}}">{{contact.email}}</a></td>
 									<td>{{contact.telephone}}</td>
 									<td>{{contact.lastUpdated | date}}</td>
