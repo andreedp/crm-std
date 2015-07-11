@@ -65,6 +65,24 @@ class ContactController extends RestfulController{
 		respond contactInstance
 	}
 	
+	@Transactional
+	def update(Contact contactInstance) {
+		if (contactInstance == null) {
+			notFound()
+			return
+		}
+		
+		if (contactInstance.hasErrors()) {
+			respond contactInstance.errors, view:'edit'
+			return
+		}
+		
+		contactInstance.lastModifiedBy = springSecurityService.currentUser
+		contactInstance.save flush:true, failOnError: true
+
+		respond contactInstance
+	}
+	
 	def index() {
 		
 		header 'total', Contact.count()		

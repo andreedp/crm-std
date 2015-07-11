@@ -81,14 +81,14 @@
 								</thead>
 								<tbody>
 								<tr st-select-row="contact" ng-repeat="contact in displayedCollection">
-									<td><b>{{contact.name}}</b></td>
+									<td><b><a ng-href="#/contact/view/{{contact.id}}">{{contact.name}}</a></b></td>
 									<td><a ng-href="mailto:{{contact.email}}">{{contact.email}}</a></td>
 									<td>{{contact.telephone}}</td>
 									<td>{{contact.lastUpdated | date}}</td>
 									<td class="col-md-2">
-											<div class="col-md-1" ng-click='OpenCourse(contact.name)'><span class="glyphicon glyphicon-edit"></span></div>
-											<div class="col-md-1" ng-click='goto("/contact/delete/"+contact.id)'><span class="glyphicon glyphicon-remove-circle"></span></div>
-				                            <div class="col-md-1" ng-click='goto("/contact/details/"+contact.id)'><span class="glyphicon glyphicon-eye-open"></span></div>
+											<div class="col-md-1" ng-href="#/contact/edit/{{contact.id}}"><span class="glyphicon glyphicon-edit"></span></div>
+											<div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-remove-circle"></span></div>
+				                            <div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-eye-open"></span></div>
 									</td>
 								</tr>
 								</tbody>

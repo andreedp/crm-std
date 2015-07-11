@@ -1,4 +1,4 @@
-				<!-- Page Heading -->
+				<!-- Module Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -6,202 +6,82 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> {{title}}
+                                <i class="fa fa-male"></i> {{title}}
                             </li>
                         </ol>
                     </div>
                 </div>
+                <!-- /.row -->
 
 				<div class="row" ng-controller="AlertController">
                     <div class="col-lg-12">                       
                         <alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()" data-dismiss="alert">{{alert.msg}}</alert>                       
                     </div>
                 </div>
-
-				<div class="container-fluid">
-				  <div class="text-center">
-				    <h1>Contact View</h1>
-				    <p class="lead">Contact Details  
-				    </p>
-				  </div>
-				  <form class="form-horizontal" role="form">
-				    <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputName" class="col-md-2 control-label">Name:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="contact.name">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputTitle" class="col-md-2 control-label">Title:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <select type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="contact.title" ng-options="titles for titles in contactTitle" focus required></select>
-				          </div>
-				        </div>
-				      </div>      
-				   </div><!-- /.row this actually does not appear to be needed with the form-horizontal -->
-				   <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputSex" class="col-md-2 control-label">Sex:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <select type="text" class="form-control" id="inputSex" placeholder="Sex" ng-model="contact.sex" ng-options="sex for sex in contactSex" focus required></select>
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputAddress" class="col-md-2 control-label">Address:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputAddress" placeholder="Address" ng-model="contact.address">
-				          </div>
-				        </div>
-				      </div>      
-				   </div>
-				   <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputEmail" class="col-md-2 control-label">Email:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="contact.email">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="contact.description">
-				          </div>
-				        </div>
-				      </div>      
-				   </div>
-				   <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputTelephone" class="col-md-2 control-label">Phone:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputTelephone" placeholder="Phone" ng-model="contact.telephone">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputTelephone2" class="col-md-2 control-label">Phone:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputTelephone2" placeholder="Phone 2" ng-model="contact.telephone2">
-				          </div>
-				        </div>
-				      </div>      
-				   </div>
-				   <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputDOB" class="col-md-2 control-label">DOB:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputDOB" placeholder="DOB" ng-model="contact.dob">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputAccount" class="col-md-2 control-label">Account:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputAccount" placeholder="Account" ng-model="contact.account">
-				          </div>
-				        </div>
-				      </div>      
-				   </div>
-				   <div class="row">
-				      <div class="col-md-6">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputDepartment" class="col-md-2 control-label">Department:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputDepartment" placeholder="Department" ng-model="contact.department">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6">
-				        <div class="form-group">
-				          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-				          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
-				          </span>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="contact.assignTo">
-				          </div>
-				        </div>
-				      </div>      
-				   </div>
-				   <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-				          	<label for="inputName" class="col-md-2 control-label">Lead Source:</label>
-				          </span>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputName" placeholder="Name">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-				          	<label nowrap="nowrap" for="inputReportsTo" class="col-md-2 control-label">Reports To:</label>
-				          </span>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="contact.reportsTo">
-				          </div>
-				        </div>
-				      </div>      
-				   </div>
-				   <div class="row">
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputCampaign" class="col-md-2 control-label">Campaign:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="contact.campaign">
-				          </div>
-				        </div>
-				      </div>
-				      <div class="col-md-6 col-xs-12 ">
-				        <div class="form-group">
-				          <div class="col-xs-3 text-left">
-				          	<label for="inputTitle" class="col-md-2 control-label">Title:</label>
-				          </div>
-				          <div class="col-md-9">
-				            <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="contact.title">
-				          </div>
-				        </div>
-				      </div>   
-				         
-				   </div>
-				   
-				  </form>
-				 </div>
+                
+				<section class="panel panel-default">
+					<header class="panel-heading">
+						<div class="input-group">
+								<span class="input-group-btn text-right">
+									<a ng-href="#/contact/list" class="btn btn-sm btn-default" type="button">Contact List</a>
+									<a class="btn btn-sm btn-default" ng-show="checkAccessRights('contact','printContact')" ng-href="/itcm/visit/printPayment/?id={{payment.visit.id}}&lang={{currentLanguage().code}}&payment=pay1" target="_blank" >Print</a>
+									<a ng-href="#/contact/edit/{{contact.id}}" class="btn btn-sm btn-default" type="button" >Edit</a>
+									<button class="btn btn-sm btn-default" type="button" ng-click="deleteContact(contact)" >Delete</button>
+								</span>
+						</div> 
+					</header>
+					<div class="table-responsive">
+						<table class="table table-striped view-table detail-table-striped">
+							<tr>
+								<td>Name</td>
+								<td>{{contact.name}}</td>
+								<td>Sex</td>
+								<td>{{contact.sex}}</td>
+							</tr>
+							<tr>
+								<td>Position</td>
+								<td>{{contact.position}}</td>
+								<td>Department</td>
+								<td>{{contact.department}}</td>
+							</tr>											
+							<tr>
+								<td>Email</td>
+								<td>{{contact.email}}</td>
+								<td>Social Media</td>
+								<td>{{contact.socialMedia}}</td>
+							</tr>						
+							<tr>
+								<td>Telephone</td>
+								<td>{{contact.telephone}}</td>
+								<td>Telephone 2</td>
+								<td>{{contact.telephone2}}</td>
+							</tr>
+							<tr>
+								<td>Date Of Birth</td>
+								<td>{{contact.dob}}</td>
+								<td>Campaign</td>
+								<td>{{contact.campaign}}</td>
+							</tr>						
+							<tr>
+								<td>Address</td>
+								<td>{{contact.address}}</td>
+								<td>Description</td>
+								<td>{{contact.description}}</td>
+							</tr>
+							<tr>
+								<td>Lead Source</td>
+								<td>{{contact.leadSource}}</td>
+								<td>Assign To</td>
+								<td>{{contact.assignTo}}</td>
+							</tr>
+							
+							<tr>
+								<td>Report To</td>
+								<td>{{contact.reportsTo}}</td>
+								<td>Last Modified By</td>
+								<td>{{contact.lastModifiedBy.username}}</td>
+							</tr>
+																				
+						</table>				
+					</div>		
+				</section>
