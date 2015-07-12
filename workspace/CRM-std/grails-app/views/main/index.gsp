@@ -162,11 +162,11 @@
                         <a ng-href="#/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a ng-href="#/contact/list"><i class="fa fa-fw fa-male"></i> Contact</a>
+                        <a ng-href="#/lead/list"><i class="fa fa-fw fa-bullseye"></i> Leads</a>
                     </li>
                     <li>
-                        <a ng-href="#/leads/list"><i class="fa fa-fw fa-bullseye"></i> Leads</a>
-                    </li>
+                        <a ng-href="#/contact/list"><i class="fa fa-fw fa-male"></i> Contact</a>
+                    </li>                
                     <li>
                         <a ng-href="#/opportunities/list"><i class="fa fa-fw fa-sign-in"></i> Opportunity</a>
                     </li>
@@ -201,7 +201,11 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                              
+                <div class="row" ng-controller="AlertController">
+              		<div class="col-lg-12">                       
+                  		<alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()" data-dismiss="alert">{{alert.msg}}</alert>                       
+              		</div>
+        		</div>            
                 <div class="view-container">
 	    			<div ng-view class="view-frame"></div>
 				</div>

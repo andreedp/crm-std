@@ -1,15 +1,21 @@
 package crm.std.core
 
-
-
 import static org.springframework.http.HttpStatus.*
+import grails.rest.RestfulController;
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
-class LeadController {
+import grails.converters.JSON
+import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
+
+class LeadController extends RestfulController{
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static responseFormats = ['json', 'xml']
+	def springSecurityService
 
+	LeadController() {
+		super(Lead)
+	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Lead.list(params), model:[leadInstanceCount: Lead.count()]

@@ -13,7 +13,6 @@ define(['controllers/controllers'],
 	controllers.controller('contactListController', ['$scope', '$routeParams', '$window', 'Contact', 'ContactService', 'AlertService',
 		                                          function($scope,  $routeParams, $window, Contact, ContactService, AlertService) {
 				
-				AlertService.clear();
 				$scope.header = 'Contact Management';
 				$scope.title = 'Contact';
 				$scope.date = {startDate: null, endDate: null};
@@ -52,7 +51,6 @@ define(['controllers/controllers'],
 	controllers.controller('contactEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Contact', 'contact', 'ContactService', 'AlertService',
 			                                          function($log, $scope,  $routeParams, $window, $location, Contact, contact, ContactService, AlertService) {
 					
-					AlertService.clear();
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
 					$scope.date = {startDate: null, endDate: null};
@@ -67,7 +65,7 @@ define(['controllers/controllers'],
 
 					$scope.contactTitle = ['Mr.', 'Ms.', 'Mrs.'];
 					$scope.contactSex = ['M', 'F', 'N'];
-					
+					 
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -102,9 +100,9 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('contactViewController', ['$scope', '$routeParams', '$window', '$filter', 'Contact', 'contact', 'ContactService', 'AlertService',
-			                                          function($scope,  $routeParams, $window, $filter, Contact, contact, ContactService, AlertService) {
-					AlertService.clear();
+	controllers.controller('contactViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Contact', 'contact', 'ContactService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Contact, contact, ContactService, AlertService) {
+					
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
 					$scope.date = {startDate: null, endDate: null};
@@ -134,20 +132,19 @@ define(['controllers/controllers'],
 						contact.$delete(function(data, headers){
 							$log.info('[ContactViewController::deleteContact]success data: ' + angular.toJson(data));
 							AlertService.add('success', 'Delete Contact Success');
-							$location.path('contact');
+							$location.path('contact/list');
 						}, function(response){
 							$log.info('[ContactViewController::deleteContact]failed response: ' + angular.toJson(response));
 							AlertService.add('danger', contact.name + ' ' + 'ERROR_FAIL_DELETE' + ' ' + response.data);
-							$location.path('contact');
+							$location.path('contact/list');
 						});
 					};
 
 		}]);
 
-	controllers.controller('contactCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Contact', 'ContactService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Contact, ContactService , AlertService) {
+	controllers.controller('contactCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Contact', 'lead', 'ContactService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Contact, lead, ContactService , AlertService) {
 					
-					AlertService.clear();
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
 					$scope.contact = new Contact();
@@ -160,7 +157,7 @@ define(['controllers/controllers'],
 						    formatYear: 'yy',
 						    startingDay: 1
 						  };
-
+					
 					$scope.contactTitle = ['Mr.', 'Ms.', 'Mrs.'];
 					$scope.contactSex = ['M', 'F', 'N'];
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -174,6 +171,17 @@ define(['controllers/controllers'],
 				    $scope.OpenCourse = function(courseId) {
 				        $window.alert("Called " + courseId);
 				    }
+				    
+				    $scope.lead = lead;
+					if($scope.lead)
+					{
+						$scope.contact.name = $scope.lead.name
+						$scope.contact.sex = $scope.lead.sex
+						$scope.contact.title = $scope.lead.title
+						$scope.contact.email = $scope.lead.email
+						$scope.contact.description = $scope.lead.description
+						
+					}
 				    
 				    $scope.save = function() {
 						$scope.contact.$save(function(contact, headers) {

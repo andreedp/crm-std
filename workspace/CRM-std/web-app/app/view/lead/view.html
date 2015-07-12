@@ -6,32 +6,36 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-male"></i> {{title}}
+                                <i class="fa fa-fw fa-bullseye"></i> {{title}}
                             </li>
                         </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 				<div class="text-center">
-				    <h1>Contact View</h1>
-				    <p class="lead">Contact Details Form  
+				    <h1>Lead View</h1>
+				    <p class="lead">Lead Details Form  
 				    </p>
 				</div>  
 				
 				<header class="panel-heading">
 					<div class="input-group">
 						<span class="input-group-btn text-right">
-							<a ng-href="#/contact/list" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/lead/list" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-eye-open"></span>
-							     Contact List
+							     Lead List
 							</a>
-							<a ng-href="#/contact/edit/{{contact.id}}" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/lead/edit/{{lead.id}}" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-edit"></span>
 							     Edit
 							</a>	
-							<a ng-click="deleteContact(contact)" class="btn btn-sm btn-default" type="button" >
+							<a ng-click="deleteContact(lead)" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-remove-circle"></span>
 							     Delete
+							</a>
+							<a ng-href="#/contact/create/{{lead.id}}" class="btn btn-sm btn-default" type="button" >
+							     <span class="glyphicon glyphicon-forward"></span>
+							     Export to Contact
 							</a>		
 						</span>
 					</div> 
@@ -41,10 +45,10 @@
 					<header class="panel-heading">
 						<div class="input-group">
 								<span class="input-group-btn text-right">
-									<a ng-href="#/contact/list" class="btn btn-sm btn-default" type="button">Contact List</a>
-									<a class="btn btn-sm btn-default" ng-show="checkAccessRights('contact','printContact')" ng-href="/itcm/visit/printPayment/?id={{payment.visit.id}}&lang={{currentLanguage().code}}&payment=pay1" target="_blank" >Print</a>
-									<a ng-href="#/contact/edit/{{contact.id}}" class="btn btn-sm btn-default" type="button" >Edit</a>
-									<button class="btn btn-sm btn-default" type="button" ng-click="deleteContact(contact)" >Delete</button>
+									<a ng-href="#/lead/list" class="btn btn-sm btn-default" type="button">Contact List</a>
+									<a class="btn btn-sm btn-default" ng-show="checkAccessRights('lead','printContact')" ng-href="/itcm/visit/printPayment/?id={{payment.visit.id}}&lang={{currentLanguage().code}}&payment=pay1" target="_blank" >Print</a>
+									<a ng-href="#/lead/edit/{{lead.id}}" class="btn btn-sm btn-default" type="button" >Edit</a>
+									<button class="btn btn-sm btn-default" type="button" ng-click="deleteContact(lead)" >Delete</button>
 								</span>
 						</div> 
 					</header>-->
@@ -55,52 +59,52 @@
 								<table class="table table-striped view-table detail-table-striped">
 									<tr>
 										<td>Name</td>
-										<td>{{contact.name}}</td>
+										<td>{{lead.name}}</td>
 										<td>Sex</td>
-										<td>{{contact.sex}}</td>
+										<td>{{lead.sex}}</td>
 									</tr>
 									<tr>
-										<td>Position</td>
-										<td>{{contact.position}}</td>
+										<td>Title</td>
+										<td>{{lead.title}}</td>
 										<td>Department</td>
-										<td>{{contact.department}}</td>
+										<td>{{lead.department}}</td>
 									</tr>											
 									<tr>
 										<td>Email</td>
-										<td>{{contact.email}}</td>
+										<td>{{lead.email}}</td>
 										<td>Social Media</td>
-										<td>{{contact.socialMedia}}</td>
+										<td>{{lead.socialMedia}}</td>
 									</tr>						
 									<tr>
-										<td>Telephone</td>
-										<td>{{contact.telephone}}</td>
-										<td>Telephone 2</td>
-										<td>{{contact.telephone2}}</td>
+										<td>Status</td>
+										<td>{{lead.status}}</td>
+										<td>Company</td>
+										<td>{{lead.company}}</td>
 									</tr>
 									<tr>
-										<td>Date Of Birth</td>
-										<td>{{contact.dob}}</td>
+										<td>Notes</td>
+										<td>{{lead.notes}}</td>
 										<td>Campaign</td>
-										<td>{{contact.campaign}}</td>
+										<td>{{lead.campaign}}</td>
 									</tr>						
 									<tr>
 										<td>Address</td>
-										<td>{{contact.address}}</td>
+										<td>{{lead.address}}</td>
 										<td>Description</td>
-										<td>{{contact.description}}</td>
+										<td>{{lead.description}}</td>
 									</tr>
 									<tr>
 										<td>Lead Source</td>
-										<td>{{contact.leadSource}}</td>
+										<td>{{lead.leadSource}}</td>
 										<td>Assign To</td>
-										<td>{{contact.assignTo}}</td>
+										<td>{{lead.assignTo}}</td>
 									</tr>
 									
 									<tr>
-										<td>Report To</td>
-										<td>{{contact.reportsTo}}</td>
+										<td>Next Step</td>
+										<td>{{lead.nextStep}}</td>
 										<td>Last Modified By</td>
-										<td>{{contact.lastModifiedBy.username}}</td>
+										<td>{{lead.lastModifiedBy.username}}</td>
 									</tr>
 																						
 								</table>				

@@ -4,7 +4,7 @@ define(['controllers/controllers'],
 	                                          function($scope, AlertService) {
 		
 			$scope.alerts = AlertService.get();
-    		
+			
 	}]);
 });
 

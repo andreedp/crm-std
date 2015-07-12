@@ -22,7 +22,7 @@ define(['services/services'],
 	            });
 	        }
 	 
-	        function closeAlert(alert) {
+	        function closeAlert(alert) {	        	
 	            return closeAlertIdx(alerts.indexOf(alert));
 	        }
 	 

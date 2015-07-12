@@ -29,19 +29,50 @@ define(['app'], function (app) {
 		        templateUrl: 'app/view/contact/view.html',
 		        controller: 'contactViewController'
 		      }).
+		  when('/contact/create/:leadId', {
+		    	  resolve: {
+	        		  lead: ["LeadLoader", function(LeadLoader) {
+	                    return LeadLoader();
+	                  }],
+	              },
+		        templateUrl: 'app/view/contact/form.html',
+		        controller: 'contactCreateController'
+		  }).
 	      when('/contact/create', {
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
 		      }).
 		  
-	      when('/leads/list', {
-	          templateUrl: 'app/view/leads/list.html',
-	          controller: 'contactListController'
+	      when('/lead/list', {
+	          templateUrl: 'app/view/lead/list.html',
+	          controller: 'leadListController'
 	        }).
 	      when('/', {
 	          templateUrl: 'app/view/dashboard.html',
 	          controller: 'dashboardController'
 	        }).
+	      when('/lead/edit/:leadId', {
+		   	  resolve: {
+	       		  lead: ["LeadLoader", function(LeadLoader) {
+	                   return LeadLoader();
+	                 }],
+	          },
+			  templateUrl: 'app/view/lead/form.html',
+			  controller: 'leadEditController'
+			}).
+		   when('/lead/view/:leadId', {
+			   resolve: {
+		        		  lead: ["LeadLoader", function(LeadLoader) {
+		                    return LeadLoader();
+		                  }],
+		       },
+			   templateUrl: 'app/view/lead/view.html',
+			   controller: 'leadViewController'
+			}).
+		   when('/lead/create', {
+			        templateUrl: 'app/view/lead/form.html',
+			        controller: 'leadCreateController'
+			      }).
 	      otherwise({
 	        redirectTo: '/'
 	      });

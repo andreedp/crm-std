@@ -14,36 +14,7 @@ class ContactController extends RestfulController{
 	ContactController() {
 		super(Contact)
 	}
-	
-    def contactService;
-	
-    /*def save() {
-        def json = request.JSON;
-        def contact = null;
-        def message;
-        if(json.id){
-            contact = contactService.get(json.id as long)
-            message = "Contact Updated "
-        };
-        if(!contact){
-            contact = new Contact()
-            message = "Contact Created "
-        }
-        bindData(contact,json)
-        def res = [:]
-        if(!contact.validate()){
-            def errors = renderErrors(contact.errors)
-            res.status = "error"
-            res.errors = errors
-            render res as JSON
-            return
-        }
-        contactService.save(contact)
-        res.status = "success"
-        res.message = message
-        render res as JSON
-    }*/
-	
+		
 	@Transactional
 	def save(Contact contactInstance) {
 		if (contactInstance == null) {
@@ -90,26 +61,24 @@ class ContactController extends RestfulController{
 		
 	}
 
-    def edit() {
-        Contact contact = contactService.get(params.id as long);
-        render contact as JSON
-    }
+    @Transactional
+    def delete(Contact contactInstance) {
 
-    def details() {
-        Contact contact = contactService.get(params.id as long);
-        render contact as JSON
-    }
-
-    def delete() {
-        Contact contact = contactService.get(params.id as long);
-        if(!contact){
-            Map message = ["message":"Contact ${params.id} not found"]
-            render message as JSON
+        if (contactInstance == null) {
+            notFound()
             return
         }
-        contactService.delete(contact)
-        Map message = ["message":"Contact ${params.id} deleted"]
-        render message as JSON
+
+		try
+		{
+			contactInstance.delete flush:true, failOnError: true
+		}
+		catch(Exception exc)
+		{
+			render status: UNPROCESSABLE_ENTITY, text: exc.getMessage()
+			return
+		}
+		respond contactInstance
     }
 
     private static def renderErrors(allErrors) {

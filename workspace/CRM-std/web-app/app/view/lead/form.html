@@ -6,15 +6,15 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> {{title}}
+                                <i class="fa fa-fw fa-bullseye"></i> {{title}}
                             </li>
                         </ol>
                     </div>
                 </div>
                 
                 <div class="text-center">
-				    <h1>Contact Form</h1>
-				    <p class="lead">Input Contact Details  
+				    <h1>Lead Form</h1>
+				    <p class="lead">Input Lead Details  
 				    </p>
 				  </div>
                 
@@ -25,7 +25,7 @@
 							     <span class="glyphicon glyphicon-eye-open"></span>
 							     Save
 							</a>
-							<a ng-href="#/contact/list" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/lead/list" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-edit"></span>
 							     Cancel
 							</a>			
@@ -46,7 +46,7 @@
 							          	<label for="inputName" class="col-md-2 control-label">Name:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="contact.name">
+							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="lead.name">
 							          </div>
 							        </div>
 							      </div>
@@ -56,7 +56,7 @@
 							          	<label for="inputTitle" class="col-md-2 control-label">Title:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="contact.title" ng-options="titles for titles in contactTitle" focus required></select>
+							            <select type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="lead.title" ng-options="titles for titles in leadTitle" focus required></select>
 							          </div>
 							        </div>
 							      </div>      
@@ -69,7 +69,7 @@
 							          	<label for="inputSex" class="col-md-2 control-label">Sex:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputSex" placeholder="Sex" ng-model="contact.sex" ng-options="sex for sex in contactSex" focus required></select>
+							            <select type="text" class="form-control" id="inputSex" placeholder="Sex" ng-model="lead.sex" ng-options="sex for sex in leadSex" focus required></select>
 							          </div>
 							        </div>
 							      </div>
@@ -79,7 +79,7 @@
 							          	<label for="inputAddress" class="col-md-2 control-label">Address:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAddress" placeholder="Address" ng-model="contact.address">
+							            <input type="text" class="form-control" id="inputAddress" placeholder="Address" ng-model="lead.address">
 							          </div>
 							        </div>
 							      </div>      
@@ -93,7 +93,7 @@
 							          	<label for="inputEmail" class="col-md-2 control-label">Email:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="contact.email">
+							            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="lead.email">
 							          </div>
 							        </div>
 							      </div>
@@ -103,7 +103,7 @@
 							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="contact.description">
+							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="lead.description">
 							          </div>
 							        </div>
 							      </div>      
@@ -114,58 +114,34 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputTelephone" class="col-md-2 control-label">Phone:</label>
+							          	<label for="inputCompany" class="col-md-2 control-label">Company:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputTelephone" placeholder="Phone" ng-model="contact.telephone">
+							            <input type="text" class="form-control" id="inputCompany" placeholder="Company" ng-model="lead.company">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputTelephone2" class="col-md-2 control-label">Phone:</label>
+							          	<label for="inputSocialMedia" class="col-md-2 control-label">Social Media:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputTelephone2" placeholder="Phone 2" ng-model="contact.telephone2">
+							            <input type="text" class="form-control" id="inputSocialMedia" placeholder="Social Media" ng-model="lead.socialMedia">
 							          </div>
 							        </div>
 							      </div>      
 				   				</td>
-							   </tr>
-				   			   <tr>
-								<td>
-							      <div class="col-md-6 col-xs-12 ">
-							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDOB" class="col-md-2 control-label">DOB:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputDOB" placeholder="DOB" ng-model="contact.dob">
-							          </div>
-							        </div>
-							      </div>
-							      <div class="col-md-6 col-xs-12 ">
-							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputAccount" class="col-md-2 control-label">Account:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAccount" placeholder="Account" ng-model="contact.account">
-							          </div>
-							        </div>
-							      </div>      
-				   				</td>
-							   </tr>
+							   </tr>				 
 				   			   <tr>
 								<td>
 							      <div class="col-md-6">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputDepartment" class="col-md-2 control-label">Department:</label>
+							          	<label for="inputStatus" class="col-md-2 control-label">Status:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputDepartment" placeholder="Department" ng-model="contact.department">
+							            <input type="text" class="form-control" id="inputStatus" placeholder="Status" ng-model="lead.status">
 							          </div>
 							        </div>
 							      </div>
@@ -175,7 +151,7 @@
 							          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="contact.assignTo">
+							            <input type="text" class="form-control" id="inputAssignTo" placeholder="Assign To" ng-model="lead.assignTo">
 							          </div>
 							        </div>
 							      </div>      
@@ -186,10 +162,10 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputName" class="col-md-2 control-label">Lead Source:</label>
+							          	<label for="inputLeadSource" class="col-md-2 control-label">Lead Source:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputName" placeholder="Name">
+							            <input type="text" class="form-control" id="inputLeadSource" placeholder="Lead Source">
 							          </div>
 							        </div>
 							      </div>
@@ -199,7 +175,7 @@
 							          	<label nowrap="nowrap" for="inputReportsTo" class="col-md-2 control-label">Reports To:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="contact.reportsTo">
+							            <input type="text" class="form-control" id="inputReportsTo" placeholder="Reports To" ng-model="lead.reportsTo">
 							          </div>
 							        </div>
 							      </div>      
@@ -210,10 +186,10 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputCampaign" class="col-md-2 control-label">Campaign:</label>
+							          	<label for="inputNextStep" class="col-md-2 control-label">Next Step:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="contact.campaign">
+							            <input type="text" class="form-control" id="inputNextStep" placeholder="Next Step" ng-model="lead.nextStep">
 							          </div>
 							        </div>
 							      </div>
@@ -223,7 +199,7 @@
 							          	<label for="inputTitle" class="col-md-2 control-label">Title:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="contact.title">
+							            <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="lead.title">
 							          </div>
 							        </div>
 							      </div>

@@ -1,7 +1,10 @@
 package crm.std.core
 
+import java.util.Date;
+
 class Lead {
 
+	String	id
 	String name
 	String title
 	String sex
@@ -22,6 +25,10 @@ class Lead {
 	String description
 	SecAppUser assignTo
 	Campaign campaign
+	SecAppUser	createdBy
+	SecAppUser	lastModifiedBy
+	Date	dateCreated
+	Date	lastUpdated
 	
     static constraints = {
 		id							maxSize:32
@@ -35,11 +42,19 @@ class Lead {
 		country						maxSize:128, nullable:true, blank: true
 		email						maxSize:128, nullable:true, blank: true
 		socialMedia					maxSize:128, nullable:true, blank: true
+		company					maxSize:64, nullable:true, blank: true
+		department					maxSize:64, nullable:true, blank: true
+		budget						nullable:true, blank: true
 		status						maxSize:64, nullable:true, blank: true
 		notes						maxSize:64, nullable:true, blank: true
 		leadSource					maxSize:64, nullable:true, blank: true
 		nextStep					maxSize:64, nullable:true, blank: true
 		description					maxSize:64, nullable:true, blank: true
+		assignTo					nullable:true, blank: true
+		campaign					nullable:true, blank: true
+		
+		createdBy					nullable:true
+		lastModifiedBy				nullable:true
 	}
 	
 	static mapping = {
