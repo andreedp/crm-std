@@ -1,9 +1,10 @@
 define(['services/services'],
 		function(services) {
-	services.factory('Lead', ['$resource', 
-	                                 function($resource) {
+	services.factory('Lead', ['$resource', '$cacheFactory',
+	                                 function($resource, $cacheFactory) {
 		return $resource('/CRM-std/lead/:id',{}, {
-			'query': {method:'GET',  isArray:true},
+			  'query': {method:'GET',  isArray:true},
+			  'queryAll':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.lead')},
 		      'update': {method: 'PUT'},
 		      'delete': {method:'DELETE', url: '/CRM-std/lead/:id', params: {id: '@id'}},			
 		});
@@ -20,6 +21,21 @@ define(['services/services'],
 				$log.error('[LeadLoader]error: ' + angular.toJson(error));
 				AlertService.add('danger', error.data);
 				$location.path('#');
+			});
+			return delay.promise;
+		};
+	}]);
+
+	services.factory('MultiLeadLoader', ['Lead', '$q', '$log', 'AlertService', '$location',
+                                            function(Lead, $q, $log, AlertService, $location) {
+		return function() {
+			var delay = $q.defer();
+			Lead.queryAll(function(leads) {
+				delay.resolve(leads);
+			}, function() {
+				delay.reject('Unable to fetch patients');
+				$log.error('[MultiContactLoader]error: ' + angular.toJson(error));
+				AlertService.add('danger', error.data);
 			});
 			return delay.promise;
 		};

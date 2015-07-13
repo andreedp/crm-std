@@ -48,6 +48,14 @@ define(['app'], function (app) {
 	          controller: 'leadListController'
 	        }).
 	      when('/', {
+	    	  resolve: {
+	       		  leads: ["MultiLeadLoader", function(MultiLeadLoader) {
+	                   return MultiLeadLoader();
+	                 }],
+	              contacts: ["MultiContactLoader", function(MultiContactLoader) {
+		               return MultiContactLoader();
+		             }],
+	          },
 	          templateUrl: 'app/view/dashboard.html',
 	          controller: 'dashboardController'
 	        }).
