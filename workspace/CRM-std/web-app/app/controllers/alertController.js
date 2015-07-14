@@ -1,6 +1,6 @@
 define(['controllers/controllers'],
 		function(controllers) {
-	controllers.controller('AlertController', ['$scope', 'AlertService',
+	controllers.controller('alertController', ['$scope', 'AlertService',
 	                                          function($scope, AlertService) {
 		
 			$scope.alerts = AlertService.get();

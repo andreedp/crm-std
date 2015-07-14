@@ -13,9 +13,15 @@ class BootStrap {
 
     def testUser = new SecAppUser(username: 'admin', enabled: true, password: 'admin')
     testUser.save(flush: true)
+	
+	def testUser2 = new SecAppUser(username: 'andree', enabled: true, password: '123456')
+	testUser2.save(flush: true)
 
 	def testUser1 = new SecAppUser(username: 'user', enabled: true, password: 'user')
 	testUser1.save(flush: true)
+	
+	def testUser3 = new SecAppUser(username: 'billy', enabled: true, password: '123456')
+	testUser3.save(flush: true)
 	
 	def testContact1 = new Contact(name: 'Andree', email: 'adp@phin.com', telephone: '081288728838', sex: 'M', dateCreated : new Date(), lastUpdated : new Date())
 	testContact1.save(failOnError: true)
@@ -30,7 +36,9 @@ class BootStrap {
 	testLead2.save(failOnError: true)
 	
     SecAppUserSecAppRole.create testUser, adminRole, true
-	SecAppUserSecAppRole.create testUser1, userRole, true	
+	SecAppUserSecAppRole.create testUser1, userRole, true		
+	SecAppUserSecAppRole.create testUser2, adminRole, true
+	SecAppUserSecAppRole.create testUser3, userRole, true
 	
 	
 	for (String url in [

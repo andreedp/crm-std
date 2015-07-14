@@ -1,9 +1,9 @@
 define(['controllers/controllers'],
 		function(controllers) {
-	controllers.controller('CurrentUserController', ['$scope', 'User',
+	controllers.controller('currentUserController', ['$scope', 'User',
 	                                          function($scope, User) {
 		
-		User.current().$promise.then(function(data){
+			User.current().$promise.then(function(data){
     		$scope.currentUser = data.username;
     		
 		});

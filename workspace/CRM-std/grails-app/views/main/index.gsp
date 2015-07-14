@@ -43,7 +43,7 @@
     <div id="wrapper">
 		
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="CurrentUserController">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="currentUserController">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header" >
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -201,7 +201,7 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                <div class="row" ng-controller="AlertController">
+                <div class="row" ng-controller="alertController">
               		<div class="col-lg-12">                       
                   		<alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()" data-dismiss="alert">{{alert.msg}}</alert>                       
               		</div>

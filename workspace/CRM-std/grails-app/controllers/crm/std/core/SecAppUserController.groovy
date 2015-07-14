@@ -6,14 +6,14 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.converters.JSON
 
-//class SecAppUserController extends RestfulController{
-class SecAppUserController{
+class SecAppUserController extends RestfulController{
+//class SecAppUserController{
 	
-	/*SecAppUserController() {
+	SecAppUserController() {
 		super(SecAppUser)
-	}*/
+	}
 	
-    //static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 	
 	static responseFormats = ['json', 'xml']
 	def springSecurityService

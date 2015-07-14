@@ -23,6 +23,8 @@
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'font-awesome.min.css')}" />
 
+	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'login.css')}" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,12 +36,13 @@
 
 <body>
 		
-	<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
+	<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>	
     <div class="container">
-        <div class="row">
+        <div class="row vertical-offset-100">
             <div class="col-md-4 col-md-offset-4">
-            <img src="${resource(dir: 'images', file: 'crm.jpg')}" alt=""></img>
+            <div class="panel panel-default">
                 <div class="panel-heading">
+                		<!-- <img src="${resource(dir: 'images', file: 'crm.jpg')}" alt=""></img> -->
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
@@ -61,6 +64,7 @@
                             </fieldset>
                         </form>
                     </div>
+			</div>                   
             </div>
         </div>
     </div>

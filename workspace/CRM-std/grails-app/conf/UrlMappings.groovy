@@ -7,15 +7,15 @@ class UrlMappings {
             }
         }       
 		
-		"/"(controller:"main", action:"index")
-		"/login/$action?"(controller: "login")
-		"/logout/$action?"(controller: "logout")
+		"/"(controller:"Main", action:"index")
+		"/login/$action?"(controller: "Login")
+		"/logout/$action?"(controller: "Logout")
         "500"(view:'/error')
 		
 		
 		"/secappuser"(resources:"SecAppUser")
-		"/contact"(resources:"contact")
-		"/lead"(resources:"lead")		
+		"/contact"(resources:"Contact")
+		"/lead"(resources:"Lead")		
 		
 	}
 }
