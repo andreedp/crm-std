@@ -2,6 +2,7 @@ import crm.std.core.SecAppRole
 import crm.std.core.SecAppUser
 import crm.std.core.Contact
 import crm.std.core.Lead
+import crm.std.core.Account
 import crm.std.core.SecAppUserSecAppRole
 import crm.std.core.Requestmap
 
@@ -29,11 +30,17 @@ class BootStrap {
 	def testContact2 = new Contact(name: 'Agus', email: 'agus@phin.com', telephone: '081311223344', sex: 'M', dateCreated : new Date(), lastUpdated : new Date())
 	testContact2.save(failOnError: true)
 	
-	def testLead1 = new Lead(name: 'Aryanto', email: 'ary@vasco.com', company: 'Vasco', sex: 'M', dateCreated : new Date(), lastUpdated : new Date())
+	def testLead1 = new Lead(name: 'Aryanto', email: 'ary@vasco.com', company: 'Vasco', sex: 'M', rating: 6, dateCreated : new Date(), lastUpdated : new Date())
 	testLead1.save(failOnError: true)
 	
-	def testLead2 = new Lead(name: 'Erik', email: 'erik@avaya.com', company: 'Avaya', sex: 'M', dateCreated : new Date(), lastUpdated : new Date())
+	def testLead2 = new Lead(name: 'Erik', email: 'erik@avaya.com', company: 'Avaya', sex: 'M', rating: 8, dateCreated : new Date(), lastUpdated : new Date())
 	testLead2.save(failOnError: true)
+	
+	def testAccount1 = new Account(name: 'Vasco', email: 'cs@vasco.com', industry: 'IT', address: 'Hong Kong', website: 'www.vasco.com', dateCreated : new Date(), lastUpdated : new Date())
+	testAccount1.save(failOnError: true)
+	
+	def testAccount2 = new Account(name: 'Avaya', email: 'cs@avaya.com', industry: 'IT', address: 'United States', website: 'www.avaya.com', dateCreated : new Date(), lastUpdated : new Date())
+	testAccount2.save(failOnError: true)
 	
     SecAppUserSecAppRole.create testUser, adminRole, true
 	SecAppUserSecAppRole.create testUser1, userRole, true		
@@ -74,6 +81,20 @@ class BootStrap {
 	new Requestmap(url: '/lead/edit', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
 	new Requestmap(url: '/lead/*', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
 	new Requestmap(url: '/lead/*', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/list', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/list', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/view', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/view', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/edit', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/edit', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/*', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/opportunity/*', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/account/*', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/account/*', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
+	new Requestmap(url: '/account', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
+	new Requestmap(url: '/account', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)
 	new Requestmap(url: '/secAppUser', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)
 	new Requestmap(url: '/secAppUser', configAttribute: 'ROLE_ADMIN').save(flush:true, failOnError: true)	
 	new Requestmap(url: '/secAppUser/currentUser', configAttribute: 'ROLE_USER').save(flush:true, failOnError: true)	

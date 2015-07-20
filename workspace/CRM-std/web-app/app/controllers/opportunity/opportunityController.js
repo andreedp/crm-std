@@ -1,20 +1,20 @@
 define(['controllers/controllers'],
 		function(controllers) {
-	controllers.controller('leadController', ['$scope', 'Lead',
-	                                          function($scope, Lead) {
+	controllers.controller('opportunityController', ['$scope', 'Opportunity',
+	                                          function($scope, Opportunity) {
 			
-			$scope.header = 'Leads Management';
-			$scope.title = 'Leads';
-			$scope.lead = Lead.query();
+			$scope.header = 'Opportunity Management';
+			$scope.title = 'Opportunity';
+			$scope.opportunity = opportunity.query();
 		    $scope.orderProp = 'name';
 			
 	}]);
 	
-	controllers.controller('leadListController', ['$scope', '$routeParams', '$window', 'Lead', 'LeadService', 'AlertService',
-		                                          function($scope,  $routeParams, $window, Lead, LeadService, AlertService) {
+	controllers.controller('opportunityListController', ['$scope', '$routeParams', '$window', 'Opportunity', 'OpportunityService', 'AlertService',
+		                                          function($scope,  $routeParams, $window, Opportunity, OpportunityService, AlertService) {
 				
-				$scope.header = 'Leads Management';
-				$scope.title = 'Leads';
+				$scope.header = 'Opportunity Management';
+				$scope.title = 'Opportunity';
 				$scope.date = {startDate: null, endDate: null};
 				$scope.today = function() {
 				    $scope.dt = new Date();
@@ -28,12 +28,12 @@ define(['controllers/controllers'],
 				$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 				$scope.format = $scope.formats[0];
 				
-				$scope.predicates = ['name', 'email', 'company'];
+				$scope.predicates = ['name', 'salesStage', 'type'];
 			    $scope.selectedPredicate = $scope.predicates[0];
 					  
-				$scope.leads = Lead.query(function(data) {
+				$scope.opportunity = Opportunity.query(function(data) {
 				    // success handler
-					console.log("Lead count ",  $scope.leads.length); 	
+					console.log("Opportunity count ",  $scope.opportunity.length); 	
 				
 				}, function(error) {
 				    // error handler     
@@ -62,11 +62,11 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('leadEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Lead', 'lead', 'LeadService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Lead, lead, LeadService, AlertService) {
+	controllers.controller('opportunityEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Opportunity', 'opportunity', 'account', 'OpportunityService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $location, Opportunity, opportunity, account, OpportunityService, AlertService) {
 					
-					$scope.header = 'Leads Management';
-					$scope.title = 'Leads';
+					$scope.header = 'Opportunity Management';
+					$scope.title = 'Opportunity';
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -77,35 +77,33 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
-					$scope.leadTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.leadSex = ['M', 'F', 'N'];
+					$scope.opportunityAccount = account;
+					$scope.opportunitySalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
 					 
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
-					$scope.lead = lead;
+					$scope.opportunity = opportunity;
 					
 					$scope.predicates = ['name', 'email', 'company'];
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 				    $scope.orderProp = 'name';
-				   
-				    LeadService.calculateRating($scope.lead);				    
 				    
 				    $scope.save = function() {
-				    	Lead.update({id: lead.id}, $scope.lead, function (result) {
-							$log.info('[LeadEditController::save]Lead Update success: ' + angular.toJson(result));																	
-							AlertService.add('success', 'Create Lead Success');
-							$location.path('lead/view/' + lead.id);
+				    	Opportunity.update({id: opportunity.id}, $scope.opportunity, function (result) {
+							$log.info('[OpportunityEditController::save]Opportunity Update success: ' + angular.toJson(result));																	
+							AlertService.add('success', 'Create Opportunity Success');
+							$location.path('opportunity/view/' + opportunity.id);
 						}, function(response) {
-							$log.info('[LeadEditController::save]Lead Update failed: ' + angular.toJson(response));
+							$log.info('[OpportunityEditController::save]Opportunity Update failed: ' + angular.toJson(response));
 							if(response.data.errors)
 							{
 								$log.info('domain errors: ' + angular.toJson(response.data.errors));							
 							}
 							else
 							{
-								AlertService.add('warning', 'Update Lead Failed');
+								AlertService.add('warning', 'Update Opportunity Failed');
 							}
 						});
 					};
@@ -116,11 +114,11 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('leadViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Lead', 'lead', 'LeadService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Lead, lead, LeadService, AlertService) {
+	controllers.controller('opportunityViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Opportunity', 'opportunity', 'OpportunityService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Opportunity, opportunity, OpportunityService, AlertService) {
 					
-					$scope.header = 'Leads Management';
-					$scope.title = 'Leads';
+					$scope.header = 'Opportunity Management';
+					$scope.title = 'Opportunity';
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -137,7 +135,7 @@ define(['controllers/controllers'],
 					$scope.predicates = ['name', 'email', 'lastUpdated'];
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
-					$scope.lead = lead;
+					$scope.opportunity = opportunity;
 				    $scope.orderProp = 'name';
 				    
 				    $scope.rating = {
@@ -149,26 +147,26 @@ define(['controllers/controllers'],
 				        $window.alert("Called " + courseId);
 				    }
 				    
-				    $scope.deleteLead = function(lead){
-						lead.$delete(function(data, headers){
-							$log.info('[LeadViewController::deleteLead]success data: ' + angular.toJson(data));
-							AlertService.add('success', 'Delete Lead Success');
-							$location.path('lead/list');
+				    $scope.deleteOpportunity = function(opportunity){
+						opportunity.$delete(function(data, headers){
+							$log.info('[OpportunityViewController::deleteOpportunity]success data: ' + angular.toJson(data));
+							AlertService.add('success', 'Delete Opportunity Success');
+							$location.path('opportunity/list');
 						}, function(response){
-							$log.info('[LeadViewController::deleteLead]failed response: ' + angular.toJson(response));
-							AlertService.add('danger', lead.name + ' ' + 'ERROR_FAIL_DELETE' + ' ' + response.data);
-							$location.path('lead/list');
+							$log.info('[OpportunityViewController::deleteOpportunity]failed response: ' + angular.toJson(response));
+							AlertService.add('danger', opportunity.name + ' ' + 'ERROR_FAIL_DELETE' + ' ' + response.data);
+							$location.path('opportunity/list');
 						});
 					};
 
 		}]);
 
-	controllers.controller('leadCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Lead', 'LeadService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Lead, LeadService , AlertService) {
+	controllers.controller('opportunityCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Opportunity', 'account', 'OpportunityService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Opportunity, account, OpportunityService , AlertService) {
 					
-					$scope.header = 'Leads Management';
-					$scope.title = 'Leads';
-					$scope.lead = new Lead();
+					$scope.header = 'Opportunity Management';
+					$scope.title = 'Opportunity';
+					$scope.opportunity = new Opportunity();
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -179,8 +177,8 @@ define(['controllers/controllers'],
 						    startingDay: 1
 						  };
 
-					$scope.leadTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.leadSex = ['M', 'F', 'N'];
+					$scope.opportunityAccount = account;
+					$scope.opportunitySalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -193,22 +191,20 @@ define(['controllers/controllers'],
 				        $window.alert("Called " + courseId);
 				    }
 				    
-				    LeadService.calculateRating($scope.lead);
-				    
 				    $scope.save = function() {
-						$scope.lead.$save(function(lead, headers) {
-							$log.info('[LeadCreateController::save]Lead Save success: ' + angular.toJson(lead));																	
-							AlertService.add('success', 'Create Lead Success');
-							$location.path('lead/view/' + lead.id);
+						$scope.opportunity.$save(function(opportunity, headers) {
+							$log.info('[OpportunityCreateController::save]Opportunity Save success: ' + angular.toJson(opportunity));																	
+							AlertService.add('success', 'Create Opportunity Success');
+							$location.path('opportunity/view/' + opportunity.id);
 						}, function(response) {
-							$log.info('[LeadCreateController::save]Lead Save failed: ' + angular.toJson(response));
+							$log.info('[OpportunityCreateController::save]Opportunity Save failed: ' + angular.toJson(response));
 							if(response.data.errors)
 							{
 								$log.info('domain errors: ' + angular.toJson(response.data.errors));							
 							}
 							else
 							{
-								AlertService.add('warning', 'Create Lead Failed');
+								AlertService.add('warning', 'Create Opportunity Failed');
 							}
 						});
 					};

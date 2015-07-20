@@ -7,7 +7,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-fw fa-bullseye"></i> {{title}}
+                                <i class="fa fa-male"></i> {{title}}
                             </li>
                         </ol>
                     </div>
@@ -32,11 +32,11 @@
 				</div> -->
 								
 				<header class="panel-heading">
-					<div class="input-group">						
+					<div class="input-group">
 						<span class="input-group-btn text-right">
-							<a ng-href="#/lead/create" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/opportunity/create" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-plus"></span>
-							     New Lead
+							     New Opportunity
 							</a>			
 						</span>
 					</div> 
@@ -50,16 +50,15 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="table-responsive">							  
-							  <table st-set-filter="customFilter" st-table="displayedCollection" st-safe-src="leads" class="table table-striped">
+							  <table st-set-filter="customFilter" st-table="displayedCollection" st-safe-src="opportunity" class="table table-striped">
 								<thead>	
 																																							                
 								<tr>
 									<th st-sort="name" ><span class="glyphicon glyphicon-user"></span> Name</th>
-									<th><span class="glyphicon glyphicon-envelope"></span> Email</th>
-									<th><span class="fa fa-fw fa-building"></span> Company</th>									
-									<th><span class="glyphicon glyphicon-tasks"></span> Description</th>
+									<th><span class="glyphicon glyphicon-envelope"></span> Account</th>
+									<th><span class="glyphicon glyphicon-phone-alt"></span> Sales Stage</th>									
+									<th><span class="glyphicon glyphicon-tasks"></span> Type</th>
 									<th  st-sort="lastUpdated" >Last Updated</th>
-									<th st-sort="rating" ><span class="glyphicon glyphicon-star"></span> Rating</th>
 								</tr>
 								<tr>
 									<th>
@@ -74,15 +73,12 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr st-select-row="lead" ng-repeat="lead in displayedCollection">
-									<td><b><a ng-href="#/lead/view/{{lead.id}}">{{lead.name}}</a></b></td>
-									<td><a ng-href="mailto:{{lead.email}}">{{lead.email}}</a></td>
-									<td>{{lead.company}}</td>
-									<td>{{lead.status}}</td>
-									<td>{{lead.lastUpdated | date}}</td>
-									<td class="col-md-2">
-											<div star-rating rating-value="lead.rating" max="rating.max" ></div>
-									</td>
+								<tr st-select-row="opportunity" ng-repeat="opportunity in displayedCollection">
+									<td><b><a ng-href="#/opportunity/view/{{opportunity.id}}">{{opportunity.name}}</a></b></td>
+									<td>{{opportunity.account.id}}</td>
+									<td>{{opportunity.salesStage}}</td>
+									<td>{{opportunity.type}}</td>
+									<td>{{opportunity.lastUpdated | date}}</td>
 									<!--<td class="col-md-2">
 											<div class="col-md-1" ng-href="#/contact/edit/{{contact.id}}"><span class="glyphicon glyphicon-edit"></span></div>
 											<div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-remove-circle"></span></div>

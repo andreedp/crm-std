@@ -1,15 +1,25 @@
 package crm.std.core
 
+import static org.springframework.http.HttpStatus.*
+import grails.rest.RestfulController;
+import grails.transaction.Transactional
 
+import grails.converters.JSON
+import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
-class OpportunityController {
+class OpportunityController extends RestfulController{
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static responseFormats = ['json', 'xml']
+	def springSecurityService
 
+	OpportunityController() {
+		super(Opportunity)
+	}
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Opportunity.list(params), model:[opportunityInstanceCount: Opportunity.count()]

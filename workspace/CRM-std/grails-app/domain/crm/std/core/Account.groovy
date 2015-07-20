@@ -30,6 +30,7 @@ class Account {
     static constraints = {
 		id				maxSize:32
 		name			maxSize:128
+		parent			nullable:true
 		address			maxSize:512, nullable:true, blank: true
 		city			maxSize:128, nullable:true, blank: true
 		state			maxSize:128, nullable:true, blank: true
@@ -44,6 +45,8 @@ class Account {
 		annualRevenue	nullable:true, blank: true
 		industry		maxSize:128, nullable:true, blank: true
 		description		maxSize:128, nullable:true, blank: true
+		assignTo		nullable:true, blank: true
+		campaign		nullable:true, blank: true
 		
 		createdBy		nullable:true
 		lastModifiedBy	nullable:true

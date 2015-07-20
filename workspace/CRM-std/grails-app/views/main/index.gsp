@@ -28,6 +28,8 @@
 	<!-- Date Range CSS -->    
 	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'daterangepicker-bs3.css')}" />
 
+	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'rating.css')}" />
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -168,7 +170,7 @@
                         <a ng-href="#/contact/list"><i class="fa fa-fw fa-male"></i> Contact</a>
                     </li>                
                     <li>
-                        <a ng-href="#/opportunities/list"><i class="fa fa-fw fa-sign-in"></i> Opportunity</a>
+                        <a ng-href="#/opportunity/list"><i class="fa fa-fw fa-sign-in"></i> Opportunity</a>
                     </li>
                     <li>
                         <a ng-href="#/product/list"><i class="fa fa-fw fa-desktop"></i> Product</a>

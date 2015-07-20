@@ -15,7 +15,9 @@ class UrlMappings {
 		
 		"/secappuser"(resources:"SecAppUser")
 		"/contact"(resources:"Contact")
-		"/lead"(resources:"Lead")		
+		"/lead"(resources:"Lead")
+		"/opportunity"(resources:"Opportunity")
+		"/account"(resources:"Account")
 		
 	}
 }

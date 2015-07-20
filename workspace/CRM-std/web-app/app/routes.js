@@ -7,6 +7,7 @@ define(['app'], function (app) {
 	        templateUrl: 'app/view/contact/contact.html',
 	        controller: 'contactController'
 	      }).
+	      
 	      when('/contact/list', {
 	        templateUrl: 'app/view/contact/list.html',
 	        controller: 'contactListController'
@@ -42,7 +43,49 @@ define(['app'], function (app) {
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
 		      }).
-		  
+	      when('/opportunity/list', {
+		        templateUrl: 'app/view/opportunity/list.html',
+		        controller: 'opportunityListController'
+		      }).
+	      when('/opportunity/edit/:opportunityId', {
+		    	  resolve: {
+		    		  opportunity: ["OpportunityLoader", function(OpportunityLoader) {
+	                    return OpportunityLoader();
+	                  	  }],
+	                  account: ["MultiAccountLoader", function(MultiAccountLoader) {
+		                    return MultiAccountLoader();
+		                  }],
+	              },
+		        templateUrl: 'app/view/opportunity/form.html',
+		        controller: 'opportunityEditController'
+		      }).
+	      when('/opportunity/view/:opportunityId', {
+		    	  resolve: {
+		    		  opportunity: ["OpportunityLoader", function(OpportunityLoader) {
+	                    return OpportunityLoader();
+	                  }],
+	              },
+		        templateUrl: 'app/view/opportunity/view.html',
+		        controller: 'opportunityViewController'
+		      }).
+		  when('/opportunity/create/:leadId', {
+		    	  resolve: {
+	        		  lead: ["LeadLoader", function(LeadLoader) {
+	                    return LeadLoader();
+	                  }],
+	              },
+		        templateUrl: 'app/view/opportunity/form.html',
+		        controller: 'opportunityCreateController'
+		  }).
+		  when('/opportunity/create', {
+				  resolve: {
+	        		  account: ["MultiAccountLoader", function(MultiAccountLoader) {
+	                    return MultiAccountLoader();
+	                  }],
+	              },
+		        templateUrl: 'app/view/opportunity/form.html',
+		        controller: 'opportunityCreateController'
+		      }).
 	      when('/lead/list', {
 	          templateUrl: 'app/view/lead/list.html',
 	          controller: 'leadListController'

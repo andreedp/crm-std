@@ -1,15 +1,24 @@
 package crm.std.core
 
+import grails.rest.RestfulController
+import grails.transaction.Transactional
 
+import grails.converters.JSON
+import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
-class AccountController {
+class AccountController extends RestfulController{
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	static responseFormats = ['json', 'xml']
+	def springSecurityService
+	
+	AccountController() {
+		super(Account)
+	}
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Account.list(params), model:[accountInstanceCount: Account.count()]

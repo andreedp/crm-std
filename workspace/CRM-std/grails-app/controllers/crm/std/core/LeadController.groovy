@@ -16,6 +16,7 @@ class LeadController extends RestfulController{
 	LeadController() {
 		super(Lead)
 	}
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Lead.list(params), model:[leadInstanceCount: Lead.count()]

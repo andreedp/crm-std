@@ -47,6 +47,82 @@ define(['services/services'],
 			service.test = function(){
 				$log.info('Test');
 			}
+			
+			service.calculateRating = function(lead){
+				
+				if(!lead)
+				{
+					return;
+				}
+				var total = 0;
+				
+				if(lead.name)
+				{
+					total = total + 5
+				}
+				else if(lead.address)
+				{
+					total = total + 5
+				}
+				else if(lead.email)
+				{
+					total = total + 5
+				}
+				else if(lead.department)
+				{
+					total = total + 5
+				}
+				else if(lead.company)
+				{
+					total = total + 5
+				}
+				else if(lead.socialMedia)
+				{
+					total = total + 5
+				}
+				else if(lead.nextStep)
+				{
+					total = total + 5
+				}
+				else if(lead.budget)
+				{
+					total = total + 5
+				}
+				
+				if(total >= 5)
+				{
+					lead.rating = 2
+				}
+				else if(total >= 10)
+				{
+					lead.rating = 3
+				}
+				else if(total >= 15)
+				{
+					lead.rating = 4
+				}
+				else if(total >= 20)
+				{
+					lead.rating = 5
+				}
+				else if(total >= 25)
+				{
+					lead.rating = 6
+				}
+				else if(total >= 30)
+				{
+					lead.rating = 7
+				}
+				else if(total < 35)
+				{
+					lead.rating = 8
+				}
+				
+				$log.info('[LeadService::calculateRating]Rating: ' + lead.rating);
+				
+				return lead;
+			};
+			
 			return service;        	
 	}]);
 });

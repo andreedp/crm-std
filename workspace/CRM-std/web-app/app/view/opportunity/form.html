@@ -13,8 +13,8 @@
                 </div>
                 
                 <div class="text-center">
-				    <h1>Contact Form</h1>
-				    <p class="lead">Input Contact Details  
+				    <h1>Opportunity Form</h1>
+				    <p class="lead">Input Opportunity Details  
 				    </p>
 				  </div>
                 
@@ -25,7 +25,7 @@
 							     <span class="glyphicon glyphicon-eye-open"></span>
 							     Save
 							</a>
-							<a ng-href="#/contact/list" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/opportunity/list" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-edit"></span>
 							     Cancel
 							</a>			
@@ -46,17 +46,17 @@
 							          	<label for="inputName" class="col-md-2 control-label">Name:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="contact.name">
+							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="opportunity.name">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputTitle" class="col-md-2 control-label">Title:</label>
+							          	<label for="inputAccount" class="col-md-2 control-label">Account:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="contact.title" ng-options="titles for titles in contactTitle" focus required></select>
+							            <select type="text" class="form-control" id="inputAccount" placeholder="Account" ng-model="opportunity.account" ng-options="accounts.name for accounts in opportunityAccount" focus required></select>
 							          </div>
 							        </div>
 							      </div>      
@@ -66,20 +66,20 @@
 								  <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputSex" class="col-md-2 control-label">Sex:</label>
+							          	<label for="inputSalesStage" class="col-md-2 control-label">Sales Stage:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputSex" placeholder="Sex" ng-model="contact.sex" ng-options="sex for sex in contactSex" focus required></select>
+							            <select type="text" class="form-control" id="inputSalesStage" placeholder="salesStage" ng-model="opportunity.salesStage" ng-options="salesStages for salesStages in opportunitySalesStage" focus required></select>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputAddress" class="col-md-2 control-label">Address:</label>
+							          	<label for="inputProbability" class="col-md-2 control-label">Probability:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAddress" placeholder="Address" ng-model="contact.address">
+							            <input type="text" class="form-control" id="inputProbability" placeholder="Probability" ng-model="opportunity.probability">
 							          </div>
 							        </div>
 							      </div>      
@@ -90,20 +90,20 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputEmail" class="col-md-2 control-label">Email:</label>
+							          	<label for="inputCurrency" class="col-md-2 control-label">Currency:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="contact.email">
+							            <input type="text" class="form-control" id="inputCurrency" placeholder="Currency" ng-model="opportunity.currency">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
+							          	<label for="inputOpportunityAmount" class="col-md-2 control-label">Opportunity Amount:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="contact.description">
+							            <input type="text" class="form-control" id="inputOpportunityAmount" placeholder="OpportunityAmount" ng-model="opportunity.opportunityAmount">
 							          </div>
 							        </div>
 							      </div>      
@@ -114,20 +114,20 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputTelephone" class="col-md-2 control-label">Phone:</label>
+							          	<label for="inputType" class="col-md-2 control-label">Type:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputTelephone" placeholder="Phone" ng-model="contact.telephone">
+							            <input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="opportunity.type">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputTelephone2" class="col-md-2 control-label">Phone:</label>
+							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputTelephone2" placeholder="Phone 2" ng-model="contact.telephone2">
+							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="opportunity.description">
 							          </div>
 							        </div>
 							      </div>      
@@ -138,44 +138,20 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputDOB" class="col-md-2 control-label">DOB:</label>
+							          	<label for="inputNextStep" class="col-md-2 control-label">Next Step:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputDOB" placeholder="DOB" ng-model="contact.dob">
+							            <input type="text" class="form-control" id="inputNextStep" placeholder="NextStep" ng-model="opportunity.nextStep">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <div class="col-xs-3 text-left">
-							          	<label for="inputAccount" class="col-md-2 control-label">Account:</label>
+							          	<label for="inputCloseDate" class="col-md-2 control-label">Close Date:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAccount" placeholder="Account" ng-model="contact.account">
-							          </div>
-							        </div>
-							      </div>      
-				   				</td>
-							   </tr>
-				   			   <tr>
-								<td>
-							      <div class="col-md-6">
-							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDepartment" class="col-md-2 control-label">Department:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputDepartment" placeholder="Department" ng-model="contact.department">
-							          </div>
-							        </div>
-							      </div>
-							      <div class="col-md-6">
-							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputPosition" class="col-md-2 control-label">Position:</label>
-							          </span>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputPosition" placeholder="position" ng-model="contact.position">
+							            <input type="text" class="form-control" id="inputCloseDate" placeholder="CloseDate" ng-model="opportunity.closeDate">
 							          </div>
 							        </div>
 							      </div>      
@@ -186,10 +162,10 @@
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
 							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputName" class="col-md-2 control-label">Lead Source:</label>
+							          	<label for="inputLeadSource" class="col-md-2 control-label">Lead Source:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputName" placeholder="Name">
+							            <input type="text" class="form-control" id="inputLeadSource" placeholder="Name" ng-model="opportunity.leadSource">
 							          </div>
 							        </div>
 							      </div>
@@ -199,7 +175,7 @@
 							          	<label nowrap="nowrap" for="inputReportsTo" class="col-md-2 control-label">Reports To:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="contact.reportsTo">
+							            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="opportunity.reportsTo">
 							          </div>
 							        </div>
 							      </div>      
@@ -213,7 +189,7 @@
 							          	<label for="inputCampaign" class="col-md-2 control-label">Campaign:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="contact.campaign">
+							            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="opportunity.campaign">
 							          </div>
 							        </div>
 							      </div>
@@ -223,7 +199,7 @@
 							          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="contact.assignTo">
+							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="opportunity.assignTo">
 							          </div>
 							        </div>
 							      </div>

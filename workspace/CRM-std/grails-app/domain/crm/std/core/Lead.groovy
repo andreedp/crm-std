@@ -23,6 +23,7 @@ class Lead {
 	String leadSource
 	String nextStep
 	String description
+	long rating
 	SecAppUser assignTo
 	Campaign campaign
 	SecAppUser	createdBy
@@ -42,7 +43,7 @@ class Lead {
 		country						maxSize:128, nullable:true, blank: true
 		email						maxSize:128, nullable:true, blank: true
 		socialMedia					maxSize:128, nullable:true, blank: true
-		company					maxSize:64, nullable:true, blank: true
+		company						maxSize:64, nullable:true, blank: true
 		department					maxSize:64, nullable:true, blank: true
 		budget						nullable:true, blank: true
 		status						maxSize:64, nullable:true, blank: true
@@ -52,6 +53,7 @@ class Lead {
 		description					maxSize:64, nullable:true, blank: true
 		assignTo					nullable:true, blank: true
 		campaign					nullable:true, blank: true
+		rating						nullable:true
 		
 		createdBy					nullable:true
 		lastModifiedBy				nullable:true
