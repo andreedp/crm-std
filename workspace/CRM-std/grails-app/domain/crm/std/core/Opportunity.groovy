@@ -21,6 +21,8 @@ class Opportunity {
 	Date	dateCreated
 	Date	lastUpdated
 	
+	static embedded = ['account']
+	
     static constraints = {
 		id							maxSize:32
 		name						maxSize:128

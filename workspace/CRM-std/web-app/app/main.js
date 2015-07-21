@@ -90,6 +90,7 @@ require([
 	'bootstrap',
 	'routes',
 	'controllers/dashboardController',
+	'controllers/account/accountController',
 	'controllers/contact/contactController',
 	'controllers/lead/leadController',
 	'controllers/opportunity/opportunityController',

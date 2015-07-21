@@ -12,7 +12,7 @@ import grails.transaction.Transactional
 
 class OpportunityController extends RestfulController{
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
 	static responseFormats = ['json', 'xml']
 	def springSecurityService
 
@@ -20,10 +20,13 @@ class OpportunityController extends RestfulController{
 		super(Opportunity)
 	}
 	
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Opportunity.list(params), model:[opportunityInstanceCount: Opportunity.count()]
-    }
+    def index() {
+        //params.max = Math.min(max ?: 10, 100)
+        //respond Opportunity.list(params), model:[opportunityInstanceCount: Opportunity.count()]
+    	
+		header 'total', Opportunity.count()
+		respond Opportunity.list()
+	}
 
     def show(Opportunity opportunityInstance) {
         respond opportunityInstance

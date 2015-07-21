@@ -173,19 +173,36 @@
                         <a ng-href="#/opportunity/list"><i class="fa fa-fw fa-sign-in"></i> Opportunity</a>
                     </li>
                     <li>
-                        <a ng-href="#/product/list"><i class="fa fa-fw fa-desktop"></i> Product</a>
+                        <a ng-href="#/account/list"><i class="fa fa-fw fa-group"></i> Account</a>
                     </li>
                     <li>
-                        <a ng-href="#/system"><i class="fa fa-fw fa-wrench"></i> System Management</a>
+                        <a ng-href="#/campaign/list"><i class="fa fa-fw fa-desktop"></i> Campaign</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-file"></i> Report <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                    	<a href="javascript:;" data-toggle="collapse" data-target="#systemManagement"><i class="fa fa-fw fa-wrench"></i> System Management <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="systemManagement" class="collapse">
+                            <li>
+                                <a href="#">Product</a>
+                            </li>
+                            <li>
+                                <a href="#">User</a>
+                            </li>
+                            <li>
+                                <a href="#">Company</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#report"><i class="fa fa-fw fa-file"></i> Report <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="report" class="collapse">
                             <li>
                                 <a href="#">Leads Report</a>
                             </li>
                             <li>
                                 <a href="#">Opportunity Report</a>
+                            </li>
+                            <li>
+                                <a href="#">Campaign Report</a>
                             </li>
                         </ul>
                     </li>

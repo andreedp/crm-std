@@ -13,23 +13,23 @@
                 </div>
                 <!-- /.row -->
 				<div class="text-center">
-				    <h1>Opportunity View</h1>
-				    <p class="lead">Opportunity Details Form  
+				    <h1>Account View</h1>
+				    <p class="lead">Account Details Form  
 				    </p>
 				</div>  
 				
 				<header class="panel-heading">
 					<div class="input-group">
 						<span class="input-group-btn text-right">
-							<a ng-href="#/opportunity/list" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/account/list" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-eye-open"></span>
-							     Opportunity List
+							     Account List
 							</a>
-							<a ng-href="#/opportunity/edit/{{opportunity.id}}" class="btn btn-sm btn-default" type="button" >
+							<a ng-href="#/account/edit/{{account.id}}" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-edit"></span>
 							     Edit
 							</a>	
-							<a ng-click="deleteOpportunity(opportunity)" class="btn btn-sm btn-default" type="button" >
+							<a ng-click="deleteAccount(account)" class="btn btn-sm btn-default" type="button" >
 							     <span class="glyphicon glyphicon-remove-circle"></span>
 							     Delete
 							</a>		
@@ -55,48 +55,40 @@
 								<table class="table table-striped view-table detail-table-striped">
 									<tr>
 										<td>Name</td>
-										<td>{{opportunity.name}}</td>
-										<td>Account</td>
-										<td>{{opportunity.account.name}}</td>
+										<td>{{account.name}}</td>
+										<td>Company</td>
+										<td>{{account.company}}</td>
 									</tr>
 									<tr>
-										<td>Sales Stage</td>
-										<td>{{opportunity.salesStage}}</td>
-										<td>Probability</td>
-										<td>{{opportunity.probability}}</td>
+										<td>Industry</td>
+										<td>{{account.industry}}</td>
+										<td>Address</td>
+										<td>{{account.address}}</td>
 									</tr>											
 									<tr>
-										<td>Currency</td>
-										<td>{{opportunity.currency}}</td>
-										<td>Opportunity Amount</td>
-										<td>{{opportunity.opportunityAmount}}</td>
+										<td>Email</td>
+										<td>{{account.email}}</td>
+										<td>Website</td>
+										<td>{{account.website}}</td>
 									</tr>						
 									<tr>
 										<td>Type</td>
-										<td>{{opportunity.type}}</td>
+										<td>{{account.type}}</td>
 										<td>Description</td>
-										<td>{{opportunity.description}}</td>
+										<td>{{account.description}}</td>
 									</tr>
 									<tr>
-										<td>Next Step</td>
-										<td>{{opportunity.nextStep}}</td>
-										<td>Close date</td>
-										<td>{{opportunity.closeDate}}</td>
+										<td>Annual Revenue</td>
+										<td>{{account.annualRevenue}}</td>
+										<td>Reports To</td>
+										<td>{{account.reportsTo}}</td>
 									</tr>														
 									<tr>
-										<td>Lead Source</td>
-										<td>{{opportunity.leadSource}}</td>
+										<td>Campaign</td>
+										<td>{{account.campaign}}</td>
 										<td>Assign To</td>
-										<td>{{opportunity.assignTo}}</td>
-									</tr>
-									
-									<tr>
-										<td>Report To</td>
-										<td>{{opportunity.reportsTo}}</td>
-										<td>Last Modified By</td>
-										<td>{{opportunity.lastModifiedBy.username}}</td>
-									</tr>
-																						
+										<td>{{account.assignTo}}</td>
+									</tr>												
 								</table>				
 							</div>
 						</div>

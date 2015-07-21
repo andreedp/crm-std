@@ -11,7 +11,7 @@ import grails.transaction.Transactional
 
 class AccountController extends RestfulController{
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
 	static responseFormats = ['json', 'xml']
 	def springSecurityService
 	
@@ -19,9 +19,20 @@ class AccountController extends RestfulController{
 		super(Account)
 	}
 	
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Account.list(params), model:[accountInstanceCount: Account.count()]
+    def index() {
+        //params.max = Math.min(max ?: 10, 100)
+        //respond Account.list(params), model:[accountInstanceCount: Account.count()]
+		
+		def data = Account.list()
+		
+		data.each{
+			it ->
+			
+			println it.name
+		}
+		
+		header 'total', Account.count()
+		respond Account.list()
     }
 
     def show(Account accountInstance) {

@@ -6,9 +6,29 @@ import crm.std.core.Account
 import crm.std.core.SecAppUserSecAppRole
 import crm.std.core.Requestmap
 
+import grails.converters.JSON
+
 class BootStrap {
 
     def init = { servletContext ->
+	
+	/*JSON.registerObjectMarshaller(Account) {
+		def output = [:]
+		output['id'] = it.id
+		output['name'] = it.name
+		output['company'] = it.company
+		output['address'] = it.address
+		output['email'] = it.email
+		output['type'] = it.type
+		output['industry'] = it.industry
+		output['description'] = it.description
+		output['dateCreated'] = it.dateCreated
+		//output['reviewer'] = ["id": it.reviewer.id, "name": it.reviewer.getFullName()]
+		//output['reviewedUser'] = ["id": it.reviewedUser.id, "name": it.reviewedUser.getFullName()]
+	
+		return output;
+	}*/
+	
     def adminRole = new SecAppRole(authority: 'ROLE_ADMIN').save(flush: true)
     def userRole = new SecAppRole(authority: 'ROLE_USER').save(flush: true)
 
@@ -36,10 +56,10 @@ class BootStrap {
 	def testLead2 = new Lead(name: 'Erik', email: 'erik@avaya.com', company: 'Avaya', sex: 'M', rating: 8, dateCreated : new Date(), lastUpdated : new Date())
 	testLead2.save(failOnError: true)
 	
-	def testAccount1 = new Account(name: 'Vasco', email: 'cs@vasco.com', industry: 'IT', address: 'Hong Kong', website: 'www.vasco.com', dateCreated : new Date(), lastUpdated : new Date())
+	def testAccount1 = new Account(name: 'Vasco', email: 'cs@vasco.com', industry: 'Technology', address: 'Hong Kong', website: 'www.vasco.com', dateCreated : new Date(), lastUpdated : new Date())
 	testAccount1.save(failOnError: true)
 	
-	def testAccount2 = new Account(name: 'Avaya', email: 'cs@avaya.com', industry: 'IT', address: 'United States', website: 'www.avaya.com', dateCreated : new Date(), lastUpdated : new Date())
+	def testAccount2 = new Account(name: 'Avaya', email: 'cs@avaya.com', industry: 'Technology', address: 'United States', website: 'www.avaya.com', dateCreated : new Date(), lastUpdated : new Date())
 	testAccount2.save(failOnError: true)
 	
     SecAppUserSecAppRole.create testUser, adminRole, true
@@ -109,8 +129,8 @@ class BootStrap {
 	//new Requestmap(url: '/screen/royalPage', configAttribute: 'ROLE_ADMIN').save()
 	//new Requestmap(url: '/**', configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save()
 	
-  }
-  
+  }	
+	
   def destroy = {
   }
 }

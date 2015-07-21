@@ -40,8 +40,37 @@ define(['app'], function (app) {
 		        controller: 'contactCreateController'
 		  }).
 	      when('/contact/create', {
+		    	  resolve: {
+	        		  lead: function(){ return []; },
+	              },
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
+		      }).
+	      when('/account/list', {
+		        templateUrl: 'app/view/account/list.html',
+		        controller: 'accountListController'
+		      }).
+	      when('/account/edit/:accountId', {
+	    	  resolve: {
+	    		  account: ["AccountLoader", function(AccountLoader) {
+                    return AccountLoader();
+                  }],
+              },
+		        templateUrl: 'app/view/account/form.html',
+		        controller: 'accountEditController'
+		      }).
+	      when('/account/view/:accountId', {
+		    	  resolve: {
+		    		  account: ["AccountLoader", function(AccountLoader) {
+	                    return AccountLoader();
+	                  }],
+	              },
+		        templateUrl: 'app/view/account/view.html',
+		        controller: 'accountViewController'
+		      }).
+	      when('/account/create', {
+		        templateUrl: 'app/view/account/form.html',
+		        controller: 'accountCreateController'
 		      }).
 	      when('/opportunity/list', {
 		        templateUrl: 'app/view/opportunity/list.html',

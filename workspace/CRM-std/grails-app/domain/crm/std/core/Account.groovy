@@ -7,6 +7,7 @@ class Account {
 	String	id
 	String name
 	String parent
+	String company
 	String website
 	String officePhone
 	String Fax
@@ -30,7 +31,8 @@ class Account {
     static constraints = {
 		id				maxSize:32
 		name			maxSize:128
-		parent			nullable:true
+		parent			maxSize:128, nullable:true, blank: true		
+		company			maxSize:128, nullable:true, blank: true
 		address			maxSize:512, nullable:true, blank: true
 		city			maxSize:128, nullable:true, blank: true
 		state			maxSize:128, nullable:true, blank: true
@@ -43,7 +45,7 @@ class Account {
 		website			maxSize:128, nullable:true, blank: true
 		type			maxSize:128, nullable:true, blank: true
 		annualRevenue	nullable:true, blank: true
-		industry		maxSize:128, nullable:true, blank: true
+		industry		maxSize:128, nullable:true, blank: true, inList:['Technology', 'Banking', 'Communications', 'Consulting', 'Government']
 		description		maxSize:128, nullable:true, blank: true
 		assignTo		nullable:true, blank: true
 		campaign		nullable:true, blank: true

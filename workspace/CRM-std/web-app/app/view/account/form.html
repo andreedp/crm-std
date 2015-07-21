@@ -1,0 +1,188 @@
+				<!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            {{header}}
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> {{title}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+				    <h1>Account Form</h1>
+				    <p class="lead">Input Account Details  
+				    </p>
+				  </div>
+                
+                <header class="panel-heading">
+					<div class="input-group">
+						<span class="input-group-btn text-right">
+							<a ng-click="save()" class="btn btn-sm btn-default" type="button" >
+							     <span class="glyphicon glyphicon-eye-open"></span>
+							     Save
+							</a>
+							<a ng-href="#/account/list" class="btn btn-sm btn-default" type="button" >
+							     <span class="glyphicon glyphicon-edit"></span>
+							     Cancel
+							</a>			
+						</span>
+					</div> 
+				</header>
+
+				<div class="panel-body">
+				    <div class="col-md-12">
+							<div class="table-responsive">
+							<table class="table table-striped view-table detail-table-striped">
+							<tbody>
+							    <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputName" class="col-md-2 control-label">Name:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="account.name">
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputCompany" class="col-md-2 control-label">Company:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <select type="text" class="form-control" id="inputCompany" placeholder="Company" ng-model="account.company" ng-options="company for company in accountCompany" focus required></select>
+							          </div>
+							        </div>
+							      </div>      
+							   </td>
+							   <tr>
+								<td>
+								  <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputIndustry" class="col-md-2 control-label">Industry:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <select type="text" class="form-control" id="inputIndustry" placeholder="Industry" ng-model="account.industry" ng-options="industry for industry in accountIndustry" focus required></select>
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputAddress" class="col-md-2 control-label">Address:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputAddress" placeholder="Address" ng-model="account.address">
+							          </div>
+							        </div>
+							      </div>      
+				   				</td>
+							   </tr>
+				   			   <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputEmail" class="col-md-2 control-label">Email:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="account.email">
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputWebsite" class="col-md-2 control-label">Website:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputWebsite" placeholder="Website" ng-model="account.website">
+							          </div>
+							        </div>
+							      </div>      
+				  				</td>
+							   </tr>	
+				   				<tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputType" class="col-md-2 control-label">Type:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="account.type">
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="account.description">
+							          </div>
+							        </div>
+							      </div>      
+				   				</td>
+							   </tr>
+				   			   <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputAnnualRevenue" class="col-md-2 control-label">Annual Revenue:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputAnnualRevenue" placeholder="AnnualRevenue" ng-model="account.annualRevenue">
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
+							          	<label nowrap="nowrap" for="inputReportsTo" class="col-md-2 control-label">Reports To:</label>
+							          </span>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="account.reportsTo">
+							          </div>
+							        </div>
+							      </div>      
+				   				</td>
+							   </tr>
+				   			   <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <div class="col-xs-3 text-left">
+							          	<label for="inputCampaign" class="col-md-2 control-label">Campaign:</label>
+							          </div>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="account.campaign">
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6">
+							        <div class="form-group">
+							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
+							          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
+							          </span>
+							          <div class="col-md-9">
+							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="account.assignTo">
+							          </div>
+							        </div>
+							      </div>
+							 	</td>
+							   </tr>				   	    				    
+				   			</tbody>
+				   			</table>
+				   		</div>
+				   </div>			
+				 </div>

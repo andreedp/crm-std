@@ -172,9 +172,9 @@ define(['controllers/controllers'],
 				        $window.alert("Called " + courseId);
 				    }
 				    
-				    $scope.lead = lead;
-					if($scope.lead)
+					if(lead)
 					{
+						$scope.lead = lead;
 						$scope.contact.name = $scope.lead.name
 						$scope.contact.sex = $scope.lead.sex
 						$scope.contact.title = $scope.lead.title
