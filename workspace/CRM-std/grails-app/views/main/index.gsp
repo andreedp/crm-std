@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CRM</title>
+    <title>Customer Relationship Management</title>
     	
 	<!-- Bootstrap Core CSS -->    
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap.min.css')}" />	
@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">CRM</a>
+                <a class="navbar-brand" href="#">Velis CRM</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -239,7 +239,14 @@
     <!-- /#wrapper -->    
    	
 	<script type="text/javascript" src="app/vendor/requirejs/require.js" data-main="app/main"></script>
-	
+	<script language="javascript">
+        function autoResizeDiv()
+        {
+            document.getElementById('main').style.height = window.innerHeight +'px';
+        }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+    </script>
 </body>
 
 </html>
