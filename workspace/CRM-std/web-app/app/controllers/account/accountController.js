@@ -162,8 +162,8 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('accountCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Account', 'AccountService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Account, AccountService , AlertService) {
+	controllers.controller('accountCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Account', 'industry', 'AccountService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Account, industry, AccountService , AlertService) {
 					
 					$scope.header = 'Account Management';
 					$scope.title = 'Account';
@@ -179,7 +179,8 @@ define(['controllers/controllers'],
 						  };
 
 					$scope.accountCompany = ['Avaya', 'Nuance', 'Vasco', 'Datacard', 'Juniper'];					
-					$scope.accountIndustry = ['Technology', 'Banking', 'Communications', 'Consulting', 'Government'];
+					$scope.accountIndustry = industry;//['Technology', 'Banking', 'Communications', 'Consulting', 'Government'];
+					$scope.accountType = ['Customer', 'Competitor', 'Partner', 'Prospect', 'Reseller', 'Other'];
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					

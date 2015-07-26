@@ -1,19 +1,28 @@
 package crm.std.core
 
+import grails.rest.RestfulController
+import grails.transaction.Transactional
 
+import grails.converters.JSON
+import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class CampaignController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Campaign.list(params), model:[campaignInstanceCount: Campaign.count()]
-    }
+   static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
+	static responseFormats = ['json', 'xml']
+	def springSecurityService
+	
+    def index() {
+        //params.max = Math.min(max ?: 10, 100)
+        //respond Campaign.list(params), model:[campaignInstanceCount: Campaign.count()]
+    
+		header 'total', Campaign.count()
+		respond Campaign.list()
+	}
 
     def show(Campaign campaignInstance) {
         respond campaignInstance

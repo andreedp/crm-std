@@ -28,7 +28,7 @@ class AccountController extends RestfulController{
 		data.each{
 			it ->
 			
-			println it.name
+			//println it.name
 		}
 		
 		header 'total', Account.count()

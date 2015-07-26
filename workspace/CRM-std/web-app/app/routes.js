@@ -35,6 +35,9 @@ define(['app'], function (app) {
 	        		  lead: ["LeadLoader", function(LeadLoader) {
 	                    return LeadLoader();
 	                  }],
+	                  account: ["MultiAccountLoader", function(MultiAccountLoader) {
+		                    return MultiAccountLoader();
+		              }],
 	              },
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
@@ -42,6 +45,9 @@ define(['app'], function (app) {
 	      when('/contact/create', {
 		    	  resolve: {
 	        		  lead: function(){ return []; },
+	        		  account: ["MultiAccountLoader", function(MultiAccountLoader) {
+		                    return MultiAccountLoader();
+		               }],
 	              },
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
@@ -69,6 +75,11 @@ define(['app'], function (app) {
 		        controller: 'accountViewController'
 		      }).
 	      when('/account/create', {
+	    	  resolve: {
+	    		  industry: ["MultiIndustryLoader", function(MultiIndustryLoader) {
+                    return MultiIndustryLoader();
+                  }],
+              },
 		        templateUrl: 'app/view/account/form.html',
 		        controller: 'accountCreateController'
 		      }).
@@ -118,19 +129,7 @@ define(['app'], function (app) {
 	      when('/lead/list', {
 	          templateUrl: 'app/view/lead/list.html',
 	          controller: 'leadListController'
-	        }).
-	      when('/', {
-	    	  resolve: {
-	       		  leads: ["MultiLeadLoader", function(MultiLeadLoader) {
-	                   return MultiLeadLoader();
-	                 }],
-	              contacts: ["MultiContactLoader", function(MultiContactLoader) {
-		               return MultiContactLoader();
-		             }],
-	          },
-	          templateUrl: 'app/view/dashboard.html',
-	          controller: 'dashboardController'
-	        }).
+	        }).	      
 	      when('/lead/edit/:leadId', {
 		   	  resolve: {
 	       		  lead: ["LeadLoader", function(LeadLoader) {
@@ -153,6 +152,47 @@ define(['app'], function (app) {
 			        templateUrl: 'app/view/lead/form.html',
 			        controller: 'leadCreateController'
 			      }).
+	      when('/campaign/list', {
+	          templateUrl: 'app/view/campaign/list.html',
+	          controller: 'campaignListController'
+	        }).	      
+	      when('/campaign/edit/:campaignId', {
+		   	  resolve: {
+		   		campaign: ["CampaignLoader", function(CampaignLoader) {
+	                   return CampaignLoader();
+	                 }],
+	          },
+			  templateUrl: 'app/view/campaign/form.html',
+			  controller: 'campaignEditController'
+			}).
+		   when('/campaign/view/:leadId', {
+			   resolve: {
+				   campaign: ["CampaignLoader", function(CampaignLoader) {
+		                    return CampaignLoader();
+		                  }],
+		       },
+			   templateUrl: 'app/view/campaign/view.html',
+			   controller: 'campaignViewController'
+			}).
+		   when('/campaign/create', {
+			        templateUrl: 'app/view/campaign/form.html',
+			        controller: 'campaignCreateController'
+	       }).
+	       when('/', {
+	    	  resolve: {
+	       		  leads: ["MultiLeadLoader", function(MultiLeadLoader) {
+	                   return MultiLeadLoader();
+	                 }],
+	              contacts: ["MultiContactLoader", function(MultiContactLoader) {
+		               return MultiContactLoader();
+		             }],
+	             opportunity: ["MultiOpportunityLoader", function(MultiOpportunityLoader) {
+		               return MultiOpportunityLoader();
+		             }],
+	          },
+	          templateUrl: 'app/view/dashboard.html',
+	          controller: 'dashboardController'
+	        }).
 	      otherwise({
 	        redirectTo: '/'
 	      });

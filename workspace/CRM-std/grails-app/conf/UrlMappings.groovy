@@ -18,6 +18,8 @@ class UrlMappings {
 		"/lead"(resources:"Lead")
 		"/opportunity"(resources:"Opportunity")
 		"/account"(resources:"Account")
+		"/campaign"(resources:"Campaign")		
+		"/listofvalues"(resources:"ListOfValues")
 		
 	}
 }

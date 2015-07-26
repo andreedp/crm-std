@@ -8,6 +8,7 @@ import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
 class ContactController extends RestfulController{
 
+	static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']	
 	static responseFormats = ['json', 'xml']	
 	def springSecurityService
 	
@@ -55,6 +56,8 @@ class ContactController extends RestfulController{
 	}
 	
 	def index() {
+		
+		println Contact.count()
 		
 		header 'total', Contact.count()		
 		respond Contact.list()

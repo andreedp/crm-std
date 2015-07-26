@@ -190,6 +190,9 @@
                             <li>
                                 <a href="#">Company</a>
                             </li>
+                            <li>
+                                <a href="#">List Of Values</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -239,14 +242,7 @@
     <!-- /#wrapper -->    
    	
 	<script type="text/javascript" src="app/vendor/requirejs/require.js" data-main="app/main"></script>
-	<script language="javascript">
-        function autoResizeDiv()
-        {
-            document.getElementById('main').style.height = window.innerHeight +'px';
-        }
-        window.onresize = autoResizeDiv;
-        autoResizeDiv();
-    </script>
+	
 </body>
 
 </html>

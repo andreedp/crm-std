@@ -117,7 +117,7 @@
 							          	<label for="inputType" class="col-md-2 control-label">Type:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="account.type">
+							            <select type="text" class="form-control" id="inputType" placeholder="Type" ng-model="account.type" ng-options="type for type in accountType" focus required></select>
 							          </div>
 							        </div>
 							      </div>

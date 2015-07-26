@@ -142,12 +142,23 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('contactCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Contact', 'lead', 'ContactService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Contact, lead, ContactService , AlertService) {
+	controllers.controller('contactCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Contact', 'lead', 'account', 'ContactService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Contact, lead, account, ContactService , AlertService) {
 					
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
 					$scope.contact = new Contact();
+					
+
+					$scope.minDate = new Date('1990/01/01');
+					$scope.maxDate = new Date('2050/01/01');
+					$scope.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'yyyy-MM-dd', 'shortDate'];
+					$scope.dateFormat = $scope.dateFormats[1];
+					$scope.dateOptions = {
+							'year-format': "'yy'",
+							'starting-day': 1
+					};
+					
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -160,12 +171,15 @@ define(['controllers/controllers'],
 					
 					$scope.contactTitle = ['Mr.', 'Ms.', 'Mrs.'];
 					$scope.contactSex = ['M', 'F', 'N'];
+					$scope.contactSource = ['Campaign', 'Email', 'Web Site', 'Direct Mail', 'Partner', 'Employee', 'Exisiting Customer', 'Other'];
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
 					$scope.predicates = ['name', 'email', 'lastUpdated'];
 				    $scope.selectedPredicate = $scope.predicates[0];
-						  
+					
+					$scope.contactAccount = account;
+				    
 				    $scope.orderProp = 'name';
 				    
 				    $scope.OpenCourse = function(courseId) {

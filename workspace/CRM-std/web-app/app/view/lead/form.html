@@ -141,7 +141,7 @@
 							          	<label for="inputStatus" class="col-md-2 control-label">Status:</label>
 							          </div>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputStatus" placeholder="Status" ng-model="lead.status">
+							            <select type="text" class="form-control" id="inputStatus" placeholder="Status" ng-model="lead.status"ng-options="status for status in leadStatus" focus required></select>
 							          </div>
 							        </div>
 							      </div>
@@ -165,7 +165,7 @@
 							          	<label for="inputLeadSource" class="col-md-2 control-label">Lead Source:</label>
 							          </span>
 							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputLeadSource" placeholder="Lead Source">
+							            <select type="text" class="form-control" id="inputLeadSource" placeholder="Lead Source" ng-model="lead.leadSource" ng-options="source for source in leadSource" focus required></select>
 							          </div>
 							        </div>
 							      </div>

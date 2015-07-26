@@ -1,20 +1,20 @@
 define(['controllers/controllers'],
 		function(controllers) {
-	controllers.controller('opportunityController', ['$scope', 'Opportunity',
-	                                          function($scope, Opportunity) {
+	controllers.controller('campaignController', ['$scope', 'Campaign',
+	                                          function($scope, Campaign) {
 			
-			$scope.header = 'Opportunity Management';
-			$scope.title = 'Opportunity';
-			$scope.opportunity = opportunity.query();
+			$scope.header = 'Campaign Management';
+			$scope.title = 'Campaign';
+			$scope.campaign = campaign.query();
 		    $scope.orderProp = 'name';
 			
 	}]);
 	
-	controllers.controller('opportunityListController', ['$scope', '$routeParams', '$window', 'Opportunity', 'OpportunityService', 'AlertService',
-		                                          function($scope,  $routeParams, $window, Opportunity, OpportunityService, AlertService) {
+	controllers.controller('campaignListController', ['$scope', '$routeParams', '$window', 'Campaign', 'CampaignService', 'AlertService',
+		                                          function($scope,  $routeParams, $window, Campaign, CampaignService, AlertService) {
 				
-				$scope.header = 'Opportunity Management';
-				$scope.title = 'Opportunity';
+				$scope.header = 'Campaign Management';
+				$scope.title = 'Campaign';
 				$scope.date = {startDate: null, endDate: null};
 				$scope.today = function() {
 				    $scope.dt = new Date();
@@ -31,9 +31,9 @@ define(['controllers/controllers'],
 				$scope.predicates = ['name', 'salesStage', 'type'];
 			    $scope.selectedPredicate = $scope.predicates[0];
 					  
-				$scope.opportunity = Opportunity.query(function(data) {
+				$scope.campaign = Campaign.query(function(data) {
 				    // success handler
-					console.log("Opportunity count ",  $scope.opportunity.length); 	
+					console.log("Campaign count ",  $scope.campaign.length); 	
 				
 				}, function(error) {
 				    // error handler     
@@ -62,11 +62,11 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('opportunityEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Opportunity', 'opportunity', 'account', 'OpportunityService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Opportunity, opportunity, account, OpportunityService, AlertService) {
+	controllers.controller('campaignEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Campaign', 'campaign', 'account', 'CampaignService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $location, Campaign, campaign, account, CampaignService, AlertService) {
 					
-					$scope.header = 'Opportunity Management';
-					$scope.title = 'Opportunity';
+					$scope.header = 'Campaign Management';
+					$scope.title = 'Campaign';
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -77,13 +77,13 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
-					$scope.opportunityAccount = account;
-					$scope.opportunitySalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
+					$scope.campaignAccount = account;
+					$scope.campaignSalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
 					 
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
-					$scope.opportunity = opportunity;
+					$scope.campaign = campaign;
 					
 					$scope.predicates = ['name', 'email', 'company'];
 				    $scope.selectedPredicate = $scope.predicates[0];
@@ -91,19 +91,19 @@ define(['controllers/controllers'],
 				    $scope.orderProp = 'name';
 				    
 				    $scope.save = function() {
-				    	Opportunity.update({id: opportunity.id}, $scope.opportunity, function (result) {
-							$log.info('[OpportunityEditController::save]Opportunity Update success: ' + angular.toJson(result));																	
-							AlertService.add('success', 'Create Opportunity Success');
-							$location.path('opportunity/view/' + opportunity.id);
+				    	Campaign.update({id: campaign.id}, $scope.campaign, function (result) {
+							$log.info('[CampaignEditController::save]Campaign Update success: ' + angular.toJson(result));																	
+							AlertService.add('success', 'Create Campaign Success');
+							$location.path('campaign/view/' + campaign.id);
 						}, function(response) {
-							$log.info('[OpportunityEditController::save]Opportunity Update failed: ' + angular.toJson(response));
+							$log.info('[CampaignEditController::save]Campaign Update failed: ' + angular.toJson(response));
 							if(response.data.errors)
 							{
 								$log.info('domain errors: ' + angular.toJson(response.data.errors));							
 							}
 							else
 							{
-								AlertService.add('warning', 'Update Opportunity Failed');
+								AlertService.add('warning', 'Update Campaign Failed');
 							}
 						});
 					};
@@ -114,11 +114,11 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('opportunityViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Opportunity', 'opportunity', 'OpportunityService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Opportunity, opportunity, OpportunityService, AlertService) {
+	controllers.controller('campaignViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Campaign', 'campaign', 'CampaignService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Campaign, campaign, CampaignService, AlertService) {
 					
-					$scope.header = 'Opportunity Management';
-					$scope.title = 'Opportunity';
+					$scope.header = 'Campaign Management';
+					$scope.title = 'Campaign';
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -135,7 +135,7 @@ define(['controllers/controllers'],
 					$scope.predicates = ['name', 'email', 'lastUpdated'];
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
-					$scope.opportunity = opportunity;
+					$scope.campaign = campaign;
 				    $scope.orderProp = 'name';
 				    
 				    $scope.rating = {
@@ -147,26 +147,26 @@ define(['controllers/controllers'],
 				        $window.alert("Called " + courseId);
 				    }
 				    
-				    $scope.deleteOpportunity = function(opportunity){
-						opportunity.$delete(function(data, headers){
-							$log.info('[OpportunityViewController::deleteOpportunity]success data: ' + angular.toJson(data));
-							AlertService.add('success', 'Delete Opportunity Success');
-							$location.path('opportunity/list');
+				    $scope.deleteCampaign = function(campaign){
+						campaign.$delete(function(data, headers){
+							$log.info('[CampaignViewController::deleteCampaign]success data: ' + angular.toJson(data));
+							AlertService.add('success', 'Delete Campaign Success');
+							$location.path('campaign/list');
 						}, function(response){
-							$log.info('[OpportunityViewController::deleteOpportunity]failed response: ' + angular.toJson(response));
-							AlertService.add('danger', opportunity.name + ' ' + 'ERROR_FAIL_DELETE' + ' ' + response.data);
-							$location.path('opportunity/list');
+							$log.info('[CampaignViewController::deleteCampaign]failed response: ' + angular.toJson(response));
+							AlertService.add('danger', campaign.name + ' ' + 'ERROR_FAIL_DELETE' + ' ' + response.data);
+							$location.path('campaign/list');
 						});
 					};
 
 		}]);
 
-	controllers.controller('opportunityCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Opportunity', 'account', 'OpportunityService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Opportunity, account, OpportunityService , AlertService) {
+	controllers.controller('campaignCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Campaign', 'CampaignService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Campaign, CampaignService , AlertService) {
 					
-					$scope.header = 'Opportunity Management';
-					$scope.title = 'Opportunity';
-					$scope.opportunity = new Opportunity();
+					$scope.header = 'Campaign Management';
+					$scope.title = 'Campaign';
+					$scope.campaign = new Campaign();
 					$scope.date = {startDate: null, endDate: null};
 					$scope.today = function() {
 					    $scope.dt = new Date();
@@ -177,9 +177,8 @@ define(['controllers/controllers'],
 						    startingDay: 1
 						  };
 
-					$scope.opportunityAccount = account;
-					$scope.opportunitySalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
-					$scope.opportunitySource = ['Campaign', 'Email', 'Web Site', 'Direct Mail', 'Partner', 'Employee', 'Exisiting Customer', 'Other'];				
+					$scope.campaignStatus = ['Planning', 'Active', 'Inactive', 'Complete', 'In Queue', 'Sending'];
+					$scope.campaignType = ['Telesales', 'Email', 'Web', 'Mail', 'Print', 'Radio', 'NewsLetter', 'Television'];				
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -193,19 +192,19 @@ define(['controllers/controllers'],
 				    }
 				    
 				    $scope.save = function() {
-						$scope.opportunity.$save(function(opportunity, headers) {
-							$log.info('[OpportunityCreateController::save]Opportunity Save success: ' + angular.toJson(opportunity));																	
-							AlertService.add('success', 'Create Opportunity Success');
-							$location.path('opportunity/view/' + opportunity.id);
+						$scope.campaign.$save(function(campaign, headers) {
+							$log.info('[CampaignCreateController::save]Campaign Save success: ' + angular.toJson(campaign));																	
+							AlertService.add('success', 'Create Campaign Success');
+							$location.path('campaign/view/' + campaign.id);
 						}, function(response) {
-							$log.info('[OpportunityCreateController::save]Opportunity Save failed: ' + angular.toJson(response));
+							$log.info('[CampaignCreateController::save]Campaign Save failed: ' + angular.toJson(response));
 							if(response.data.errors)
 							{
 								$log.info('domain errors: ' + angular.toJson(response.data.errors));							
 							}
 							else
 							{
-								AlertService.add('warning', 'Create Opportunity Failed');
+								AlertService.add('warning', 'Create Campaign Failed');
 							}
 						});
 					};

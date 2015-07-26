@@ -1,17 +1,17 @@
 define(['services/services'],
 		function(services) {
-	services.factory('Account', ['$resource', '$cacheFactory',
+	services.factory('ListOfValues', ['$resource', '$cacheFactory',
 	                                 function($resource, $cacheFactory) {
-		return $resource('/CRM-std/account/:id',{}, {
+		return $resource('/CRM-std/listofvalues/:id',{}, {
 			  'query': {method:'GET',  isArray:true},
-			  //'queryAll':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.account')},
 			  'queryAll':  {method:'GET', isArray:true},
 			  'update': {method: 'PUT'},
-		      'delete': {method:'DELETE', url: '/CRM-std/account/:id', params: {id: '@id'}},			
+		      'delete': {method:'DELETE', url: '/CRM-std/listofvalues/:id', params: {id: '@id'}},	
+		      'queryIndustry':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.industry'), url: '/CRM-std/listofvalues/listIndustry'},				
 		});
 	}]);
 	
-	services.factory('AccountLoader', ['Account', '$route', '$q', '$log', 'AlertService', '$location',
+	services.factory('ListOfValuesLoader', ['Account', '$route', '$q', '$log', 'AlertService', '$location',
                                        function(Account, $route, $q, $log, AlertService, $location) {
 		return function() {
 			var delay = $q.defer();
@@ -27,7 +27,7 @@ define(['services/services'],
 		};
 	}]);
 
-	services.factory('MultiAccountLoader', ['Account', '$q', '$log', 'AlertService', '$location',
+	services.factory('MultiListOfValuesLoader', ['Account', '$q', '$log', 'AlertService', '$location',
                                             function(Account, $q, $log, AlertService, $location) {
 		return function() {
 			var delay = $q.defer();
@@ -42,7 +42,22 @@ define(['services/services'],
 		};
 	}]);
 	
-	services.factory('AccountService', ['$http', '$log', 'Account', 
+	services.factory('MultiIndustryLoader', ['ListOfValues', '$q', '$log', 'AlertService', '$location',	                                       
+		function(ListOfValues, $q, $log, AlertService, $location) {
+			return function() {
+				var delay = $q.defer();
+				ListOfValues.queryIndustry({ max: 0 }, function(industry) {
+					delay.resolve(industry);
+				}, function() {
+					delay.reject('Unable to fetch industry');
+					$log.error('[MultiIndustryLoader]error: ' + angular.toJson(error));
+					AlertService.add('danger', error.data);
+				});
+				return delay.promise;
+			};
+		}]);
+	
+	services.factory('ListOfValuesService', ['$http', '$log', 'Account', 
 		                                        function($http, $log, Account) {
 			var service = {};
 			service.test = function(){

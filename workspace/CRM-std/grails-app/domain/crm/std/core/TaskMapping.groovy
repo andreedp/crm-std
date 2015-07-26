@@ -2,18 +2,10 @@ package crm.std.core
 
 import java.util.Date;
 
-class Task {
+class TaskMapping {
 
 	String	id
-    String name
-	TaskMapping relatedTo
-	Contact contact
-	Date startDate
-	Date dueDate
-	String priority
-	String status
-	String description
-	SecAppUser assignTo
+	String name
 	SecAppUser	createdBy
 	SecAppUser	lastModifiedBy
 	Date	dateCreated
@@ -22,15 +14,9 @@ class Task {
     static constraints = {
 		id							maxSize:32
 		name						maxSize:128
-		startDate					nullable:true
-		dueDate						nullable:true
-		priority					maxSize:64, nullable:true, blank: true
-		status						maxSize:64, nullable:true, blank: true
-		description					maxSize:64, nullable:true, blank: true
 		
 		createdBy					nullable:true
 		lastModifiedBy				nullable:true
-		
     }
 	
 	static mapping = {

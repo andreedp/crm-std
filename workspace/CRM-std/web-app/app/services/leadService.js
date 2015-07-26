@@ -4,8 +4,8 @@ define(['services/services'],
 	                                 function($resource, $cacheFactory) {
 		return $resource('/CRM-std/lead/:id',{}, {
 			  'query': {method:'GET',  isArray:true},
-			  'queryAll':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.lead')},
-		      'update': {method: 'PUT'},
+			  'queryAll':  {method:'GET', isArray:true},
+			  'update': {method: 'PUT'},
 		      'delete': {method:'DELETE', url: '/CRM-std/lead/:id', params: {id: '@id'}},			
 		});
 	}]);
@@ -30,9 +30,9 @@ define(['services/services'],
                                             function(Lead, $q, $log, AlertService, $location) {
 		return function() {
 			var delay = $q.defer();
-			Lead.queryAll(function(leads) {
+			Lead.queryAll({ max: 0 }, function(leads) {
 				delay.resolve(leads);
-			}, function() {
+			}, function(error) {
 				delay.reject('Unable to fetch patients');
 				$log.error('[MultiContactLoader]error: ' + angular.toJson(error));
 				AlertService.add('danger', error.data);

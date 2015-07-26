@@ -4,7 +4,7 @@ define(['services/services'],
 	                                 function($resource, $cacheFactory) {
 		return $resource('/CRM-std/contact/:id',{}, {
 			  'query': {method:'GET',  isArray:true},
-			  'queryAll':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.contact')},
+			  'queryAll':  {method:'GET', isArray:true},
 		      'update': {method: 'PUT'},
 		      'delete': {method:'DELETE', url: '/CRM-std/contact/:id', params: {id: '@id'}},			
 		});

@@ -1,9 +1,10 @@
 package crm.std.core
 
+import java.util.Date;
+
 class Campaign {
 
     String name
-	Account account
 	String currency
 	BigDecimal budget
 	BigDecimal actualCost
@@ -14,9 +15,12 @@ class Campaign {
 	Date endDate
 	String status
 	String type
-	BigDecimal probability
 	String description
 	SecAppUser assignTo
+	SecAppUser	createdBy
+	SecAppUser	lastModifiedBy
+	Date	dateCreated
+	Date	lastUpdated
 	
     static constraints = {
 		id							maxSize:32
@@ -31,6 +35,10 @@ class Campaign {
 		status						maxSize:64, nullable:true, blank: true
 		type						maxSize:64, nullable:true, blank: true
 		description					maxSize:64, nullable:true, blank: true
+		assignTo					nullable:true, blank: true
+		
+		createdBy					nullable:true
+		lastModifiedBy				nullable:true
 		
     }
 	

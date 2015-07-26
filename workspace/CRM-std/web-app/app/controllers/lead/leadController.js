@@ -186,7 +186,10 @@ define(['controllers/controllers'],
 					
 					$scope.predicates = ['name', 'email', 'lastUpdated'];
 				    $scope.selectedPredicate = $scope.predicates[0];
-						  
+					
+				    $scope.leadSource = ['Campaign', 'Email', 'Web Site', 'Direct Mail', 'Partner', 'Employee', 'Exisiting Customer', 'Other'];					
+				    $scope.leadStatus = ['New', 'Assigned', 'In Process', 'Converted', 'Recycled', 'Dead'];					
+				    
 				    $scope.orderProp = 'name';
 				    
 				    $scope.OpenCourse = function(courseId) {
