@@ -9,12 +9,25 @@ import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
 class LeadController extends RestfulController{
 
+	LeadController() {
+		super(Lead)
+	}
+	
     static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']
 	static responseFormats = ['json', 'xml']
 	def springSecurityService
-
-	LeadController() {
-		super(Lead)
+	
+	def listTask()
+	{
+		def leadInstance = Lead.get(params.id)
+		
+		def criteria = Task.createCriteria()
+		def dataList = criteria.list {
+			eq("lead", leadInstance)
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
 	}
 	
     def index() {

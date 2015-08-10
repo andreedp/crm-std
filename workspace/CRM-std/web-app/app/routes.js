@@ -14,9 +14,27 @@ define(['app'], function (app) {
 	      }).
 	      when('/contact/edit/:contactId', {
 	    	  resolve: {
+	    		  account: ["MultiAccountLoader", function(MultiAccountLoader) {
+	                    return MultiAccountLoader();
+	              }],
         		  contact: ["ContactLoader", function(ContactLoader) {
                     return ContactLoader();
                   }],
+                  titles: ["MultiTitleLoader", function(MultiTitleLoader) {
+	                    return MultiTitleLoader();
+	               }],
+	               sex: ["MultiSexLoader", function(MultiSexLoader) {
+	                    return MultiSexLoader();
+	               }],
+	               leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+	                    return MultiLeadSourceLoader();
+	               }],
+	               users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+	               }],
+                 campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+	                    return MultiCampaignLoader();
+                 	}],
               },
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactEditController'
@@ -25,6 +43,9 @@ define(['app'], function (app) {
 		    	  resolve: {
 	        		  contact: ["ContactLoader", function(ContactLoader) {
 	                    return ContactLoader();
+	                  }],
+	                  task: ["MultiContactTaskLoader", function(MultiContactTaskLoader) {
+		                    return MultiContactTaskLoader();
 	                  }],
 	              },
 		        templateUrl: 'app/view/contact/view.html',
@@ -38,6 +59,15 @@ define(['app'], function (app) {
 	                  account: ["MultiAccountLoader", function(MultiAccountLoader) {
 		                    return MultiAccountLoader();
 		              }],
+		              titles: ["MultiTitleLoader", function(MultiTitleLoader) {
+		                    return MultiTitleLoader();
+		               }],
+		               sex: ["MultiSexLoader", function(MultiSexLoader) {
+		                    return MultiSexLoader();
+		               }],
+		               leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+		                    return MultiLeadSourceLoader();
+		               }],
 	              },
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
@@ -48,6 +78,21 @@ define(['app'], function (app) {
 	        		  account: ["MultiAccountLoader", function(MultiAccountLoader) {
 		                    return MultiAccountLoader();
 		               }],
+		               titles: ["MultiTitleLoader", function(MultiTitleLoader) {
+		                    return MultiTitleLoader();
+		               }],
+		               sex: ["MultiSexLoader", function(MultiSexLoader) {
+		                    return MultiSexLoader();
+		               }],
+		               leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+		                    return MultiLeadSourceLoader();
+		               }],
+		               users: ["MultiUserLoader", function(MultiUserLoader) {
+		                    return MultiUserLoader();
+	                  }],
+	                  campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+		                    return MultiCampaignLoader();
+	                  }],
 	              },
 		        templateUrl: 'app/view/contact/form.html',
 		        controller: 'contactCreateController'
@@ -58,9 +103,24 @@ define(['app'], function (app) {
 		      }).
 	      when('/account/edit/:accountId', {
 	    	  resolve: {
-	    		  account: ["AccountLoader", function(AccountLoader) {
-                    return AccountLoader();
-                  }],
+		    		account: ["AccountLoader", function(AccountLoader) {
+	                    return AccountLoader();
+	                  }],
+                  	industry: ["MultiIndustryLoader", function(MultiIndustryLoader) {
+                      return MultiIndustryLoader();
+                    }],
+                    types: ["MultiAccountTypeLoader", function(MultiAccountTypeLoader) {
+                        return MultiAccountTypeLoader();
+                      }],
+                    company: ["MultiCompanyLoader", function(MultiCompanyLoader) {
+                      return MultiCompanyLoader();
+                    }],
+                    users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+	                }],
+	                campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+	                    return MultiCampaignLoader();
+	                }],
               },
 		        templateUrl: 'app/view/account/form.html',
 		        controller: 'accountEditController'
@@ -69,6 +129,9 @@ define(['app'], function (app) {
 		    	  resolve: {
 		    		  account: ["AccountLoader", function(AccountLoader) {
 	                    return AccountLoader();
+	                  }],
+	                  task: ["MultiAccountTaskLoader", function(MultiAccountTaskLoader) {
+		                    return MultiAccountTaskLoader();
 	                  }],
 	              },
 		        templateUrl: 'app/view/account/view.html',
@@ -79,6 +142,18 @@ define(['app'], function (app) {
 	    		  industry: ["MultiIndustryLoader", function(MultiIndustryLoader) {
                     return MultiIndustryLoader();
                   }],
+                  types: ["MultiAccountTypeLoader", function(MultiAccountTypeLoader) {
+                      return MultiAccountTypeLoader();
+                    }],
+                  company: ["MultiCompanyLoader", function(MultiCompanyLoader) {
+                    return MultiCompanyLoader();
+                  }],  
+                  users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+	               }],
+	               campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+	                    return MultiCampaignLoader();
+	               }],
               },
 		        templateUrl: 'app/view/account/form.html',
 		        controller: 'accountCreateController'
@@ -95,6 +170,21 @@ define(['app'], function (app) {
 	                  account: ["MultiAccountLoader", function(MultiAccountLoader) {
 		                    return MultiAccountLoader();
 		                  }],
+	                  salesStage: ["MultiSalesStageLoader", function(MultiSalesStageLoader) {
+		                    return MultiSalesStageLoader();
+	                  }],
+	                  leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+		                    return MultiLeadSourceLoader();
+	                  }],
+	                  users: ["MultiUserLoader", function(MultiUserLoader) {
+		                    return MultiUserLoader();
+		               }],
+		               type: ["MultiOpportunityTypeLoader", function(MultiOpportunityTypeLoader) {
+		                    return MultiOpportunityTypeLoader();
+		               }],
+		               campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+		                    return MultiCampaignLoader();
+	                  }],
 	              },
 		        templateUrl: 'app/view/opportunity/form.html',
 		        controller: 'opportunityEditController'
@@ -103,6 +193,9 @@ define(['app'], function (app) {
 		    	  resolve: {
 		    		  opportunity: ["OpportunityLoader", function(OpportunityLoader) {
 	                    return OpportunityLoader();
+	                  }],
+	                  task: ["MultiOpportunityTaskLoader", function(MultiOpportunityTaskLoader) {
+		                    return MultiOpportunityTaskLoader();
 	                  }],
 	              },
 		        templateUrl: 'app/view/opportunity/view.html',
@@ -113,14 +206,48 @@ define(['app'], function (app) {
 	        		  lead: ["LeadLoader", function(LeadLoader) {
 	                    return LeadLoader();
 	                  }],
+	                  account: ["MultiAccountLoader", function(MultiAccountLoader) {
+		                    return MultiAccountLoader();
+		                  }],
+	                  leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+		                    return MultiLeadSourceLoader();
+	                  }],
+	                  salesStage: ["MultiSalesStageLoader", function(MultiSalesStageLoader) {
+		                    return MultiSalesStageLoader();
+	                  }],
+	                  users: ["MultiUserLoader", function(MultiUserLoader) {
+		                    return MultiUserLoader();
+		               }],
+		               type: ["MultiOpportunityTypeLoader", function(MultiOpportunityTypeLoader) {
+		                    return MultiOpportunityTypeLoader();
+		               }],
+		               campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+		                    return MultiCampaignLoader();
+	                  }],
 	              },
 		        templateUrl: 'app/view/opportunity/form.html',
 		        controller: 'opportunityCreateController'
 		  }).
 		  when('/opportunity/create', {
 				  resolve: {
+					  lead: function(){ return []; },
 	        		  account: ["MultiAccountLoader", function(MultiAccountLoader) {
 	                    return MultiAccountLoader();
+	                  }],
+	                  leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+		                    return MultiLeadSourceLoader();
+	                  }],
+	                  salesStage: ["MultiSalesStageLoader", function(MultiSalesStageLoader) {
+		                    return MultiSalesStageLoader();
+	                  }],
+	                  users: ["MultiUserLoader", function(MultiUserLoader) {
+		                    return MultiUserLoader();
+		               }],
+		               type: ["MultiOpportunityTypeLoader", function(MultiOpportunityTypeLoader) {
+		                    return MultiOpportunityTypeLoader();
+		               }],
+		               campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+		                    return MultiCampaignLoader();
 	                  }],
 	              },
 		        templateUrl: 'app/view/opportunity/form.html',
@@ -135,6 +262,24 @@ define(['app'], function (app) {
 	       		  lead: ["LeadLoader", function(LeadLoader) {
 	                   return LeadLoader();
 	                 }],
+                 titles: ["MultiTitleLoader", function(MultiTitleLoader) {
+	                    return MultiTitleLoader();
+                  }],
+                  sex: ["MultiSexLoader", function(MultiSexLoader) {
+	                    return MultiSexLoader();
+                  }],
+                  leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+	                    return MultiLeadSourceLoader();
+                  }],
+                  leadStatus: ["MultiLeadStatusLoader", function(MultiLeadStatusLoader) {
+	                    return MultiLeadStatusLoader();
+                  }],
+                  users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+                  }],
+                  campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+	                    return MultiCampaignLoader();
+                  }],
 	          },
 			  templateUrl: 'app/view/lead/form.html',
 			  controller: 'leadEditController'
@@ -144,11 +289,34 @@ define(['app'], function (app) {
 		        		  lead: ["LeadLoader", function(LeadLoader) {
 		                    return LeadLoader();
 		                  }],
+		                  task: ["MultiLeadTaskLoader", function(MultiLeadTaskLoader) {
+			                    return MultiLeadTaskLoader();
+		                  }],
 		       },
 			   templateUrl: 'app/view/lead/view.html',
 			   controller: 'leadViewController'
 			}).
 		   when('/lead/create', {
+				   resolve: {
+		        		  leadStatus: ["MultiLeadStatusLoader", function(MultiLeadStatusLoader) {
+		                    return MultiLeadStatusLoader();
+		                  }],
+		                  titles: ["MultiTitleLoader", function(MultiTitleLoader) {
+			                    return MultiTitleLoader();
+		                  }],
+		                  sex: ["MultiSexLoader", function(MultiSexLoader) {
+			                    return MultiSexLoader();
+		                  }],
+		                  leadSource: ["MultiLeadSourceLoader", function(MultiLeadSourceLoader) {
+			                    return MultiLeadSourceLoader();
+		                  }],
+		                  users: ["MultiUserLoader", function(MultiUserLoader) {
+			                    return MultiUserLoader();
+		                  }],
+		                  campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+			                    return MultiCampaignLoader();
+		                  }],
+				   },
 			        templateUrl: 'app/view/lead/form.html',
 			        controller: 'leadCreateController'
 			      }).
@@ -161,34 +329,139 @@ define(['app'], function (app) {
 		   		campaign: ["CampaignLoader", function(CampaignLoader) {
 	                   return CampaignLoader();
 	                 }],
+                 campaignStatus: ["MultiCampaignStatusLoader", function(MultiCampaignStatusLoader) {
+	                   return MultiCampaignStatusLoader();
+	                 }],
+                 campaignType: ["MultiCampaignTypeLoader", function(MultiCampaignTypeLoader) {
+                   return MultiCampaignTypeLoader();
+                 }],
+                 users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+                }],
 	          },
 			  templateUrl: 'app/view/campaign/form.html',
 			  controller: 'campaignEditController'
 			}).
-		   when('/campaign/view/:leadId', {
+		   when('/campaign/view/:campaignId', {
 			   resolve: {
 				   campaign: ["CampaignLoader", function(CampaignLoader) {
 		                    return CampaignLoader();
-		                  }],
+                  }],
+                  task: ["MultiCampaignTaskLoader", function(MultiCampaignTaskLoader) {
+	                    return MultiCampaignTaskLoader();
+                  }],
 		       },
 			   templateUrl: 'app/view/campaign/view.html',
 			   controller: 'campaignViewController'
 			}).
 		   when('/campaign/create', {
+			   resolve: {
+				   campaignStatus: ["MultiCampaignStatusLoader", function(MultiCampaignStatusLoader) {
+		                   return MultiCampaignStatusLoader();
+		                 }],
+	                campaignType: ["MultiCampaignTypeLoader", function(MultiCampaignTypeLoader) {
+	                   return MultiCampaignTypeLoader();
+	                 }],
+	                users: ["MultiUserLoader", function(MultiUserLoader) {
+		                    return MultiUserLoader();
+	                }],
+		          },
 			        templateUrl: 'app/view/campaign/form.html',
 			        controller: 'campaignCreateController'
+	       }).
+	       when('/task/list', {
+		          templateUrl: 'app/view/task/list.html',
+		          controller: 'taskListController'
+		        }).	      
+	      when('/task/edit/:taskId', {
+		   	  resolve: {
+		   		task: ["TaskLoader", function(TaskLoader) {
+	                   return TaskLoader();
+	                 }],
+                 leads: ["MultiLeadLoader", function(MultiLeadLoader) {
+	                   return MultiLeadLoader();
+	                 }],
+                 campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+	                    return MultiCampaignLoader();
+	                  }],
+                  users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+	                  }],
+				   relatedTo: ["MultiTaskOwnerLoader", function(MultiTaskOwnerLoader) {
+		                   return MultiTaskOwnerLoader();
+		                 }],
+                  taskStatus: ["MultiTaskStatusLoader", function(MultiTaskStatusLoader) {
+	                   return MultiTaskStatusLoader();
+	                 }],
+                  contact: ["MultiContactLoader", function(MultiContactLoader) {
+	                   return MultiContactLoader();
+	                 }],
+                 account: ["MultiAccountLoader", function(MultiAccountLoader) {
+	                    return MultiAccountLoader();
+	              }],
+	              opportunity: ["MultiOpportunityLoader", function(MultiOpportunityLoader) {
+		               return MultiOpportunityLoader();
+		             }],
+	          },
+			  templateUrl: 'app/view/task/form.html',
+			  controller: 'taskEditController'
+			}).
+		   when('/task/view/:taskId', {
+			   resolve: {
+				   task: ["TaskLoader", function(TaskLoader) {
+		                    return TaskLoader();
+                  }],
+		       },
+			   templateUrl: 'app/view/task/view.html',
+			   controller: 'taskViewController'
+			}).
+		   when('/task/create', {
+			   resolve: {
+				   leads: ["MultiLeadLoader", function(MultiLeadLoader) {
+	                   return MultiLeadLoader();
+	                 }],
+                 campaign: ["MultiCampaignLoader", function(MultiCampaignLoader) {
+	                    return MultiCampaignLoader();
+	                  }],
+                  users: ["MultiUserLoader", function(MultiUserLoader) {
+	                    return MultiUserLoader();
+	                  }],
+				   relatedTo: ["MultiTaskOwnerLoader", function(MultiTaskOwnerLoader) {
+		                   return MultiTaskOwnerLoader();
+		                 }],
+                  taskStatus: ["MultiTaskStatusLoader", function(MultiTaskStatusLoader) {
+	                   return MultiTaskStatusLoader();
+	                 }],
+                  contact: ["MultiContactLoader", function(MultiContactLoader) {
+	                   return MultiContactLoader();
+	                 }],
+                 account: ["MultiAccountLoader", function(MultiAccountLoader) {
+	                    return MultiAccountLoader();
+	              }],
+	              opportunity: ["MultiOpportunityLoader", function(MultiOpportunityLoader) {
+		               return MultiOpportunityLoader();
+		             }],
+	             priority: ["MultiPriorityLoader", function(MultiPriorityLoader) {
+	                   return MultiPriorityLoader();
+	                 }],
+		          },		          
+			        templateUrl: 'app/view/task/form.html',
+			        controller: 'taskCreateController'
 	       }).
 	       when('/', {
 	    	  resolve: {
 	       		  leads: ["MultiLeadLoader", function(MultiLeadLoader) {
 	                   return MultiLeadLoader();
-	                 }],
+                 }],
 	              contacts: ["MultiContactLoader", function(MultiContactLoader) {
 		               return MultiContactLoader();
-		             }],
+	             }],
 	             opportunity: ["MultiOpportunityLoader", function(MultiOpportunityLoader) {
 		               return MultiOpportunityLoader();
-		             }],
+	             }],
+	             task: ["MultiTaskLoader", function(MultiTaskLoader) {
+	                    return MultiTaskLoader();
+                 }],
 	          },
 	          templateUrl: 'app/view/dashboard.html',
 	          controller: 'dashboardController'

@@ -1,6 +1,8 @@
 package crm.std.core
 
-class Contact {
+import java.util.HashMap;
+
+class Contact implements Serializable {
 
 	String	id
 	String name	
@@ -8,7 +10,6 @@ class Contact {
 	String sex
 	String address	
 	String city	
-	String state
 	String postalCode
 	String country
 	Date dob
@@ -22,7 +23,6 @@ class Contact {
 	String description
 	SecAppUser assignTo
 	String leadSource
-	SecAppUser reportsTo
 	Campaign campaign
 	SecAppUser	createdBy
 	SecAppUser	lastModifiedBy
@@ -36,7 +36,6 @@ class Contact {
 		title			nullable: true, blank: true, inList:['Mr.','Ms.','Mrs.']
 		address			maxSize:512, nullable:true, blank: true
 		city			maxSize:128, nullable:true, blank: true
-		state			maxSize:128, nullable:true, blank: true
 		postalCode		maxSize:16, nullable:true, blank: true
 		country			maxSize:128, nullable:true, blank: true
 		email			maxSize:128, nullable:true, blank: true	
@@ -44,14 +43,13 @@ class Contact {
 		description		maxSize:512, nullable:true, blank: true
 		telephone		maxSize:128, nullable:true, blank: true
 		telephone2		maxSize:128, nullable:true, blank: true
-		dob				nullable:true
+		dob				nullable:true, blank: true 
 		department		maxSize:128, nullable:true, blank: true
 		position		maxSize:128, nullable:true, blank: true		
 		leadSource		maxSize:128, nullable:true, blank: true
 		account			nullable:true, blank: true
 		assignTo		nullable:true, blank: true
 		campaign		nullable:true, blank: true
-		reportsTo		nullable:true, blank: true
 		
 		createdBy		nullable:true
 		lastModifiedBy	nullable:true
@@ -60,7 +58,29 @@ class Contact {
 	static mapping = {
 		id			name:'id',generator:'uuid'
 		name 		index:'contact_name_idx'
+		account column:'contact_account'
 		
 		sort 		name:'asc'
+	}
+	
+	HashMap serialize(){
+		def value = [
+			id: this.id,
+			dateCreated: this.dateCreated,
+			account:[
+				id: this.account.id,
+				name: this.account.name,
+				industry: this.account.industry,
+				assignTo: [
+					id: this.assignTo.id,
+					name: this.assignTo.username,				
+				],
+			],			
+			lastModifiedBy: this.lastModifiedBy != null ? [
+				username: this.lastModifiedBy.username
+			] : null,
+			lastUpdated: this.lastUpdated,
+		]
+		return value
 	}
 }

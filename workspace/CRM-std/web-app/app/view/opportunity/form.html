@@ -1,5 +1,5 @@
 				<!-- Page Heading -->
-                <form name="opportunityForm" ng-submit="save()" class="form-horizontal" role="form">
+                <form name="opportunityForm" class="form-horizontal" role="form">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -43,22 +43,23 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputName" class="col-md-2 control-label">Name:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputName" class="col-md-4 control-label">Name:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="opportunity.name">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputAccount" class="col-md-2 control-label">Account:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputAccount" placeholder="Account" ng-model="opportunity.account" ng-options="accounts.name for accounts in opportunityAccount" focus required></select>
-							          </div>
+							          	<label for="inputAccount" class="col-md-4 control-label">Account:</label>
+							          <div class="col-md-8">
+							            <p class="input-group" >
+								          	<input ng-model="opportunity.account.name" class="form-control" id="inputAccount" name="inputAccount" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openAccount()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+						   			</div>
 							        </div>
 							      </div>      
 							   </td>
@@ -66,20 +67,16 @@
 								<td>
 								  <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputSalesStage" class="col-md-2 control-label">Sales Stage:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputSalesStage" placeholder="salesStage" ng-model="opportunity.salesStage" ng-options="salesStages for salesStages in opportunitySalesStage" focus required></select>
+							          	<label for="inputSalesStage" class="col-md-4 control-label">Sales Stage:</label>
+							          <div class="col-md-8">
+							            <select type="text" class="form-control" id="inputSalesStage" placeholder="salesStage" ng-model="opportunity.salesStage" ng-options="salesStage for salesStage in opportunitySalesStage" focus required></select>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputProbability" class="col-md-2 control-label">Probability:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputProbability" class="col-md-4 control-label">Probability:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputProbability" placeholder="Probability" ng-model="opportunity.probability">
 							          </div>
 							        </div>
@@ -90,21 +87,17 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputCurrency" class="col-md-2 control-label">Currency:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputCurrency" class="col-md-4 control-label">Currency:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputCurrency" placeholder="Currency" ng-model="opportunity.currency">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputOpportunityAmount" class="col-md-2 control-label">Opportunity Amount:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputOpportunityAmount" placeholder="OpportunityAmount" ng-model="opportunity.opportunityAmount">
+							          	<label for="inputOpportunityAmount" class="col-md-4 control-label">Opportunity Amount:</label>
+							          <div class="col-md-8">
+							            <input type="text" class="form-control" id="inputOpportunityAmount" placeholder="Opportunity Amount" ng-model="opportunity.opportunityAmount">
 							          </div>
 							        </div>
 							      </div>      
@@ -114,20 +107,16 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputType" class="col-md-2 control-label">Type:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputType" placeholder="Type" ng-model="opportunity.type">
+							          	<label for="inputType" class="col-md-4 control-label">Type:</label>
+							          <div class="col-md-8">
+							            <select type="text" class="form-control" id="inputType" placeholder="Type" ng-model="opportunity.type" ng-options="type for type in opportunityType" focus required></select>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputDescription" class="col-md-4 control-label">Description:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="opportunity.description">
 							          </div>
 							        </div>
@@ -138,25 +127,21 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputNextStep" class="col-md-2 control-label">Next Step:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputNextStep" class="col-md-4 control-label">Next Step:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputNextStep" placeholder="NextStep" ng-model="opportunity.nextStep">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputCloseDate" class="col-md-2 control-label" for="date"><span class="required">*</span>Close Date:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" placeholder="Close Date" datepicker-popup="{{dateFormat}}" ng-model="opportunity.closeDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="date" id="date" ng-required="true"  minimumdate="{{minDate | date:dateFormat}}" />
-											<div class="help-block error" ng-show="opportunityForm.date.$dirty && opportunityForm.date.$invalid">
-												<span class="help-block error" ng-show="opportunityForm.date.$error.required">Required Field</span>
-												<span class="help-block error" ng-show="opportunityForm.date.$error.date">Invalid Date</span>
-												<span class="help-block error" ng-show="opportunityForm.date.$error.minimumdate">Error Date.</span>
+							          	<label for="inputCloseDate" class="col-md-4 control-label" for="closeDate"><span class="required"></span>Close Date:</label>
+							          <div class="col-md-8">
+							            <input type="text" class="form-control" placeholder="Close Date" datepicker-popup="{{dateFormat}}" ng-model="opportunity.closeDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="closeDate" id="closeDate" />
+											<div class="help-block error" ng-show="opportunityForm.closeDate.$dirty && opportunityForm.closeDate.$invalid">
+												<span class="help-block error" ng-show="opportunityForm.closeDate.$error.required">Required Field</span>
+												<span class="help-block error" ng-show="opportunityForm.closeDate.$error.date">Invalid Date</span>
+												<span class="help-block error" ng-show="opportunityForm.closeDate.$error.minimumdate">Error Date.</span>
 											</div>
 							          </div>
 							        </div>
@@ -167,46 +152,41 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputLeadSource" class="col-md-2 control-label">Lead Source:</label>
-							          </span>
-							          <div class="col-md-9">
+							          	<label for="inputLeadSource" class="col-md-4 control-label">Lead Source:</label>
+							          <div class="col-md-8">
 							            <select type="text" class="form-control" id="inputLeadSource" placeholder="Name" ng-model="opportunity.leadSource" ng-options="source for source in opportunitySource" focus required></select>
 							          </div>
 							        </div>
 							      </div>
-							      <div class="col-md-6 col-xs-12 ">
+							       <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label nowrap="nowrap" for="inputReportsTo" class="col-md-2 control-label">Reports To:</label>
-							          </span>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="opportunity.reportsTo">
-							          </div>
+							          	<label for="inputCampaign" class="col-md-4 control-label">Campaign:</label>
+							          <div class="col-md-8">
+							            <p class="input-group" >
+								          	<input ng-model="opportunity.campaign.name" class="form-control" id="inputCampaign" name="inputCampaign" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openCampaign()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+						   			</div>
 							        </div>
-							      </div>      
+							      </div>     
 				   				</td>
 							   </tr>
 				   			   <tr>
 								<td>
+							     
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputCampaign" class="col-md-2 control-label">Campaign:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="opportunity.campaign">
-							          </div>
-							        </div>
-							      </div>
-							      <div class="col-md-6">
-							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
-							          </span>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="opportunity.assignTo">
-							          </div>
+							          	<label for="inputAssignTo" class="col-md-4 control-label">Assign To:</label>
+							          <div class="col-md-8">
+							            <p class="input-group" >
+								          	<input ng-model="opportunity.assignTo.username" class="form-control" id="inputAssignTo" name="inputAssignTo" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openUser()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+						   			</div>
 							        </div>
 							      </div>
 							 	</td>

@@ -1,5 +1,5 @@
 				<!-- Page Heading -->
-				<form name="contactForm" ng-submit="save()" class="form-horizontal" role="form">
+				<form name="contactForm" class="form-horizontal" role="form">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -43,20 +43,16 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputName" class="col-md-2 control-label">Name:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputName" class="col-md-4 control-label">Name:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="contact.name">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputTitle" class="col-md-2 control-label">Title:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputTitle" class="col-md-4 control-label">Title:</label>
+							          <div class="col-md-8">
 							            <select type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="contact.title" ng-options="titles for titles in contactTitle" focus required></select>
 							          </div>
 							        </div>
@@ -66,20 +62,16 @@
 								<td>
 								  <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputSex" class="col-md-2 control-label">Sex:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputSex" class="col-md-4 control-label">Sex:</label>
+							          <div class="col-md-8">
 							            <select type="text" class="form-control" id="inputSex" placeholder="Sex" ng-model="contact.sex" ng-options="sex for sex in contactSex" focus required></select>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputAddress" class="col-md-2 control-label">Address:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputAddress" class="col-md-4 control-label">Address:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputAddress" placeholder="Address" ng-model="contact.address">
 							          </div>
 							        </div>
@@ -90,20 +82,16 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputEmail" class="col-md-2 control-label">Email:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputEmail" class="col-md-4 control-label">Email:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="contact.email">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputDescription" class="col-md-4 control-label">Description:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="contact.description">
 							          </div>
 							        </div>
@@ -114,20 +102,16 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputTelephone" class="col-md-2 control-label">Phone:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputTelephone" class="col-md-4 control-label">Phone:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputTelephone" placeholder="Phone" ng-model="contact.telephone">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputTelephone2" class="col-md-2 control-label">Phone:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputTelephone2" class="col-md-4 control-label">Phone:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputTelephone2" placeholder="Phone 2" ng-model="contact.telephone2">
 							          </div>
 							        </div>
@@ -138,28 +122,27 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDOB" class="col-md-2 control-label" for="date"><span class="required"></span>DOB:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <!-- <input type="text" class="form-control" id="inputDOB" placeholder="DOB" ng-model="contact.dob"> 
-							          	<label class="col-sm-4 control-label" for="date"><span class="required">*</span>  DOB</label>-->										
-											<input type="text" class="form-control" placeholder="DOB" datepicker-popup="{{dateFormat}}" ng-model="contact.dob" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="date" id="date" ng-required="true"  minimumdate="{{minDate | date:dateFormat}}" />
-											<div class="help-block error" ng-show="contactForm.date.$dirty && contactForm.date.$invalid">
-												<span class="help-block error" ng-show="contactForm.date.$error.required">Required Field</span>
-												<span class="help-block error" ng-show="contactForm.date.$error.date">Invalid Date</span>
-												<span class="help-block error" ng-show="contactForm.date.$error.minimumdate">Error Date.</span>
+							          	<label for="inputDOB" class="col-md-4 control-label" for="dob"><span class="required"></span>DOB:</label>
+							          <div class="col-md-8">
+							           	<input type="text" class="form-control" placeholder="DOB" datepicker-popup="{{dateFormat}}" ng-model="contact.dob" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="dob" id="dob" minimumdate="{{minDate | date:dateFormat}}" />
+											<div class="help-block error" ng-show="contactForm.dob.$dirty && contactForm.dob.$invalid">
+												<span class="help-block error" ng-show="contactForm.dob.$error.required">Required Field</span>
+												<span class="help-block error" ng-show="contactForm.dob.$error.date">Invalid Date</span>
+												<span class="help-block error" ng-show="contactForm.dob.$error.minimumdate">Error Date.</span>
 											</div>									
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputAccount" class="col-md-2 control-label">Account:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputAccount" placeholder="Account" ng-model="contact.account" ng-options="accounts.name for accounts in contactAccount" focus required></select>
+							          	<label for="inputAccount" class="col-md-4 control-label">Account:</label>
+							          <div class="col-md-8">
+							            <p class="input-group" >
+								          	<input ng-model="contact.account.name" class="form-control" id="inputAccount" name="inputAccount" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openAccount()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
 							          </div>
 							        </div>
 							      </div>      
@@ -167,22 +150,18 @@
 							   </tr>
 				   			   <tr>
 								<td>
-							      <div class="col-md-6">
+							      <div class="col-md-6 col-xs-12">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDepartment" class="col-md-2 control-label">Department:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputDepartment" class="col-md-4 control-label">Department:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputDepartment" placeholder="Department" ng-model="contact.department">
 							          </div>
 							        </div>
 							      </div>
-							      <div class="col-md-6">
+							      <div class="col-md-6 col-xs-12">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputPosition" class="col-md-2 control-label">Position:</label>
-							          </span>
-							          <div class="col-md-9">
+							          	<label for="inputPosition" class="col-md-4 control-label">Position:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputPosition" placeholder="position" ng-model="contact.position">
 							          </div>
 							        </div>
@@ -193,45 +172,39 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputName" class="col-md-2 control-label">Lead Source:</label>
-							          </span>
-							          <div class="col-md-9">
+							          	<label for="inputName" class="col-md-4 control-label">Lead Source:</label>
+							          <div class="col-md-8">
 							            <select type="text" class="form-control" id="inputName" placeholder="Name" ng-model="contact.leadSource" ng-options="source for source in contactSource" focus required></select>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label nowrap="nowrap" for="inputReportsTo" class="col-md-2 control-label">Reports To:</label>
-							          </span>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputReportsTo" placeholder="reportsTo" ng-model="contact.reportsTo">
-							          </div>
+							          	<label for="inputCampaign" class="col-md-4 control-label">Campaign:</label>
+							          <div class="col-md-8">
+							            <p class="input-group" >
+								          	<input ng-model="contact.campaign.name" class="form-control" id="inputCampaign" name="inputCampaign" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openCampaign()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+						   			</div>
 							        </div>
-							      </div>      
+							      </div>    
 				   				</td>
 							   </tr>
 				   			   <tr>
 								<td>
-							      <div class="col-md-6 col-xs-12 ">
+							      <div class="col-md-6 col-xs-12">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputCampaign" class="col-md-2 control-label">Campaign:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputCampaign" placeholder="Campaign" ng-model="contact.campaign">
-							          </div>
-							        </div>
-							      </div>
-							      <div class="col-md-6">
-							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
-							          </span>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="contact.assignTo">
+							          <label for="inputAssignTo" class="col-sm-4 control-label">Assign To:</label>
+							          <div class="col-md-8">
+							          	<p class="input-group" >
+								          	<input ng-model="contact.assignTo.username" class="form-control" id="inputAssignTo" name="inputAssignTo" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openUser()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
 							          </div>
 							        </div>
 							      </div>

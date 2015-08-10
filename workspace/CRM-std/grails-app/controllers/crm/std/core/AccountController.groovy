@@ -11,12 +11,25 @@ import grails.transaction.Transactional
 
 class AccountController extends RestfulController{
 
-    static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
-	static responseFormats = ['json', 'xml']
-	def springSecurityService
-	
 	AccountController() {
 		super(Account)
+	}
+	
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static responseFormats = ['json', 'xml']
+	def springSecurityService
+		
+	def listTask()
+	{
+		def accountInstance = Account.get(params.id)
+		
+		def criteria = Task.createCriteria()
+		def dataList = criteria.list {
+			eq("account", accountInstance)
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
 	}
 	
     def index() {
@@ -112,6 +125,8 @@ class AccountController extends RestfulController{
         }
     }
 
+	
+	
     protected void notFound() {
         request.withFormat {
             form multipartForm {

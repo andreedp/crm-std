@@ -8,12 +8,26 @@ import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
 class ContactController extends RestfulController{
 
+	ContactController() {
+		super(Contact)
+	}
+	
 	static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']	
 	static responseFormats = ['json', 'xml']	
 	def springSecurityService
 	
-	ContactController() {
-		super(Contact)
+	
+	def listTask()
+	{
+		def contactInstance = Contact.get(params.id)
+		
+		def criteria = Task.createCriteria()
+		def dataList = criteria.list {
+			eq("contact", contactInstance)
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
 	}
 		
 	@Transactional
@@ -22,7 +36,7 @@ class ContactController extends RestfulController{
 			notFound()
 			return
 		}
-
+		
 		contactInstance.clearErrors()
 		contactInstance.validate()
 				
@@ -30,6 +44,7 @@ class ContactController extends RestfulController{
 			respond contactInstance.errors, view:'create'
 			return
 		}
+		
 		
 		contactInstance.createdBy = springSecurityService.currentUser
 		contactInstance.save flush:true, failOnError: true

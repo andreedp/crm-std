@@ -57,8 +57,7 @@
 									<th st-sort="name" ><span class="glyphicon glyphicon-user"></span> Name</th>
 									<th><span class="glyphicon glyphicon-envelope"></span> Email</th>
 									<th><span class="fa fa-fw fa-building"></span> Company</th>									
-									<th><span class="glyphicon glyphicon-tasks"></span> Description</th>
-									<th  st-sort="lastUpdated" >Last Updated</th>
+									<th><span class="glyphicon glyphicon-tasks"></span> Status</th>
 									<th st-sort="rating" ><span class="glyphicon glyphicon-star"></span> Rating</th>
 								</tr>
 								<tr>
@@ -79,7 +78,6 @@
 									<td><a ng-href="mailto:{{lead.email}}">{{lead.email}}</a></td>
 									<td>{{lead.company}}</td>
 									<td>{{lead.status}}</td>
-									<td>{{lead.lastUpdated | date}}</td>
 									<td class="col-md-2">
 											<div star-rating rating-value="lead.rating" max="rating.max" ></div>
 									</td>

@@ -6,7 +6,9 @@ define(['services/services'],
 			  'query': {method:'GET',  isArray:true},
 			  'queryAll':  {method:'GET', isArray:true},
 		      'update': {method: 'PUT'},
-		      'delete': {method:'DELETE', url: '/CRM-std/opportunity/:id', params: {id: '@id'}},			
+		      'delete': {method:'DELETE', url: '/CRM-std/opportunity/:id', params: {id: '@id'}},
+		      'queryTask':  {method:'GET', isArray:true, url: '/CRM-std/opportunity/listTask/:id', params: {id: '@id'},},
+				
 		});
 	}]);
 	
@@ -40,6 +42,21 @@ define(['services/services'],
 			return delay.promise;
 		};
 	}]);
+	
+	services.factory('MultiOpportunityTaskLoader', ['Opportunity', '$route', '$q', '$log', 'AlertService', '$location',
+	                                            function(Opportunity, $route, $q, $log, AlertService, $location) {
+			return function() {
+				var delay = $q.defer();
+				Opportunity.queryTask({id: $route.current.params.opportunityId},function(tasks) {
+					delay.resolve(tasks);
+				}, function() {
+					delay.reject('Unable to fetch tasks');
+					$log.error('[MultiOpportunityTaskLoader]error: ' + angular.toJson(error));
+					AlertService.add('danger', error.data);
+				});
+				return delay.promise;
+			};
+		}]);
 	
 	services.factory('OpportunityService', ['$http', '$log', 'Opportunity', 
 		                                        function($http, $log, Opportunity) {

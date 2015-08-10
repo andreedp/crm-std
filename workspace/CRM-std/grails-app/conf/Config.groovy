@@ -108,6 +108,10 @@ grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/'
 grails.plugin.springsecurity.requestMap.className = 'crm.std.core.Requestmap'
 grails.plugin.springsecurity.securityConfigType = 'Requestmap'
 grails.plugin.springsecurity.logout.postOnly = false
+
+grails.date.formats = ["yyyy/MM/dd", "yyyy-MM-dd HH:mm:ss.SSS ZZZZ", "dd.MM.yyyy HH:mm:ss", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd'T'HH:mm:ss.SSSZ", "EEE MMM dd HH:mm:ss zzz yyyy"]
+grails.databinding.dateFormats = ["yyyy/MM/dd", "yyyy-MM-dd'T'HH:mm:ss.SSSZ", "yyyy-MM-dd'T'HH:mm:ssZ", "EEE MMM dd HH:mm:ss zzz yyyy"]
+
 //grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	//'/':                              ['permitAll'],
 	//'/index':                         ['permitAll'],

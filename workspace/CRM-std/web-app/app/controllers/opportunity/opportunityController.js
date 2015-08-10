@@ -62,8 +62,8 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('opportunityEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Opportunity', 'opportunity', 'account', 'OpportunityService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Opportunity, opportunity, account, OpportunityService, AlertService) {
+	controllers.controller('opportunityEditController', ['$log', '$scope', '$filter', '$routeParams', '$window', '$modal', '$location', 'Opportunity', 'opportunity', 'account', 'campaign', 'salesStage', 'leadSource', 'type', 'users', 'OpportunityService', 'AlertService',
+			                                          function($log, $scope, $filter, $routeParams, $window, $modal, $location, Opportunity, opportunity, account, campaign, salesStage, leadSource, type, users, OpportunityService, AlertService) {
 					
 					$scope.header = 'Opportunity Management';
 					$scope.title = 'Opportunity';
@@ -77,8 +77,25 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
+					$scope.opportunityUser = users;
 					$scope.opportunityAccount = account;
-					$scope.opportunitySalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
+					$scope.contactCampaign = campaign;
+					
+					$scope.opportunitySalesStage = [];
+					$scope.opportunitySource = [];
+					$scope.opportunityType = [];
+					
+					angular.forEach(salesStage, function(salesStage){
+						$scope.opportunitySalesStage.push(salesStage.valueName);
+					});
+					
+					angular.forEach(leadSource, function(leadSource){
+						$scope.opportunitySource.push(leadSource.valueName);
+					});
+					
+					angular.forEach(type, function(type){
+						$scope.opportunityType.push(type.valueName);
+					});
 					 
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
@@ -90,7 +107,77 @@ define(['controllers/controllers'],
 						  
 				    $scope.orderProp = 'name';
 				    
+				    $scope.openAccount = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormAccount.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.opportunityAccount;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.opportunity.account = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.opportunity.account.name);
+					      });
+				    };
+				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.opportunityUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.opportunity.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.opportunity.assignTo.name);
+					      });
+				    };
+				    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.campaign.name);
+					      });
+				    };
+				    
 				    $scope.save = function() {
+				    	
+				    	if($scope.opportunity.closeDate)
+				    		$scope.opportunity.closeDate = $filter('date')($scope.opportunity.closeDate, 'yyyy-MM-ddTHH:mm:ssZ').toString();										    	
+				    	
 				    	Opportunity.update({id: opportunity.id}, $scope.opportunity, function (result) {
 							$log.info('[OpportunityEditController::save]Opportunity Update success: ' + angular.toJson(result));																	
 							AlertService.add('success', 'Create Opportunity Success');
@@ -114,8 +201,8 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('opportunityViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Opportunity', 'opportunity', 'OpportunityService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Opportunity, opportunity, OpportunityService, AlertService) {
+	controllers.controller('opportunityViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Opportunity', 'opportunity', 'task', 'OpportunityService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Opportunity, opportunity, task, OpportunityService, AlertService) {
 					
 					$scope.header = 'Opportunity Management';
 					$scope.title = 'Opportunity';
@@ -136,6 +223,8 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 					$scope.opportunity = opportunity;
+					$scope.task = task;
+					
 				    $scope.orderProp = 'name';
 				    
 				    $scope.rating = {
@@ -161,8 +250,8 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('opportunityCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Opportunity', 'account', 'OpportunityService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Opportunity, account, OpportunityService , AlertService) {
+	controllers.controller('opportunityCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', '$modal', 'Opportunity', 'account', 'campaign', 'salesStage', 'leadSource', 'type', 'users', 'OpportunityService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, $modal, Opportunity, account, campaign, salesStage, leadSource, type, users, OpportunityService , AlertService) {
 					
 					$scope.header = 'Opportunity Management';
 					$scope.title = 'Opportunity';
@@ -172,14 +261,35 @@ define(['controllers/controllers'],
 					    $scope.dt = new Date();
 					  };
 					$scope.today();
+					$scope.minDate = new Date('1990/01/01');
+					$scope.maxDate = new Date('2050/01/01');
+					$scope.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'yyyy-MM-dd', 'shortDate'];
+					$scope.dateFormat = $scope.dateFormats[1];
 					$scope.dateOptions = {
-						    formatYear: 'yy',
-						    startingDay: 1
-						  };
+							'year-format': "'yy'",
+							'starting-day': 1
+					};
 
+					$scope.opportunityUser = users;
 					$scope.opportunityAccount = account;
-					$scope.opportunitySalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
-					$scope.opportunitySource = ['Campaign', 'Email', 'Web Site', 'Direct Mail', 'Partner', 'Employee', 'Exisiting Customer', 'Other'];				
+					$scope.opportunityCampaign = campaign;
+					
+					$scope.opportunitySalesStage = [];
+					$scope.opportunitySource = [];
+					$scope.opportunityType = [];
+					
+					angular.forEach(salesStage, function(salesStage){
+						$scope.opportunitySalesStage.push(salesStage.valueName);
+					});
+					
+					angular.forEach(leadSource, function(leadSource){
+						$scope.opportunitySource.push(leadSource.valueName);
+					});
+					
+					angular.forEach(type, function(type){
+						$scope.opportunityType.push(type.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -192,7 +302,77 @@ define(['controllers/controllers'],
 				        $window.alert("Called " + courseId);
 				    }
 				    
+				    $scope.openAccount = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormAccount.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.opportunityAccount;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.opportunity.account = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.opportunity.account.name);
+					      });
+				    };
+				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.opportunityUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.opportunity.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.opportunity.assignTo.name);
+					      });
+				    };
+				    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.opportunityCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.opportunity.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.opportunity.campaign.name);
+					      });
+				    };
+				    
 				    $scope.save = function() {
+				    	
+				    	if($scope.opportunity.closeDate)
+				    		$scope.opportunity.closeDate = $filter('date')($scope.opportunity.closeDate, 'yyyy-MM-ddTHH:mm:ssZ').toString();						
+				    	
 						$scope.opportunity.$save(function(opportunity, headers) {
 							$log.info('[OpportunityCreateController::save]Opportunity Save success: ' + angular.toJson(opportunity));																	
 							AlertService.add('success', 'Create Opportunity Success');

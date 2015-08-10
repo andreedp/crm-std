@@ -62,8 +62,8 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('leadEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Lead', 'lead', 'LeadService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Lead, lead, LeadService, AlertService) {
+	controllers.controller('leadEditController', ['$log', '$scope', '$routeParams', '$window', '$modal', '$location', 'campaign', 'Lead', 'lead', 'titles', 'sex', 'leadSource', 'leadStatus', 'users', 'LeadService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $modal, $location, campaign, Lead, lead, titles, sex, leadSource, leadStatus, users, LeadService, AlertService) {
 					
 					$scope.header = 'Leads Management';
 					$scope.title = 'Leads';
@@ -77,9 +77,29 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
-					$scope.leadTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.leadSex = ['M', 'F', 'N'];
-					 
+				    $scope.leadTitle = [];
+					$scope.leadSex = [];
+					$scope.leadSource = [];
+					$scope.leadStatus = [];
+					$scope.leadUser = users;
+					$scope.leadCampaign = campaign;
+					
+					angular.forEach(titles, function(titles){
+						$scope.leadTitle.push(titles.valueName);
+					});
+					
+					angular.forEach(sex, function(sex){
+						$scope.leadSex.push(sex.valueName);
+					});
+				    
+					angular.forEach(leadSource, function(leadSource){
+						$scope.leadSource.push(leadSource.valueName);
+					});
+					
+					angular.forEach(leadStatus, function(leadStatus){
+						$scope.leadStatus.push(leadStatus.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -89,6 +109,50 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 				    $scope.orderProp = 'name';
+				    
+				    $scope.openUser = function (size) {
+
+				      var modalInstance = $modal.open({
+				        animation: $scope.animationsEnabled,
+				        templateUrl: 'app/templates/searchFormUser.html',
+				        controller: 'modalInstanceController',
+				        size: size,
+				        resolve: {
+				          items: function () {
+				            return $scope.leadUser;
+				          }
+				        }
+				      });
+
+				      modalInstance.result.then(function (selectedItem) {
+				        $scope.lead.assignTo = selectedItem;
+				      }, function () {
+				        $log.info('Modal dismissed at: ' + new Date());
+				        $log.info('contact: ' +  $scope.lead.assignTo.name);
+				      });
+				    };
+				    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.leadCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.lead.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.lead.campaign.name);
+					      });
+					    };
 				   
 				    LeadService.calculateRating($scope.lead);				    
 				    
@@ -116,8 +180,8 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('leadViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Lead', 'lead', 'LeadService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Lead, lead, LeadService, AlertService) {
+	controllers.controller('leadViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Lead', 'lead', 'task', 'LeadService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Lead, lead, task, LeadService, AlertService) {
 					
 					$scope.header = 'Leads Management';
 					$scope.title = 'Leads';
@@ -138,13 +202,15 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 					$scope.lead = lead;
+					$scope.task = task;
+					
 				    $scope.orderProp = 'name';
 				    
 				    $scope.rating = {
 					        current: 5,
 					        max: 10
 					};
-				    
+								   				    
 				    $scope.OpenCourse = function(courseId) {
 				        $window.alert("Called " + courseId);
 				    }
@@ -163,8 +229,8 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('leadCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Lead', 'LeadService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Lead, LeadService , AlertService) {
+	controllers.controller('leadCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$modal', '$window', 'campaign', 'Lead', 'titles', 'sex', 'leadSource', 'leadStatus', 'users', 'LeadService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $modal, $window, campaign, Lead, titles, sex, leadSource, leadStatus, users, LeadService , AlertService) {
 					
 					$scope.header = 'Leads Management';
 					$scope.title = 'Leads';
@@ -174,22 +240,44 @@ define(['controllers/controllers'],
 					    $scope.dt = new Date();
 					  };
 					$scope.today();
+					$scope.minDate = new Date('1990/01/01');
+					$scope.maxDate = new Date('2050/01/01');
+					$scope.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'yyyy-MM-dd', 'shortDate'];
+					$scope.dateFormat = $scope.dateFormats[1];
 					$scope.dateOptions = {
-						    formatYear: 'yy',
-						    startingDay: 1
-						  };
-
-					$scope.leadTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.leadSex = ['M', 'F', 'N'];
+							'year-format': "'yy'",
+							'starting-day': 1
+					};
+					    
+				    $scope.leadTitle = [];
+					$scope.leadSex = [];
+					$scope.leadSource = [];
+					$scope.leadStatus = [];
+					$scope.leadUser = users;
+					$scope.leadCampaign = campaign;
+					
+					angular.forEach(titles, function(titles){
+						$scope.leadTitle.push(titles.valueName);
+					});
+					
+					angular.forEach(sex, function(sex){
+						$scope.leadSex.push(sex.valueName);
+					});
+				    
+					angular.forEach(leadSource, function(leadSource){
+						$scope.leadSource.push(leadSource.valueName);
+					});
+					
+					angular.forEach(leadStatus, function(leadStatus){
+						$scope.leadStatus.push(leadStatus.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
 					$scope.predicates = ['name', 'email', 'lastUpdated'];
 				    $scope.selectedPredicate = $scope.predicates[0];
-					
-				    $scope.leadSource = ['Campaign', 'Email', 'Web Site', 'Direct Mail', 'Partner', 'Employee', 'Exisiting Customer', 'Other'];					
-				    $scope.leadStatus = ['New', 'Assigned', 'In Process', 'Converted', 'Recycled', 'Dead'];					
-				    
+								    
 				    $scope.orderProp = 'name';
 				    
 				    $scope.OpenCourse = function(courseId) {
@@ -198,6 +286,51 @@ define(['controllers/controllers'],
 				    
 				    LeadService.calculateRating($scope.lead);
 				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.leadUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.lead.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.lead.assignTo.name);
+					      });
+					    };
+					    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.leadCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.lead.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.lead.campaign.name);
+					      });
+					    };
+					   
+					    
 				    $scope.save = function() {
 						$scope.lead.$save(function(lead, headers) {
 							$log.info('[LeadCreateController::save]Lead Save success: ' + angular.toJson(lead));																	

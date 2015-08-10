@@ -7,7 +7,9 @@ define(['services/services'],
 			  //'queryAll':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.account')},
 			  'queryAll':  {method:'GET', isArray:true},
 			  'update': {method: 'PUT'},
-		      'delete': {method:'DELETE', url: '/CRM-std/account/:id', params: {id: '@id'}},			
+		      'delete': {method:'DELETE', url: '/CRM-std/account/:id', params: {id: '@id'}},
+		      'queryTask':  {method:'GET', isArray:true, url: '/CRM-std/account/listTask/:id', params: {id: '@id'},},
+				
 		});
 	}]);
 	
@@ -36,6 +38,21 @@ define(['services/services'],
 			}, function() {
 				delay.reject('Unable to fetch accounts');
 				$log.error('[MultiAccountLoader]error: ' + angular.toJson(error));
+				AlertService.add('danger', error.data);
+			});
+			return delay.promise;
+		};
+	}]);
+	
+	services.factory('MultiAccountTaskLoader', ['Account', '$route', '$q', '$log', 'AlertService', '$location',
+                                            function(Account, $route, $q, $log, AlertService, $location) {
+		return function() {
+			var delay = $q.defer();
+			Account.queryTask({id: $route.current.params.accountId},function(tasks) {
+				delay.resolve(tasks);
+			}, function() {
+				delay.reject('Unable to fetch tasks');
+				$log.error('[MultiAccountTaskLoader]error: ' + angular.toJson(error));
 				AlertService.add('danger', error.data);
 			});
 			return delay.promise;

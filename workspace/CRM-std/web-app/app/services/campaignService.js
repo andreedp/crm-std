@@ -4,9 +4,11 @@ define(['services/services'],
 	                                 function($resource, $cacheFactory) {
 		return $resource('/CRM-std/campaign/:id',{}, {
 			  'query': {method:'GET',  isArray:true},
-			  'queryAll':  {method:'GET', isArray:true, cache: $cacheFactory('di.data.campaign')},
+			  'queryAll':  {method:'GET', isArray:true},
 		      'update': {method: 'PUT'},
-		      'delete': {method:'DELETE', url: '/CRM-std/campaign/:id', params: {id: '@id'}},			
+		      'delete': {method:'DELETE', url: '/CRM-std/campaign/:id', params: {id: '@id'}},	
+		      'queryTask':  {method:'GET', isArray:true, url: '/CRM-std/campaign/listTask/:id', params: {id: '@id'},},
+				
 		});
 	}]);
 	
@@ -30,16 +32,31 @@ define(['services/services'],
                                             function(Campaign, $q, $log, AlertService, $location) {
 		return function() {
 			var delay = $q.defer();
-			Campaign.queryAll(function(opportunities) {
-				delay.resolve(opportunities);
+			Campaign.queryAll(function(campaign) {
+				delay.resolve(campaign);
 			}, function() {
-				delay.reject('Unable to fetch opportunities');
+				delay.reject('Unable to fetch campaign');
 				$log.error('[MultiCampaignLoader]error: ' + angular.toJson(error));
 				AlertService.add('danger', error.data);
 			});
 			return delay.promise;
 		};
 	}]);
+	
+	services.factory('MultiCampaignTaskLoader', ['Campaign', '$route', '$q', '$log', 'AlertService', '$location',
+	                                            function(Campaign, $route, $q, $log, AlertService, $location) {
+			return function() {
+				var delay = $q.defer();
+				Campaign.queryTask({id: $route.current.params.campaignId},function(tasks) {
+					delay.resolve(tasks);
+				}, function() {
+					delay.reject('Unable to fetch tasks');
+					$log.error('[MultiCampaignTaskLoader]error: ' + angular.toJson(error));
+					AlertService.add('danger', error.data);
+				});
+				return delay.promise;
+			};
+		}]);
 	
 	services.factory('CampaignService', ['$http', '$log', 'Campaign', 
 		                                        function($http, $log, Campaign) {

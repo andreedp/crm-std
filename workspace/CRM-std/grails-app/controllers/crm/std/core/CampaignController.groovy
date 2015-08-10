@@ -16,6 +16,19 @@ class CampaignController {
 	static responseFormats = ['json', 'xml']
 	def springSecurityService
 	
+	def listTask()
+	{
+		def campaignInstance = Campaign.get(params.id)
+		
+		def criteria = Task.createCriteria()
+		def dataList = criteria.list {
+			eq("campaign", campaignInstance)
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
     def index() {
         //params.max = Math.min(max ?: 10, 100)
         //respond Campaign.list(params), model:[campaignInstanceCount: Campaign.count()]
@@ -43,8 +56,11 @@ class CampaignController {
             respond campaignInstance.errors, view:'create'
             return
         }
+		
+		println campaignInstance
 
-        campaignInstance.save flush:true
+		campaignInstance.createdBy = springSecurityService.currentUser
+        campaignInstance.save flush:true, failOnError: true
 
         request.withFormat {
             form multipartForm {

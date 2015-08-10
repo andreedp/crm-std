@@ -1,8 +1,9 @@
 package crm.std.core
 
+import java.io.Serializable;
 import java.util.Date;
 
-class ListOfValues {
+class ListOfValues implements Serializable {
 
     String	id
 	String valueType

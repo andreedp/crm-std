@@ -1,5 +1,5 @@
 				<!-- Page Heading -->
-                <form name="campaignForm" ng-submit="save()" class="form-horizontal" role="form">
+                <form name="campaignForm" class="form-horizontal" role="form">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -43,21 +43,17 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputName" class="col-md-2 control-label">Name:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputName" class="col-md-4 control-label">Name:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="campaign.name">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputStatus" class="col-md-2 control-label">Status:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputStatus" placeholder="Status" ng-model="Status" ng-options="status for status in campaignStatus" focus required></select>
+							          	<label for="inputStatus" class="col-md-4 control-label">Status:</label>
+							          <div class="col-md-8">
+							            <select type="text" class="form-control" id="inputStatus" placeholder="Status" ng-model="campaign.status" ng-options="campaignStatus for campaignStatus in campaignStatus" focus required></select>
 							          </div>
 							        </div>
 							      </div>      
@@ -66,30 +62,26 @@
 								<td>
 								  <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputStartDate" class="col-md-2 control-label" for="date">Start Date:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" placeholder="DOB" datepicker-popup="{{dateFormat}}" ng-model="campaign.startDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="date" id="date" ng-required="true"  minimumdate="{{minDate | date:dateFormat}}" />
-										<div class="help-block error" ng-show="campaignForm.date.$dirty && campaignForm.date.$invalid">
-											<span class="help-block error" ng-show="campaignForm.date.$error.required">Required Field</span>
-											<span class="help-block error" ng-show="campaignForm.date.$error.date">Invalid Date</span>
-											<span class="help-block error" ng-show="campaignForm.date.$error.minimumdate">Error Date.</span>
+							          	<label for="inputStartDate" class="col-md-4 control-label" for="startDate">Start Date:</label>
+							          <div class="col-md-8">
+							            <input type="text" class="form-control" placeholder="Start Date" datepicker-popup="{{dateFormat}}" ng-model="campaign.startDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="startDate" id="startDate" />
+										<div class="help-block error" ng-show="campaignForm.startDate.$dirty && campaignForm.startDate.$invalid">
+											<span class="help-block error" ng-show="campaignForm.startDate.$error.required">Required Field</span>
+											<span class="help-block error" ng-show="campaignForm.startDate.$error.date">Invalid Date</span>
+											<span class="help-block error" ng-show="campaignForm.startDate.$error.minimumdate">Error Date.</span>
 										</div>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputAddress" class="col-md-2 control-label" for="date">End Date:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" placeholder="DOB" datepicker-popup="{{dateFormat}}" ng-model="campaign.endDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="date" id="date" ng-required="true"  minimumdate="{{minDate | date:dateFormat}}" />
-										<div class="help-block error" ng-show="campaignForm.date.$dirty && campaignForm.date.$invalid">
-											<span class="help-block error" ng-show="campaignForm.date.$error.required">Required Field</span>
-											<span class="help-block error" ng-show="campaignForm.date.$error.date">Invalid Date</span>
-											<span class="help-block error" ng-show="campaignForm.date.$error.minimumdate">Error Date.</span>
+							          	<label for="inputAddress" class="col-md-4 control-label" for="endDate">End Date:</label>
+							          <div class="col-md-8">
+							            <input type="text" class="form-control" placeholder="End Date" datepicker-popup="{{dateFormat}}" ng-model="campaign.endDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="endDate" id="endDate" />
+										<div class="help-block error" ng-show="campaignForm.endDate.$dirty && campaignForm.endDate.$invalid">
+											<span class="help-block error" ng-show="campaignForm.endDate.$error.required">Required Field</span>
+											<span class="help-block error" ng-show="campaignForm.endDate.$error.date">Invalid Date</span>
+											<span class="help-block error" ng-show="campaignForm.endDate.$error.minimumdate">Error Date.</span>
 										</div>
 							          </div>
 							        </div>
@@ -101,44 +93,37 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputType" class="col-md-2 control-label">Type:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <select type="text" class="form-control" id="inputType" placeholder="Type" ng-model="campaign.type" ng-options="type for type in campaignType" focus required></select>
+							          	<label for="inputType" class="col-md-4 control-label">Type:</label>
+							          <div class="col-md-8">
+							            <select type="text" class="form-control" id="inputType" placeholder="Type" ng-model="campaign.type" ng-options="campaignType for campaignType in campaignType" focus required></select>
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputDescription" class="col-md-2 control-label">Description:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputDescription" class="col-md-4 control-label">Description:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="campaign.description">
 							          </div>
 							        </div>
 							      </div>      
 				   				</td>
 							   </tr>
+							   <tr>
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputCurrency" class="col-md-2 control-label">Currency:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputCurrency" class="col-md-4 control-label">Currency:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputCurrency" placeholder="Currency" ng-model="campaign.currency">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputBudget" class="col-md-2 control-label">Budget:</label>
-							          </div>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputBudget" placeholder="inputBudget" ng-model="campaign.budget">
+							          	<label for="inputBudget" class="col-md-4 control-label">Budget:</label>
+							          <div class="col-md-8">
+							            <input type="text" class="form-control" id="inputBudget" placeholder="Budget" ng-model="campaign.budget">
 							          </div>
 							        </div>
 							      </div>      
@@ -148,20 +133,16 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputExpectedCost" class="col-md-2 control-label">Expected Cost:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputExpectedCost" class="col-md-4 control-label">Expected Cost:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputExpectedCost" placeholder="Expected Cost" ng-model="campaign.expectedCost">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputExpectedRevenue" class="col-md-2 control-label">Expected Revenue:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputExpectedRevenue" class="col-md-4 control-label">Expected Revenue:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputExpectedRevenue" placeholder="Expected Revenue" ng-model="campaign.expectedRevenue">
 							          </div>
 							        </div>
@@ -172,20 +153,16 @@
 								<td>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <div class="col-xs-3 text-left">
-							          	<label for="inputActualCost" class="col-md-2 control-label">Actual Cost:</label>
-							          </div>
-							          <div class="col-md-9">
+							          	<label for="inputActualCost" class="col-md-4 control-label">Actual Cost:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputActualCost" placeholder="Actual Cost" ng-model="campaign.actualCost">
 							          </div>
 							        </div>
 							      </div>
 							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label nowrap="nowrap" for="inputObjective" class="col-md-2 control-label">Objective:</label>
-							          </span>
-							          <div class="col-md-9">
+							          	<label nowrap="nowrap" for="inputObjective" class="col-md-4 control-label">Objective:</label>
+							          <div class="col-md-8">
 							            <input type="text" class="form-control" id="inputObjective" placeholder="Objective" ng-model="campaign.objective">
 							          </div>
 							        </div>
@@ -194,14 +171,17 @@
 							   </tr>
 				   			   <tr>
 								<td>
-							      <div class="col-md-6">
+							      <div class="col-md-6 col-xs-12 ">
 							        <div class="form-group">
-							          <span style="white-space: nowrap;" class="col-xs-3 text-left">
-							          	<label for="inputAssignTo" class="col-md-2 control-label">Assign To:</label>
-							          </span>
-							          <div class="col-md-9">
-							            <input type="text" class="form-control" id="inputAssignTo" placeholder="assignTo" ng-model="campaign.assignTo">
-							          </div>
+							          	<label for="inputAssignTo" class="col-md-4 control-label">Assign To:</label>
+							          <div class="col-md-8">
+							            <p class="input-group" >
+								          	<input ng-model="campaign.assignTo.username" class="form-control" id="inputAssignTo" name="inputAssignTo" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openUser()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+						   			</div>
 							        </div>
 							      </div>
 							 	</td>

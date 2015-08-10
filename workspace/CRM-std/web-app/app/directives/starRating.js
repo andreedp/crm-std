@@ -1,5 +1,5 @@
 define(['directives/directives'], function(directives) {
-	directives.directive('starRating', ['$rootScope', function($rootScope) {
+	directives.directive('starRating', function() {
 		return {
 			restrict : 'A',
 			template: '<ul class="rating">' +
@@ -46,5 +46,5 @@ define(['directives/directives'], function(directives) {
 			 );
 			}*/
 		};
-	}]);
+	});
 });

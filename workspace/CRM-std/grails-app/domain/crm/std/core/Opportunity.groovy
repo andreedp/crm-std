@@ -1,6 +1,8 @@
 package crm.std.core
 
-class Opportunity {
+import java.io.Serializable;
+
+class Opportunity implements Serializable {
 
 	String	id
 	String name
@@ -20,9 +22,7 @@ class Opportunity {
 	SecAppUser	lastModifiedBy
 	Date	dateCreated
 	Date	lastUpdated
-	
-	static embedded = ['account']
-	
+		
     static constraints = {
 		id							maxSize:32
 		name						maxSize:128

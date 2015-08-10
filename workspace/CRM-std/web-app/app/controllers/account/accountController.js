@@ -62,8 +62,8 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('accountEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Account', 'account', 'account', 'AccountService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Account, account, account, AccountService, AlertService) {
+	controllers.controller('accountEditController', ['$log', '$scope', '$routeParams', '$window', '$modal', '$location', 'Account', 'industry', 'types', 'company', 'account', 'AccountService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $modal, $location, Account, industry, types, company, account, AccountService, AlertService) {
 					
 					$scope.header = 'Account Management';
 					$scope.title = 'Account';
@@ -77,10 +77,22 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
-					$scope.accountAccount = account;
-					$scope.accountCompany = ['Avaya', 'Nuance', 'Vasco', 'Datacard', 'Juniper'];					
-					$scope.accountIndustry = ['Technology', 'Banking', 'Communications', 'Consulting', 'Government'];
-					 
+					$scope.accountCompany = [];
+					$scope.accountIndustry = [];
+					$scope.accountType = [];
+					
+					angular.forEach(company, function(comp){
+						$scope.accountCompany.push(comp.valueName);
+					});
+					
+					angular.forEach(industry, function(ind){
+						$scope.accountIndustry.push(ind.valueName);
+					});
+					
+					angular.forEach(types, function(type){
+						$scope.accountType.push(type.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -115,8 +127,8 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('accountViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Account', 'account', 'AccountService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Account, account, AccountService, AlertService) {
+	controllers.controller('accountViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Account', 'account', 'task', 'AccountService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Account, account, task, AccountService, AlertService) {
 					
 					$scope.header = 'Account Management';
 					$scope.title = 'Account';
@@ -137,6 +149,8 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 					$scope.account = account;
+					$scope.task = task;
+					
 				    $scope.orderProp = 'name';
 				    
 				    $scope.rating = {
@@ -162,8 +176,8 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('accountCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Account', 'industry', 'AccountService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Account, industry, AccountService , AlertService) {
+	controllers.controller('accountCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', '$modal', 'Account', 'users', 'campaign', 'industry', 'types', 'company', 'AccountService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, $modal, Account, users, campaign, industry, types, company, AccountService , AlertService) {
 					
 					$scope.header = 'Account Management';
 					$scope.title = 'Account';
@@ -173,14 +187,35 @@ define(['controllers/controllers'],
 					    $scope.dt = new Date();
 					  };
 					$scope.today();
+					$scope.minDate = new Date('1990/01/01');
+					$scope.maxDate = new Date('2050/01/01');
+					$scope.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'yyyy-MM-dd', 'shortDate'];
+					$scope.dateFormat = $scope.dateFormats[1];
 					$scope.dateOptions = {
-						    formatYear: 'yy',
-						    startingDay: 1
-						  };
+							'year-format': "'yy'",
+							'starting-day': 1
+					};
+					
 
-					$scope.accountCompany = ['Avaya', 'Nuance', 'Vasco', 'Datacard', 'Juniper'];					
-					$scope.accountIndustry = industry;//['Technology', 'Banking', 'Communications', 'Consulting', 'Government'];
-					$scope.accountType = ['Customer', 'Competitor', 'Partner', 'Prospect', 'Reseller', 'Other'];
+					$scope.accountUser = users;
+					$scope.accountCampaign = campaign;
+					
+					$scope.accountCompany = [];
+					$scope.accountIndustry = [];
+					$scope.accountType = [];
+					
+					angular.forEach(company, function(comp){
+						$scope.accountCompany.push(comp.valueName);
+					});
+					
+					angular.forEach(industry, function(ind){
+						$scope.accountIndustry.push(ind.valueName);
+					});
+					
+					angular.forEach(types, function(type){
+						$scope.accountType.push(type.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -192,6 +227,50 @@ define(['controllers/controllers'],
 				    $scope.OpenCourse = function(courseId) {
 				        $window.alert("Called " + courseId);
 				    }
+				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.accountUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.account.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.account.assignTo.name);
+					      });
+				    };
+				    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.accountCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.account.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.account.campaign.name);
+					      });
+				    };
 				    
 				    $scope.save = function() {
 						$scope.account.$save(function(account, headers) {

@@ -12,12 +12,26 @@ import grails.transaction.Transactional
 
 class OpportunityController extends RestfulController{
 
+	OpportunityController() {
+		super(Opportunity)
+	}
+	
     static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
 	static responseFormats = ['json', 'xml']
 	def springSecurityService
-
-	OpportunityController() {
-		super(Opportunity)
+	
+	
+	def listTask()
+	{
+		def opportunityInstance = Opportunity.get(params.id)
+		
+		def criteria = Task.createCriteria()
+		def dataList = criteria.list {
+			eq("opportunity", opportunityInstance)
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
 	}
 	
     def index() {

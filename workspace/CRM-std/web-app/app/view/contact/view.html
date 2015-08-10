@@ -79,7 +79,7 @@
 									</tr>
 									<tr>
 										<td>Date Of Birth</td>
-										<td>{{contact.dob}}</td>
+										<td>{{contact.dob | date}}</td>
 										<td>Campaign</td>
 										<td>{{contact.campaign}}</td>
 									</tr>						
@@ -93,12 +93,12 @@
 										<td>Lead Source</td>
 										<td>{{contact.leadSource}}</td>
 										<td>Assign To</td>
-										<td>{{contact.assignTo}}</td>
+										<td>{{contact.assignTo.username}}</td>
 									</tr>
 									
 									<tr>
-										<td>Report To</td>
-										<td>{{contact.reportsTo}}</td>
+										<td>Account</td>
+										<td>{{contact.account.name}}</td>
 										<td>Last Modified By</td>
 										<td>{{contact.lastModifiedBy.username}}</td>
 									</tr>
@@ -107,5 +107,51 @@
 							</div>
 						</div>
 					</div>
-				</div>		
+				</div>	
+				
+				<div class="panel-body">				
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">							  
+							  <table st-set-filter="customFilter" st-table="displayedCollection" st-safe-src="task" class="table table-striped">
+								<thead>	
+																																							                
+								<tr>
+									<th st-sort="name" ><span class="glyphicon glyphicon-user"></span> Name</th>
+									<th><span class="glyphicon glyphicon-envelope"></span> Priority</th>
+									<th><span class="glyphicon glyphicon-phone-alt"></span> Status</th>									
+									<th><span class="glyphicon glyphicon-tasks"></span> Contact</th>
+									<th  st-sort="lastUpdated" > <span class="fa fa-calendar"></span> Last Updated</th>
+								</tr>
+								<tr>
+									<th>
+										<input st-search="name" placeholder="search for name" class="input-sm form-control" type="search"/>
+									</th>
+									<th colspan="3">
+										<input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+									</th>
+									<th>
+										
+									</th>									
+								</tr>
+								</thead>
+								<tbody>
+								<tr st-select-row="task" ng-repeat="task in displayedCollection">
+									<td><b><a ng-href="#/task/view/{{task.id}}">{{task.name}}</a></b></td>
+									<td>{{task.priority}}</td>
+									<td>{{task.status}}</td>
+									<td>{{task.contactName.name}}</td>
+									<td>{{task.lastUpdated | date}}</td>
+									<!--<td class="col-md-2">
+											<div class="col-md-1" ng-href="#/contact/edit/{{contact.id}}"><span class="glyphicon glyphicon-edit"></span></div>
+											<div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-remove-circle"></span></div>
+				                            <div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-eye-open"></span></div>
+									</td>-->
+								</tr>
+								</tbody>
+							</table>
+							</div>
+						</div>
+					</div>
+				</div>	
 				<!--</section>-->

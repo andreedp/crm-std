@@ -14,12 +14,12 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'bootstrap.min.css')}" />
 
-    <!-- MetisMenu CSS -->    
+    <!-- MetisMenu CSS   
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'metisMenu.min.css')}" />
-
-    <!-- Custom CSS -->    
+	-->  
+    <!-- Custom CSS     
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'sb-admin-2.css')}" />
-
+	-->
     <!-- Custom Fonts -->
     <link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'font-awesome.min.css')}" />
 
@@ -36,38 +36,43 @@
 
 <body>
 		
-	<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>	
-    <div class="container">
-        <div class="row vertical-offset-100">
-            <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                		<!-- <img src="${resource(dir: 'images', file: 'crm.jpg')}" alt=""></img> -->
-                        <h3 class="panel-title">Please Sign In</h3>
+	<!--<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>	
+     Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">               
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Login</h3>
+                            		<p>Enter your username and password to log on:</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-lock"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form action='${postUrl}' method='POST' id='loginForm' role="form" class="login-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-username">Username</label>
+			                        	<input type="text" name="j_username" placeholder="Username..." class="form-control" id="form-username">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Password</label>
+			                        	<input type="password" name="j_password" placeholder="Password..." class="form-password form-control" id="form-password">
+			                        </div>
+			                        <button type="submit" class="btn">Sign in!</button>
+			                    </form>
+		                    </div>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <form role="form">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="j_username" type="text" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="j_password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <input type="submit" name="Submit" value="Login" class="btn btn-lg btn-success btn-block" />
-                            </fieldset>
-                        </form>
-                    </div>
-			</div>                   
-            </div>
+                    
+                </div>
+                
+            </div>            
         </div>
-    </div>
     </form>
 
     <!-- jQuery -->
@@ -76,24 +81,13 @@
     <!-- Bootstrap Core JavaScript -->
     <script type="text/javascript" src="${resource(dir: 'js', file: 'bootstrap.min.js')}"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->    
+    <!-- Metis Menu Plugin JavaScript     
     <script type="text/javascript" src="${resource(dir: 'js', file: 'metisMenu.min.js')}"></script>
-
-    <!-- Custom Theme JavaScript -->
+	-->
+    <!-- Custom Theme JavaScript 
     <script type="text/javascript" src="${resource(dir: 'js', file: 'sb-admin-2.js')}"></script>
-	
-	
-<!-- footer -->
-	<footer id="footer">
-		<div class="text-center padder">
-			<p>
-				<small>Customer Relationship Management<br/> 
-				Standard Edition <br/>
-				Version <g:meta name="app.version"/><br/> <br/>
-				All rights reserved &copy;  2015 Phintraco </small>
-			</p>
-		</div>
-	</footer> 	
+	-->
+		
 </body>
 
 </html>

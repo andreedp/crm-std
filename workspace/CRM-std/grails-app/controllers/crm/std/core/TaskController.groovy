@@ -1,19 +1,30 @@
 package crm.std.core
 
-
-
 import static org.springframework.http.HttpStatus.*
+import grails.rest.RestfulController;
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
-class TaskController {
+import grails.converters.JSON
+import org.codehaus.groovy.grails.plugins.web.taglib.ValidationTagLib
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+@Transactional(readOnly = false)
+class TaskController extends RestfulController{
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Task.list(params), model:[taskInstanceCount: Task.count()]
-    }
+	TaskController() {
+		super(Task)
+	}
+	
+    static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']
+	static responseFormats = ['json', 'xml']
+	def springSecurityService
+	
+    def index() {
+        //params.max = Math.min(max ?: 10, 100)
+        //respond Task.list(params), model:[taskInstanceCount: Task.count()]
+    
+		header 'total', Task.count()
+		respond Task.list()
+	}
 
     def show(Task taskInstance) {
         respond taskInstance
@@ -30,20 +41,21 @@ class TaskController {
             return
         }
 
-        if (taskInstance.hasErrors()) {
-            respond taskInstance.errors, view:'create'
-            return
-        }
+		//taskInstance.startDate = Date.parse( 'MM/dd/yyyy', taskInstance.startDate )
+		
+        taskInstance.clearErrors()
+		taskInstance.validate()
+				
+		if (taskInstance.hasErrors()) {
+			respond taskInstance.errors, view:'create'
+			return
+		}
+		
+		
+		taskInstance.createdBy = springSecurityService.currentUser
+		taskInstance.save flush:true, failOnError: true
 
-        taskInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
-                redirect taskInstance
-            }
-            '*' { respond taskInstance, [status: CREATED] }
-        }
+		respond taskInstance
     }
 
     def edit(Task taskInstance) {

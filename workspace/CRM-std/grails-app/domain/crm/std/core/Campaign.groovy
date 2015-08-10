@@ -1,9 +1,11 @@
 package crm.std.core
 
+import java.io.Serializable;
 import java.util.Date;
 
-class Campaign {
+class Campaign implements Serializable {
 
+	String id
     String name
 	String currency
 	BigDecimal budget
@@ -21,7 +23,7 @@ class Campaign {
 	SecAppUser	lastModifiedBy
 	Date	dateCreated
 	Date	lastUpdated
-	
+			
     static constraints = {
 		id							maxSize:32
 		name						maxSize:128
@@ -34,7 +36,8 @@ class Campaign {
 		currency					maxSize:64, nullable:true, blank: true
 		status						maxSize:64, nullable:true, blank: true
 		type						maxSize:64, nullable:true, blank: true
-		description					maxSize:64, nullable:true, blank: true
+		description					maxSize:64, nullable:true, blank: true		
+		objective					maxSize:64, nullable:true, blank: true
 		assignTo					nullable:true, blank: true
 		
 		createdBy					nullable:true

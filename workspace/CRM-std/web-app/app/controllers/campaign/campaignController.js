@@ -62,8 +62,8 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('campaignEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Campaign', 'campaign', 'account', 'CampaignService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Campaign, campaign, account, CampaignService, AlertService) {
+	controllers.controller('campaignEditController', ['$log', '$scope', '$filter', '$routeParams', '$window', '$modal', '$location', 'Campaign', 'campaign', 'campaignStatus', 'campaignType', 'users', 'CampaignService', 'AlertService',
+			                                          function($log, $scope, $filter, $routeParams, $window, $modal, $location, Campaign, campaign, campaignStatus, campaignType, users, CampaignService, AlertService) {
 					
 					$scope.header = 'Campaign Management';
 					$scope.title = 'Campaign';
@@ -77,8 +77,17 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
-					$scope.campaignAccount = account;
-					$scope.campaignSalesStage = ['Prospecting', 'Qualification', 'Negotiation', 'Closed Won', 'Closed Lost'];
+					$scope.campaignUser = users;
+					$scope.campaignStatus = [];
+					$scope.campaignType = [];
+					
+					angular.forEach(campaignStatus, function(campStat){
+						$scope.campaignStatus.push(campStat.valueName);
+					});
+					
+					angular.forEach(campaignType, function(campType){
+						$scope.campaignType.push(campType.valueName);
+					});
 					 
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
@@ -90,7 +99,36 @@ define(['controllers/controllers'],
 						  
 				    $scope.orderProp = 'name';
 				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.campaignUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.campaign.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.campaign.assignTo.username);
+					      });
+				    };
+				    
 				    $scope.save = function() {
+				    	
+				    	if($scope.campaign.startDate)
+				    		$scope.campaign.startDate = $filter('date')($scope.campaign.startDate, 'yyyy-MM-ddTHH:mm:ssZ').toString();										    	
+				    	
+				    	if($scope.campaign.endDate)
+				    		$scope.campaign.endDate = $filter('date')($scope.campaign.endDate, 'yyyy-MM-ddTHH:mm:ssZ').toString();										    	
+				    	
 				    	Campaign.update({id: campaign.id}, $scope.campaign, function (result) {
 							$log.info('[CampaignEditController::save]Campaign Update success: ' + angular.toJson(result));																	
 							AlertService.add('success', 'Create Campaign Success');
@@ -114,8 +152,8 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('campaignViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Campaign', 'campaign', 'CampaignService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Campaign, campaign, CampaignService, AlertService) {
+	controllers.controller('campaignViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Campaign', 'campaign', 'task', 'CampaignService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Campaign, campaign, task, CampaignService, AlertService) {
 					
 					$scope.header = 'Campaign Management';
 					$scope.title = 'Campaign';
@@ -136,6 +174,8 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 					$scope.campaign = campaign;
+					$scope.task = task;
+					
 				    $scope.orderProp = 'name';
 				    
 				    $scope.rating = {
@@ -161,8 +201,8 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('campaignCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Campaign', 'CampaignService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Campaign, CampaignService , AlertService) {
+	controllers.controller('campaignCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', '$modal', 'Campaign', 'campaignStatus', 'campaignType', 'users', 'CampaignService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, $modal, Campaign, campaignStatus, campaignType, users, CampaignService , AlertService) {
 					
 					$scope.header = 'Campaign Management';
 					$scope.title = 'Campaign';
@@ -172,13 +212,28 @@ define(['controllers/controllers'],
 					    $scope.dt = new Date();
 					  };
 					$scope.today();
+					$scope.minDate = new Date('1990/01/01');
+					$scope.maxDate = new Date('2050/01/01');
+					$scope.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'yyyy-MM-dd', 'shortDate'];
+					$scope.dateFormat = $scope.dateFormats[1];
 					$scope.dateOptions = {
-						    formatYear: 'yy',
-						    startingDay: 1
-						  };
-
-					$scope.campaignStatus = ['Planning', 'Active', 'Inactive', 'Complete', 'In Queue', 'Sending'];
-					$scope.campaignType = ['Telesales', 'Email', 'Web', 'Mail', 'Print', 'Radio', 'NewsLetter', 'Television'];				
+							'year-format': "'yy'",
+							'starting-day': 1
+					};
+										
+					$scope.campaignUser = users;
+					
+					$scope.campaignStatus = [];
+					$scope.campaignType = [];
+					
+					angular.forEach(campaignStatus, function(campStat){
+						$scope.campaignStatus.push(campStat.valueName);
+					});
+					
+					angular.forEach(campaignType, function(campType){
+						$scope.campaignType.push(campType.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -191,7 +246,36 @@ define(['controllers/controllers'],
 				        $window.alert("Called " + courseId);
 				    }
 				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.campaignUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.campaign.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.campaign.assignTo.username);
+					      });
+				    };
+				    
 				    $scope.save = function() {
+				    	
+				    	if($scope.campaign.startDate)
+				    		$scope.campaign.startDate = $filter('date')($scope.campaign.startDate, 'yyyy-MM-ddTHH:mm:ssZ').toString();										    	
+				    	
+				    	if($scope.campaign.endDate)
+				    		$scope.campaign.endDate = $filter('date')($scope.campaign.endDate, 'yyyy-MM-ddTHH:mm:ssZ').toString();										    	
+				    	
 						$scope.campaign.$save(function(campaign, headers) {
 							$log.info('[CampaignCreateController::save]Campaign Save success: ' + angular.toJson(campaign));																	
 							AlertService.add('success', 'Create Campaign Success');

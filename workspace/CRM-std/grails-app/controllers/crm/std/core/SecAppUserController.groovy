@@ -13,8 +13,7 @@ class SecAppUserController extends RestfulController{
 		super(SecAppUser)
 	}
 	
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-	
+    static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
 	static responseFormats = ['json', 'xml']
 	def springSecurityService
 	
@@ -34,6 +33,9 @@ class SecAppUserController extends RestfulController{
     def index() {
         //params.max = Math.min(max ?: 10, 100)
         //respond SecAppUser.list(params), model:[secAppUserInstanceCount: SecAppUser.count()]
+		
+		header 'total', SecAppUser.count()
+		respond SecAppUser.list()
     }
 
     def show(SecAppUser secAppUserInstance) {

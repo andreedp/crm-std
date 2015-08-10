@@ -48,8 +48,8 @@ define(['controllers/controllers'],
 
 	}]);
 	
-	controllers.controller('contactEditController', ['$log', '$scope', '$routeParams', '$window', '$location', 'Contact', 'contact', 'ContactService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $location, Contact, contact, ContactService, AlertService) {
+	controllers.controller('contactEditController', ['$log', '$scope', '$filter', '$routeParams', '$window', '$modal', '$location', 'Contact', 'campaign', 'contact', 'account', 'titles', 'sex', 'leadSource', 'users', 'ContactService', 'AlertService',
+			                                          function($log, $scope, $filter, $routeParams, $window, $modal, $location, Contact, campaign, contact, account, titles, sex, leadSource, users, ContactService, AlertService) {
 					
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
@@ -63,9 +63,25 @@ define(['controllers/controllers'],
 						    startingDay: 1
 					};
 
-					$scope.contactTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.contactSex = ['M', 'F', 'N'];
-					 
+					$scope.contactTitle = [];
+					$scope.contactSex = [];
+					$scope.contactSource = [];
+					$scope.contactUser = users;
+					
+					angular.forEach(titles, function(title){
+						$scope.contactTitle.push(title.valueName);
+					});
+					
+					angular.forEach(sex, function(sex){
+						$scope.contactSex.push(sex.valueName);
+					});
+					
+					angular.forEach(leadSource, function(leadSource){
+						$scope.contactSource.push(leadSource.valueName);
+					});
+					$scope.contactAccount = account;	
+					$scope.contactCampaign = campaign;
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -76,7 +92,77 @@ define(['controllers/controllers'],
 						  
 				    $scope.orderProp = 'name';
 				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.assignTo.name);
+					      });
+				    };
+				    
+				    $scope.openAccount = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormAccount.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactAccount;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.account = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.account.name);
+					      });
+				    };
+				    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.campaign.name);
+					      });
+				    };
+				    
 				    $scope.save = function() {
+				    	
+				    	if($scope.contact.dob)
+				    		$scope.contact.dob = $filter('date')($scope.contact.dob, 'yyyy-MM-ddTHH:mm:ssZ').toString();
+					
 				    	Contact.update({id: contact.id}, $scope.contact, function (result) {
 							$log.info('[ContactEditController::save]Contact Update success: ' + angular.toJson(result));																	
 							AlertService.add('success', 'Create Update Success');
@@ -100,8 +186,8 @@ define(['controllers/controllers'],
 
 		}]);
 	
-	controllers.controller('contactViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Contact', 'contact', 'ContactService', 'AlertService',
-			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Contact, contact, ContactService, AlertService) {
+	controllers.controller('contactViewController', ['$log', '$scope', '$routeParams', '$window', '$filter', '$location', 'Contact', 'contact', 'task', 'ContactService', 'AlertService',
+			                                          function($log, $scope,  $routeParams, $window, $filter, $location, Contact, contact, task, ContactService, AlertService) {
 					
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
@@ -122,6 +208,8 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 						  
 					$scope.contact = contact;
+					$scope.task = task;
+					
 				    $scope.orderProp = 'name';
 				    
 				    $scope.OpenCourse = function(courseId) {
@@ -142,8 +230,8 @@ define(['controllers/controllers'],
 
 		}]);
 
-	controllers.controller('contactCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', 'Contact', 'lead', 'account', 'ContactService', 'AlertService',
-			                                          function($log, $scope,  $filter, $location, $routeParams, $window, Contact, lead, account, ContactService , AlertService) {
+	controllers.controller('contactCreateController', ['$log', '$scope', '$filter', '$location', '$routeParams', '$window', '$modal', 'Contact', 'campaign', 'lead', 'account', 'titles', 'sex', 'leadSource', 'users', 'ContactService', 'AlertService',
+			                                          function($log, $scope,  $filter, $location, $routeParams, $window, $modal, Contact, campaign, lead, account, titles, sex, leadSource, users, ContactService , AlertService) {
 					
 					$scope.header = 'Contact Management';
 					$scope.title = 'Contact';
@@ -169,9 +257,23 @@ define(['controllers/controllers'],
 						    startingDay: 1
 						  };
 					
-					$scope.contactTitle = ['Mr.', 'Ms.', 'Mrs.'];
-					$scope.contactSex = ['M', 'F', 'N'];
-					$scope.contactSource = ['Campaign', 'Email', 'Web Site', 'Direct Mail', 'Partner', 'Employee', 'Exisiting Customer', 'Other'];
+					$scope.contactTitle = [];
+					$scope.contactSex = [];
+					$scope.contactSource = [];
+					$scope.contactUser = users;
+					
+					angular.forEach(titles, function(title){
+						$scope.contactTitle.push(title.valueName);
+					});
+					
+					angular.forEach(sex, function(sex){
+						$scope.contactSex.push(sex.valueName);
+					});
+					
+					angular.forEach(leadSource, function(leadSource){
+						$scope.contactSource.push(leadSource.valueName);
+					});
+					
 					$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 					$scope.format = $scope.formats[0];
 					
@@ -179,12 +281,79 @@ define(['controllers/controllers'],
 				    $scope.selectedPredicate = $scope.predicates[0];
 					
 					$scope.contactAccount = account;
+					$scope.contactCampaign = campaign;
 				    
 				    $scope.orderProp = 'name';
 				    
 				    $scope.OpenCourse = function(courseId) {
 				        $window.alert("Called " + courseId);
 				    }
+				    
+				    $scope.openUser = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormUser.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactUser;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.assignTo = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.assignTo.name);
+					      });
+				    };
+				    
+				    $scope.openAccount = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormAccount.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactAccount;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.account = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.account.name);
+					      });
+				    };
+				    
+				    $scope.openCampaign = function (size) {
+
+					      var modalInstance = $modal.open({
+					        animation: $scope.animationsEnabled,
+					        templateUrl: 'app/templates/searchFormCampaign.html',
+					        controller: 'modalInstanceController',
+					        size: size,
+					        resolve: {
+					          items: function () {
+					            return $scope.contactCampaign;
+					          }
+					        }
+					      });
+
+					      modalInstance.result.then(function (selectedItem) {
+					        $scope.contact.campaign = selectedItem;
+					      }, function () {
+					        $log.info('Modal dismissed at: ' + new Date());
+					        $log.info('contact: ' +  $scope.contact.campaign.name);
+					      });
+				    };
 				    
 					if(lead)
 					{
@@ -198,6 +367,8 @@ define(['controllers/controllers'],
 					}
 				    
 				    $scope.save = function() {
+				    	if($scope.contact.dob)
+				    		$scope.contact.dob = $filter('date')($scope.contact.dob, 'yyyy-MM-ddTHH:mm:ssZ').toString();
 						$scope.contact.$save(function(contact, headers) {
 							$log.info('[ContactCreateController::save]Contact Save success: ' + angular.toJson(contact));																	
 							AlertService.add('success', 'Create Contact Success');

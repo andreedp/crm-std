@@ -6,7 +6,9 @@ define(['services/services'],
 			  'query': {method:'GET',  isArray:true},
 			  'queryAll':  {method:'GET', isArray:true},
 			  'update': {method: 'PUT'},
-		      'delete': {method:'DELETE', url: '/CRM-std/lead/:id', params: {id: '@id'}},			
+		      'delete': {method:'DELETE', url: '/CRM-std/lead/:id', params: {id: '@id'}},
+		      'queryTask':  {method:'GET', isArray:true, url: '/CRM-std/lead/listTask/:id', params: {id: '@id'},},
+				
 		});
 	}]);
 	
@@ -40,6 +42,21 @@ define(['services/services'],
 			return delay.promise;
 		};
 	}]);
+	
+	services.factory('MultiLeadTaskLoader', ['Lead', '$route', '$q', '$log', 'AlertService', '$location',
+	                                            function(Lead, $route, $q, $log, AlertService, $location) {
+			return function() {
+				var delay = $q.defer();
+				Lead.queryTask({id: $route.current.params.leadId},function(tasks) {
+					delay.resolve(tasks);
+				}, function() {
+					delay.reject('Unable to fetch tasks');
+					$log.error('[MultiLeadTaskLoader]error: ' + angular.toJson(error));
+					AlertService.add('danger', error.data);
+				});
+				return delay.promise;
+			};
+		}]);
 	
 	services.factory('LeadService', ['$http', '$log', 'Lead', 
 		                                        function($http, $log, Lead) {

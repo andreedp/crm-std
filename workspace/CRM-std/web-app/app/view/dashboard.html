@@ -13,14 +13,14 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i>  <strong>Like Phintraco ?</strong> Try out <a href="http://www.phintraco.com" class="alert-link">CRM</a> for additional features!
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -38,8 +38,10 @@
                             </div>
                             <a href="#">
                                 <div class="panel-footer">
+                                <a href="#/lead/list">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -53,15 +55,17 @@
                                         <i class="fa fa-tasks fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">5</div>
+                                        <div class="huge">{{taskCount}}</div>
                                         <div>New Tasks!</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="#">
                                 <div class="panel-footer">
+                                <a href="#/task/list">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -82,8 +86,10 @@
                             </div>
                             <a href="#">
                                 <div class="panel-footer">
+                                <a href="#/contact/list">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                 </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -94,7 +100,7 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-desktop fa-5x"></i>
+                                        <i class="fa fa-sign-in fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">{{opportunityCount}}</div>
@@ -103,9 +109,11 @@
                                 </div>
                             </div>
                             <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="panel-footer">                 
+                                    <a href="#/opportunity/list">
+                                    	<span class="pull-left">View Details</span>
+                                    	<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -118,10 +126,10 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-sign-in"></i> Opportunity Panel</h3>
                             </div>
                             <div class="panel-body">
-                                <div class="list-group">
+                                <!--<div class="list-group">
                                     <a href="#" class="list-group-item">
                                         <span class="badge">just now</span>
                                         <i class="fa fa-fw fa-male"></i> Contact Aryanto created
@@ -134,14 +142,53 @@
                                         <span class="badge">46 minutes ago</span>
                                         <i class="fa fa-fw fa-sign-in"></i> New Opportunity Added
                                     </a>
-                                    <!--<a href="#" class="list-group-item">
+                                    <a href="#" class="list-group-item">
                                         <span class="badge">1 hour ago</span>
                                         <i class="fa fa-fw fa-user"></i> A new user has been added
-                                    </a>-->
+                                    </a>
                          
+                                </div>-->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Opportunity Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="opportunity in opportunity">
+                                                <td><b><a ng-href="#/opportunity/view/{{opportunity.id}}">{{opportunity.name}}</a></b></td>
+                                                <td>{{opportunity.type}}</td>
+                                                <td>{{opportunity.opportunityAmount}}</td>
+                                            </tr>
+                                             <!--<tr>
+                                                <td>3325</td>
+                                                <td>Aryanto</td>
+                                                <td>Vasco</td>
+                                                <td>Syifa</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>3324</td>
+                                                <td>Erik</td>
+                                                <td>Vasco</td>
+                                                <td>Hera</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>3323</td>
+                                                <td>Chee Keong</td>
+                                                <td>Nuance</td>
+                                                <td>Hera</td>
+                                            </tr>-->
+                                           
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="#/opportunity/list">View All Opportunity <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +203,6 @@
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Leads #</th>
                                                 <th>Name</th>
                                                 <th>Company</th>
                                                 <th>PIC</th>
@@ -164,10 +210,9 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="lead in leads">
-                                                <td>{{lead.id}}</td>
-                                                <td>{{lead.name}}</td>
+                                                <td><b><a ng-href="#/lead/view/{{lead.id}}">{{lead.name}}</a></b></td>
                                                 <td>{{lead.company}}</td>
-                                                <td>{{lead.assignTo}}</td>
+                                                <td>{{lead.assignTo.username}}</td>
                                             </tr>
                                              <!--<tr>
                                                 <td>3325</td>

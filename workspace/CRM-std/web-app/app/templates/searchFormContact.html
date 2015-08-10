@@ -1,0 +1,66 @@
+		<div class="modal-header">
+            <h3 class="modal-title">{{title}}</h3>
+        </div>
+        <!-- <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item.name }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item.name }}</b>
+        </div> -->
+        
+        <div class="panel-body">
+			<div class="form-group">
+				<label for="predicate">Selected Filter:</label>
+				<select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>		
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">							  
+					  <table st-set-filter="customFilter" st-table="displayedCollection" st-safe-src="items" class="table table-striped">
+						<thead>	
+																																					                
+						<tr>
+							<th st-sort="name" ><span class="glyphicon glyphicon-user"></span> Name</th>
+							<th><span class="glyphicon glyphicon-envelope"></span> Email</th>
+							<th><span class="glyphicon glyphicon-phone-alt"></span> Mobile</th>									
+							<th><span class="glyphicon glyphicon-tasks"></span> Description</th>
+							<th  st-sort="lastUpdated" >Last Updated</th>
+						</tr>
+						<tr>
+							<th>
+								<input st-search="name" placeholder="search for name" class="input-sm form-control" type="search"/>
+							</th>
+							<th colspan="3">
+								<input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+							</th>
+							<th>
+								<input st-search="{{selectedPredicate}}" placeholder="bound predicate" class="input-sm form-control" type="search"/>
+							</th>									
+						</tr>
+						</thead>
+						<tbody>
+						<tr ng-repeat="item in displayedCollection">
+							<td><b><a ng-click="ok($index)">{{item.name}}</a></b></td>
+							<td>{{item.email}}</td>
+							<td>{{item.telephone}}</td>
+							<td>{{item.description}}</td>
+							<td>{{item.lastUpdated | date}}</td>
+							<!--<td class="col-md-2">
+									<div class="col-md-1" ng-href="#/contact/edit/{{contact.id}}"><span class="glyphicon glyphicon-edit"></span></div>
+									<div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-remove-circle"></span></div>
+		                            <div class="col-md-1" ng-click='deleteContact(contact.id)'><span class="glyphicon glyphicon-eye-open"></span></div>
+							</td>-->
+						</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div class="modal-footer">
+            <!-- <button class="btn btn-primary" ng-click="ok()">OK</button> -->
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>

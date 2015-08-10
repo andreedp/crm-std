@@ -1,0 +1,163 @@
+				<!-- Page Heading -->
+                <form name="taskForm" class="form-horizontal" role="form">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            {{header}}
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> {{title}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+				    <h1>Task Form</h1>
+				    <p class="lead">Input Task Details  
+				    </p>
+				  </div>
+                
+                <header class="panel-heading">
+					<div class="input-group">
+						<span class="input-group-btn text-right">
+							<a ng-click="save()" class="btn btn-sm btn-default" type="button" >
+							     <span class="glyphicon glyphicon-eye-open"></span>
+							     Save
+							</a>
+							<a ng-href="#/task/list" class="btn btn-sm btn-default" type="button" >
+							     <span class="glyphicon glyphicon-edit"></span>
+							     Cancel
+							</a>			
+						</span>
+					</div> 
+				</header>
+
+				<div class="panel-body">
+				    <div class="col-md-12">
+							<div class="table-responsive">
+							<table class="table table-striped view-table detail-table-striped">
+							<tbody>
+							    <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <label for="inputName" class="col-sm-4 control-label">Name:</label>
+							          <div class="col-sm-8">
+							            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="task.name">
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <label for="inputStatus" class="col-sm-4 control-label">Status:</label>							          
+							          <div class="col-sm-8">
+							            <select type="text" class="form-control" id="inputStatus" placeholder="Status" ng-model="task.status" ng-options="status for status in taskStatus" focus required></select>
+							          </div>
+							        </div>
+							      </div>      
+							   </td>
+							   <tr>
+								<td>							  
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <label for="inputStartDate" class="col-sm-4 control-label">Start Date:</label>
+							          <div class="col-sm-8">
+							            <input type="text" class="form-control" placeholder="Start Date" datepicker-popup="{{dateFormat}}" ng-model="task.startDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="inputStartDate" id="inputStartDate" />
+											<div class="help-block error" ng-show="taskForm.inputStartDate.$dirty && taskForm.inputStartDate.$invalid">
+												<span class="help-block error" ng-show="taskForm.inputStartDate.$error.required">Required Field</span>
+												<span class="help-block error" ng-show="taskForm.inputStartDate.$error.date">Invalid Date</span>
+												<span class="help-block error" ng-show="taskForm.inputStartDate.$error.minimumdate">Error Date.</span>
+											</div>
+							          	</div>
+							        </div>
+							      </div> 
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <label for="inputRelatedTo" class="col-sm-4 control-label">Related To:</label>
+							          <div class="input-group">
+							            <select type="text" class="form-control" id="inputRelatedTo" style="max-width:30%;" placeholder="Related To" ng-model="task.relatedTo" ng-options="relatedTo for relatedTo in taskRelatedTo" focus required></select>
+							          	<input ng-model="taskRelatedToSelected.name" class="form-control" id="inputRelated" name="inputRelated" style="max-width:70%;" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openRelatedTo()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+							          </div>
+							        </div>
+							      </div>     
+				   				</td>
+							   </tr>
+				   			   <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          	<label for="inputDueDate" class="col-sm-4 control-label" >Due Date:</label>
+							          <div class="col-sm-8">
+							            <input type="text" class="form-control" placeholder="Due Date" datepicker-popup="{{dateFormat}}" ng-model="task.dueDate" min="minDate" max="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" name="inputDueDate" id="inputDueDate" />
+											<div class="help-block error" ng-show="taskForm.inputDueDate.$dirty && taskForm.inputDueDate.$invalid">
+												<span class="help-block error" ng-show="taskForm.inputDueDate.$error.required">Required Field</span>
+												<span class="help-block error" ng-show="taskForm.inputDueDate.$error.date">Invalid Date</span>
+												<span class="help-block error" ng-show="taskForm.inputDueDate.$error.minimumdate">Error Date</span>
+											</div>
+						          	
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          <label for="inputContact" class="col-sm-4 control-label">Contact:</label>
+							          <div class="col-sm-8">
+							            <p class="input-group" >
+								          	<input ng-model="task.contactName.name" class="form-control" id="inputContact" name="inputContact" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openContact()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+							          </div>
+							        </div>
+							      </div>      
+				  				</td>
+							   </tr>	
+				   				<tr>
+								<td>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          	<label for="inputPriority" class="col-sm-4 control-label">Priority:</label>
+							          <div class="col-sm-8">
+							             <select type="text" class="form-control" id="inputPriority" placeholder="Priority" ng-model="task.priority" ng-options="priority for priority in taskPriority" focus required></select>
+							          </div>
+							        </div>
+							      </div>
+							      <div class="col-md-6 col-xs-12 ">
+							        <div class="form-group">
+							          	<label for="inputDescription" class="col-sm-4 control-label">Description:</label>
+							          <div class="col-md-8">
+							            <input type="text" class="form-control" id="inputDescription" placeholder="Description" ng-model="task.description">
+							          </div>
+							        </div>
+							      </div>      
+				   				</td>
+							   </tr>				   			   
+				   			   <tr>
+								<td>
+							      <div class="col-md-6 col-xs-12">
+							        <div class="form-group">
+							          <label for="inputAssignTo" class="col-sm-4 control-label">Assign To:</label>
+							          <div class="col-md-8">
+							          	<p class="input-group" >
+								          	<input ng-model="task.assignTo.username" class="form-control" id="inputAssignTo" name="inputAssignTo" />
+							    			<span class="input-group-btn">
+							     				<button class="btn btn-default list-picker-button" ng-click="openUser()"><i class="glyphicon glyphicon-search"></i></button>
+							   				</span>
+						   				</p>
+							          </div>
+							        </div>
+							      </div>
+							 	</td>
+							   </tr>				   	    				    
+				   			</tbody>
+				   			</table>
+				   		</div>
+				   </div>			
+				 </div>
+				 </form>

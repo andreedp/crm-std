@@ -11,19 +11,175 @@ import grails.transaction.Transactional
 
 class ListOfValuesController extends RestfulController{
 
-    static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']
-	//static regulatedMethods = ['index', 'show', 'save', 'update','delete', 'listIndustry']
-	static responseFormats = ['json', 'xml']
-	def springSecurityService
-	
 	ListOfValuesController() {
 		super(ListOfValues)
 	}
+	
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+	static responseFormats = ['json', 'xml']
+	def springSecurityService	
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond ListOfValues.list(params), model:[listOfValuesInstanceCount: ListOfValues.count()]
-    }
+	def listIndustry()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Industry')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listCompany()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Company')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listSex()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Sex')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listTitle()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Contact_Title')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listSalesStage()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Sales_Stage')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listLeadSource()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Lead_Source')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listTaskOwner()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Task_Owner')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listCampaignStatus()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Campaign_Status')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listCampaignType()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Campaign_Type')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listAccountType()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Account_Type')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listLeadStatus()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Lead_Status')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listTaskStatus()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Task_Status')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listPriority()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Priority')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+	def listOpportunityType()
+	{
+		def c = ListOfValues.createCriteria()
+		def dataList = c.list{
+			eq('valueType', 'Opportunity_Type')
+		}
+		
+		header 'total', dataList.size()
+		respond dataList
+	}
+	
+    def index() {
+        //params.max = Math.min(max ?: 10, 100)
+        //respond ListOfValues.list(params), model:[listOfValuesInstanceCount: ListOfValues.count()]
+    
+		header 'total', ListOfValues.count()
+		respond ListOfValues.list()
+	}
 
     def show(ListOfValues listOfValuesInstance) {
         respond listOfValuesInstance
@@ -112,11 +268,4 @@ class ListOfValuesController extends RestfulController{
         }
     }
 	
-	def listIndustry()
-	{
-		def dataList = ListOfValues.findAllByValueType("Industry")?.collect{it.valueName}
-		
-		header 'total', dataList.size()
-		respond dataList
-	}
 }

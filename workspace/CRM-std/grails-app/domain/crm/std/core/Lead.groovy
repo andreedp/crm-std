@@ -1,8 +1,9 @@
 package crm.std.core
 
+import java.io.Serializable;
 import java.util.Date;
 
-class Lead {
+class Lead implements Serializable {
 
 	String	id
 	String name
@@ -10,7 +11,6 @@ class Lead {
 	String sex
 	String address	
 	String city	
-	String state
 	String postalCode
 	String country
 	String email
@@ -38,7 +38,6 @@ class Lead {
 		title						nullable: true, blank: true, inList:['Mr.','Ms.','Mrs.']
 		address						maxSize:512, nullable:true, blank: true
 		city						maxSize:128, nullable:true, blank: true
-		state						maxSize:128, nullable:true, blank: true
 		postalCode					maxSize:16, nullable:true, blank: true
 		country						maxSize:128, nullable:true, blank: true
 		email						maxSize:128, nullable:true, blank: true

@@ -20,6 +20,7 @@ class UrlMappings {
 		"/account"(resources:"Account")
 		"/campaign"(resources:"Campaign")		
 		"/listofvalues"(resources:"ListOfValues")
+		"/task"(resources:"Task")
 		
 	}
 }

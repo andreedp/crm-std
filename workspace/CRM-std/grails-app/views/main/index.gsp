@@ -28,7 +28,7 @@
 	<!-- Date Range CSS -->    
 	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'daterangepicker-bs3.css')}" />
 
-	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'rating.css')}" />
+	<link rel="stylesheet" type="text/css" href="${resource(dir: 'css', file: 'crm.css')}" />
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -178,6 +178,9 @@
                     <li>
                         <a ng-href="#/campaign/list"><i class="fa fa-fw fa-desktop"></i> Campaign</a>
                     </li>
+                     <li>
+                        <a ng-href="#/task/list"><i class="fa fa-fw fa-tasks"></i> Task</a>
+                    </li>
                     <li>
                     	<a href="javascript:;" data-toggle="collapse" data-target="#systemManagement"><i class="fa fa-fw fa-wrench"></i> System Management <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="systemManagement" class="collapse">
@@ -186,9 +189,6 @@
                             </li>
                             <li>
                                 <a href="#">User</a>
-                            </li>
-                            <li>
-                                <a href="#">Company</a>
                             </li>
                             <li>
                                 <a href="#">List Of Values</a>
@@ -220,29 +220,34 @@
             <!-- /.navbar-collapse -->
         </nav>
 
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
+         <div id="page-wrapper">
+            <div class="container-fluid fill">
                 <div class="row" ng-controller="alertController">
               		<div class="col-lg-12">                       
                   		<alert ng-repeat="alert in alerts" type="alert.type" close="alert.close()" data-dismiss="alert">{{alert.msg}}</alert>                       
               		</div>
-        		</div>            
-                <div class="view-container">
-	    			<div ng-view class="view-frame"></div>
-				</div>
-				
-            </div>
-            <!-- /.container-fluid -->
-
+        		</div>       		 
+   				<div class="view-container fill">
+					<div ng-view class="view-frame fill"></div>
+				</div>	
+				<hr />			
+			    <footer>
+			    	<div ng-controller="footerController">
+				    	<p class="pull-right"><a scroll-to="">Back to Top</a></a></p>
+				        <p>&copy; Phintraco 2015</p>
+			        </div>
+			    </footer>			
+  			</div>
+            <!-- /.container-fluid -->    
+                   			
         </div>
         <!-- /#page-wrapper -->
-
+        
     </div>
     <!-- /#wrapper -->    
    	
 	<script type="text/javascript" src="app/vendor/requirejs/require.js" data-main="app/main"></script>
-	
 </body>
+
 
 </html>

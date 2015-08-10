@@ -2,7 +2,7 @@ package crm.std.core
 
 import java.util.Date;
 
-class Account {
+class Account implements Serializable {
 
 	String	id
 	String name
@@ -13,7 +13,6 @@ class Account {
 	String Fax
 	String address
 	String city
-	String state
 	String postalCode
 	String country
 	String email
@@ -27,7 +26,7 @@ class Account {
 	SecAppUser	lastModifiedBy
 	Date	dateCreated
 	Date	lastUpdated
-	
+		
     static constraints = {
 		id				maxSize:32
 		name			maxSize:128
@@ -35,7 +34,6 @@ class Account {
 		company			maxSize:128, nullable:true, blank: true
 		address			maxSize:512, nullable:true, blank: true
 		city			maxSize:128, nullable:true, blank: true
-		state			maxSize:128, nullable:true, blank: true
 		postalCode		maxSize:128, nullable:true, blank: true
 		country			maxSize:128, nullable:true, blank: true
 		email			maxSize:128, nullable:true, blank: true
@@ -60,5 +58,9 @@ class Account {
 		name 		index:'account_name_idx'
 		
 		sort 		name:'asc'
+	}
+	
+	Set<Task> getTasks(){
+		return Task.findAllByAccount(this)
 	}
 }

@@ -6,7 +6,9 @@ define(['services/services'],
 			  'query': {method:'GET',  isArray:true},
 			  'queryAll':  {method:'GET', isArray:true},
 		      'update': {method: 'PUT'},
-		      'delete': {method:'DELETE', url: '/CRM-std/contact/:id', params: {id: '@id'}},			
+		      'delete': {method:'DELETE', url: '/CRM-std/contact/:id', params: {id: '@id'}},
+		      'queryTask':  {method:'GET', isArray:true, url: '/CRM-std/contact/listTask/:id', params: {id: '@id'},},
+				
 		});
 	}]);
 	
@@ -40,6 +42,21 @@ define(['services/services'],
 			return delay.promise;
 		};
 	}]);
+	
+	services.factory('MultiContactTaskLoader', ['Contact', '$route', '$q', '$log', 'AlertService', '$location',
+	                                            function(Contact, $route, $q, $log, AlertService, $location) {
+			return function() {
+				var delay = $q.defer();
+				Contact.queryTask({id: $route.current.params.contactId},function(tasks) {
+					delay.resolve(tasks);
+				}, function() {
+					delay.reject('Unable to fetch tasks');
+					$log.error('[MultiContactTaskLoader]error: ' + angular.toJson(error));
+					AlertService.add('danger', error.data);
+				});
+				return delay.promise;
+			};
+		}]);
 	
 	services.factory('ContactService', ['$http', '$log', 'Contact', 
 		                                        function($http, $log, Contact) {
